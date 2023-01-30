@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .left h3 {
+    margin: 0;
+  }
+  
+  .right a {
+    margin-left: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .left h3 {
+      display: none;
+    }
+  }
+  
