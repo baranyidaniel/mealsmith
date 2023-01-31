@@ -62,10 +62,10 @@ app.get('/:table/:field/:value', (req, res) => {
     
     pool.query(`SELECT * FROM ${table} WHERE ${field}='${value}'`, (err, results) => {
         if (err) {
-            log(req.socket.remoteAddress, err);
-            res.status(500).send(err);
+            log("ERROR", err)
+            res.status(500).send(err)
         } else {
-            log(req.socket.remoteAddress, `${results.length} records sent form ${table} table.`)
+            log("SERVER", `${results.affectedRows} records sent from ${table} table.`)
             res.status(200).send(results)
         }
     })
