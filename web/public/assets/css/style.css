@@ -19,3 +19,12 @@ nav {
     }
   }
   
+  body{
+    background-image: url(/web/public/assets/img/hatter.PNG);
+    opacity: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    font-weight: bold;
+  }
