@@ -6,7 +6,7 @@ app.factory('database', function($http, $q) {
             var deferred = $q.defer()
             $http({
                 method: 'POST',
-                url: url + '/login',
+                url: `${url}/login`,
                 data: data
             }).then(function(res) {
                 deferred.resolve(res)
@@ -14,6 +14,34 @@ app.factory('database', function($http, $q) {
                 deferred.reject(res)
             })
             return deferred.promise
+        },
+
+        insert: function(tablename, values) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: `${url}/${tablename}`,
+                data: values
+            }).then(function(res) {
+                deferred.resolve(res);
+            }, function(res) {
+                deferred.reject(res);
+            });
+            return deferred.promise;
+        },
+
+        update: function(tablename, id, values) {
+            var deferred = $q.defer();
+            $http({
+                method: 'PATCH',
+                url: `${url}/${tablename}/${id}`,
+                data: values
+            }).then(function(res) {
+                deferred.resolve(res);
+            }, function(res) {
+                deferred.reject(res);
+            });
+            return deferred.promise;
         }
     }
 })
