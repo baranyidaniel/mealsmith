@@ -3,7 +3,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
     $scope.user = {};
 
     $scope.registration = function() {
-        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
+        if ($scope.user.username == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
             alert('Nem adtál meg minden kötelező adatot!')
             return
         }
@@ -11,7 +11,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             alert('A megadott jelszavak nem egyeznek!')
             return
         }
-        var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+        var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
         if (!$scope.user.pass1.match(pwd_pattern)) {
             alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!')
             return
@@ -41,7 +41,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         let data = {
             table: 'users',
             email: $scope.user.email,
-            password: CryptoJS.SHA1($scope.user.pass1).toString()
+            passwd: CryptoJS.SHA1($scope.user.pass1).toString()
         }
 
         database.logincheck(data).then(function(res) {
@@ -49,7 +49,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
                 alert('Hibás belépési adatok!')
                 return
             }
-            if (res.data[0].status == 0) {
+            if (res.data[0].jog == 2) {
                 alert('Tiltott felhasználó!')
                 return
             }
