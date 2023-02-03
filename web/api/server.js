@@ -54,13 +54,30 @@ app.get('/:table/:id', (req, res) => {
     })
 })
 
-// GET RECORDS BY field
+// GET RECORDS BY VALUE
 app.get('/:table/:field/:value', (req, res) => {
     var table = req.params.table,
         field = req.params.field,
         value = req.params.value
     
     pool.query(`SELECT * FROM ${table} WHERE ${field}='${value}'`, (err, results) => {
+        if (err) {
+            log("ERROR", err)
+            res.status(500).send(err)
+        } else {
+            log("SERVER", `${results.affectedRows} records sent from ${table} table.`)
+            res.status(200).send(results)
+        }
+    })
+})
+
+// GET RECORDS BY VALUE WITH LIKE
+app.get('/like/:table/:field/:value', (req, res) => {
+    var table = req.params.table,
+        field = req.params.field,
+        value = req.params.value
+    
+    pool.query(`SELECT * FROM ${table} WHERE ${field} LIKE '%${value}%'`, (err, results) => {
         if (err) {
             log("ERROR", err)
             res.status(500).send(err)

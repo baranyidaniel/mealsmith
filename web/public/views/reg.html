@@ -1,32 +1,31 @@
-<!DOCTYPE html ng-app="recepturaApp">
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-    <!--CSS-->
-    <link rel="stylesheet" href="/web/public/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/web/public/assets/css/style.css">
-</head>
-<body>
-    <div class="container-fluid" ng-controller>
-        <header>
-            <nav class="navbar bg-light">
-                <div class="left">
-                    <h3>{{title}}</h3>
-                </div>
-                <div class="right">
-                    <a href="#">Regisztrálás</a>
-                    <a href="#">Bejelentkezés</a>
-                </div>
-            </nav>
-        </header>
-    </div>
+<h3 class="mt-3">Regisztráció az oldalra</h3>
+<hr>
 
-    <!--Scripts-->
-    <script src="/web/public/assets/js/angular.min.js"></script>
-    <script src="/web/public/assets/js/bootstrap.min.js"></script>
-    <script src="/web/public/assets/js/script.js"></script>
-</body>
-</html>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="Például: Baranyi Dániel" ng-model="user.name">
+    <label for="floatingInput">Név <em>*</em></label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.email">
+    <label for="floatingInput">E-mail cím <em>*</em></label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="user.phone">
+    <label for="floatingInput">Telefonszám</label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" ng-model="user.pass1">
+    <label for="floatingPassword">Jelszó <em>*</em></label>
+</div>
+
+<div class="form-floating mb-3">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" ng-model="user.pass2">
+    <label for="floatingPassword">Jelszó megerősítése <em>*</em></label>
+</div>
+
+<p class="mb-3 text-muted">A <em>*</em>-al jelölt adatok megadása kötelező!</p>
+
+<button class="btn btn-primary mb-3" ng-click="registration()">Regisztráció véglegesítése</button>
