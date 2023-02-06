@@ -1,8 +1,9 @@
-var app = new angular.module('mealsmithApp', ['ngRoute']);
+let app = new angular.module('mealsmithApp', ['ngRoute']);
 
 app.run(function($rootScope) {
 
     $rootScope.loggedUser = {};
+    $rootScope.settings = {};
     $rootScope.settings.appTitle = 'MealSmith';
     $rootScope.settings.company = 'Bajai SZC Türr István Technikum 2/14.SZFT';
     $rootScope.settings.author = 'VI-BA-KE csapat';
@@ -39,5 +40,7 @@ app.config(function($routeProvider) {
             templateUrl: 'views/top.html',
             controller: 'userCtrl'
         })
-        .otherwise('/')
+        .otherwise({
+			redirectTo: '/'
+		})
     });
