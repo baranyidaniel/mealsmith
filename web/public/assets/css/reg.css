@@ -1,69 +1,67 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.left h3 {
-    margin: 0;
-}
-
-.right a {
-    margin-left: 10px;
-}
-
-@media (max-width: 768px) {
-    .left h3 {
-        display: none;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
     }
-}
-
-body {
-    background-image: url(/web/public/assets/img/regháttér.jpg);
-    opacity: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: white;
-    font-weight: bold;
-}
-
-#baloldal {
-    align-items: center;
-    margin-top: 10%;
-}
-
-input[type="text"] {
-    width: 300px;
-    height: 50px;
-    background-color: #26408B;
-    margin: auto;
-    color: #C2E7D9;
-    border-radius: 121px;
-}
-
-input[type="password"] {
-    width: 300px;
-    height: 50px;
-    background-color: #26408B;
-    margin: auto;
-    color: #C2E7D9;
-    border-radius: 121px;
-}
-
-input[type="email"] {
-    width: 300px;
-    height: 50px;
-    background-color: #26408B;
-    margin: auto;
-    color: #C2E7D9;
-    border-radius: 121px;
-}
-
-button {
-    width: 300px;
-    height: 50px;
-    margin: auto;
-    border-radius: 121px;
-}
+    
+    body {
+        background-image: url(/web/public/assets/img/regháttér.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+    
+    h2 {
+        margin-top: 30%;
+        margin-bottom: 20%;
+        color: white;
+        text-align: center;
+    }
+    
+    input[type="text"] {
+        border-radius: 121px;
+        background-color: #26408B;
+        color: white;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    
+    input[type="password"] {
+        border-radius: 121px;
+        background-color: #26408B;
+        color: white;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    
+    input[type="email"] {
+        border-radius: 121px;
+        background-color: #26408B;
+        color: white;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    
+    input[type="tel"] {
+        border-radius: 121px;
+        background-color: #26408B;
+        color: white;
+        text-align: left;
+        margin-bottom: 19%;
+        box-sizing: border-box;
+    }
+    
+    input[type="button"] {
+        border-radius: 121px;
+        background-color: #C2E7D9;
+        color: white;
+        text-align: center;
+        box-sizing: border-box;
+    }

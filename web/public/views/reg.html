@@ -26,33 +26,39 @@
         <main>
             <div class="row">
                 <div class="col" id="baloldal">
-                    <form action="">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput userName" placeholder="Felhasználónév" ng-model="user.name"><em>*</em>
-                            <label for="userName"> Felhasználónév</label>
-                        </div>
+                    <div class="container">
 
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput userEmail" placeholder="Email cím" ng-model="user.email"><em>*</em>
-                        </div>
+                        <form action="">
+                            <div class="form-floating mb-3">
+                                <h2>Mealsmith</h2>
+                            </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput userPhone" placeholder="Telefonszám" ng-model="user.phone">
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="userName" placeholder="Felhasználónév" value="Felhasználónév" ng-model="user.name"><em>*</em>
+                            </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword userPassw1" placeholder="Jelszó" ng-model="user.pass1"><em>*</em>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="userEmail" placeholder="Email cím" value="Email cím" ng-model="user.email"><em>*</em>
+                            </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword userPassw2" placeholder="Jelszó újra" ng-model="user.pass2"><em>*</em>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <button type="submit" class="btn btn-light mb-3" ng-click="registration()">Regisztráció</button>
-                        </div>
-                    </form>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="userPhone" placeholder="Telefonszám" value="Telefonszám" ng-model="user.phone">
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="userPassw1" placeholder="Jelszó" value="Jelszó" ng-model="user.pass1"><em>*</em>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="userPassw2" placeholder="Jelszó újra" value="Jelszó újra" ng-model="user.pass2"><em>*</em>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="button" class="form-floating btn btn-light mb-3" value=" Regisztráció" ng-click="registration()">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="col" id="jobboldal">
+                <div class="col " id="jobboldal ">
 
                 </div>
             </div>
@@ -60,13 +66,13 @@
     </main>
     <footer></footer>
 
-    <script src="/web/public/assets/js/angular.min.js"></script>
-    <script src="/web/public/assets/js/angular-route.min.js"></script>
-    <script src="/web/public/assets/js/bootstrap.min.js"></script>
-    <script src="/web/public/assets/js/script.js"></script>
-    <script src="/web/public/assets/js/dbFactory.js"></script>
+    <script src="/web/public/assets/js/angular.min.js "></script>
+    <script src="/web/public/assets/js/angular-route.min.js "></script>
+    <script src="/web/public/assets/js/bootstrap.min.js "></script>
+    <script src="/web/public/assets/js/script.js "></script>
+    <script src="/web/public/assets/js/dbFactory.js "></script>
 
-    <script src="/web/public/controllers/userCtrl.js"></script>
+    <script src="/web/public/controllers/userCtrl.js "></script>
 
 </body>
 
