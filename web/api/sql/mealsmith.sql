@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Jan 31. 08:06
+-- Létrehozás ideje: 2023. Feb 08. 12:52
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -78,6 +78,15 @@ CREATE TABLE `posts` (
   `points` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `short_desc`, `elkeszitesi_ido`, `adag`, `ingredients`, `datum`, `points`) VALUES
+(1, 1, 'Chicken adobo', 'aaa', 'aa', 95, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 08:26:34', 5364),
+(2, 1, 'Chicken adobo 2', 'aaa', 'aa', 195, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 08:26:34', 564),
+(3, 1, 'Chicken adobo 3', 'aaa', 'aa', 300, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 08:26:34', 53640);
+
 -- --------------------------------------------------------
 
 --
@@ -102,7 +111,7 @@ CREATE TABLE `users` (
   `passwd` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
   `display_name` varchar(50) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `description` text COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `points` int(11) NOT NULL,
+  `points` int(11) NOT NULL DEFAULT 0,
   `reg` datetime NOT NULL DEFAULT current_timestamp(),
   `last` datetime DEFAULT NULL,
   `jog` int(11) NOT NULL DEFAULT 1,
@@ -114,7 +123,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `passwd`, `display_name`, `description`, `points`, `reg`, `last`, `jog`, `img`) VALUES
-(1, 'admin', 'admin@admin.hu', 'a', NULL, NULL, 0, '2023-01-30 10:07:34', NULL, 0, NULL);
+(1, 'admin', 'admin@admin.hu', 'a', NULL, NULL, 0, '2023-01-30 10:07:34', NULL, 0, NULL),
+(2, 'Teszt1', 'teszt@teszt.hu', 'a', 'Teszt Elek', 'asdasd', 32313, '2023-01-31 09:05:25', NULL, 1, NULL),
+(4, 'teszter', 'teszt@er.gov', 'gfdff', NULL, NULL, 0, '2023-01-31 09:29:36', NULL, 1, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -158,19 +169,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

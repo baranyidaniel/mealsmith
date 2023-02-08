@@ -5,13 +5,15 @@
 <h3>Legfrissebb</h3>
 <div id="legfrissebb">
     <div class="card-group">
-        <div class="card" ng-repeat="recept in receptek">          
+        <div class="card" ng-repeat="recept in receptek">
           <img src="./assets/img/nopic.png" class="card-img-top">
           <span class="elkeszitesi_ido">
             {{ elkeszites(recept.id) }}
           </span>
-          <i class="bi bi-heart"></i>
-          <i class="bi bi-star"></i>
+          <p>
+            <i class="bi bi-heart"></i>
+            <i class="bi bi-star"></i>
+          </p>
           <div class="card-body">        
             <h5 class="card-title">{{ recept.title }}</h5>
             <p>

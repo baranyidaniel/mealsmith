@@ -32,7 +32,6 @@ a{
 }
 
 .card-group{
-  width: 20%;
   padding-bottom: 50px;
   display: flex;
 }
@@ -41,6 +40,7 @@ a{
   background-color: rgb(13, 2, 33);
   color: white;
   border-radius: 18px;
+  margin: 1em;
 }
 
 img{
