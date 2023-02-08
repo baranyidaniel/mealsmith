@@ -1,6 +1,7 @@
 app.controller('receptCtrl', function($scope, database, $rootScope, $location) {
     $scope.receptek = []
     $scope.legfrissebb = []
+    $scope.legjobbak = []
 
     database.selectAll('posts')
     .then(function(res) {
@@ -9,6 +10,11 @@ app.controller('receptCtrl', function($scope, database, $rootScope, $location) {
     .then(function() {
         $scope.legfrissebb = $scope.receptek.sort(function(a,b){
             return new Date(b.datum) - new Date(a.datum);
+        });
+    })
+    .then(function() {
+        $scope.legjobbak = $scope.receptek.sort(function(a,b){
+            return new Date(b.points) - new Date(a.points);
         });
     })
 
