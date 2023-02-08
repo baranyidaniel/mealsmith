@@ -10,36 +10,49 @@
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     <body>
-        <div class="container-fluid" ng-controller="receptCtrl">
-            <header>
-                <nav class="navbar bg-light">
-                    <div class="left">
-                        <a href="#!/">{{ settings.appTitle }}</a>
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" ng-controller="receptCtrl">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="right">
-                        <a href="#!/reg">Regisztrálás</a>
-                        <a href="#!/login">Bejelentkezés</a>
-                    </div>
-                </nav>
-            </header>
-            <main>
-                <div class="container" ng-view>
-                    
                 </div>
-            </main>
-            <footer>
-                {{settings.company}} - {{settings.author}}
-            </footer>
-            
-        </div>
+            </nav>
+            </header>
+        <main>
+            <div class="container" ng-view>
+                    
+            </div>
+        </main>
+        <footer>
+            {{settings.company}} - {{settings.author}}
+        </footer>
         <script src="./assets/js/jquery.min.js"></script>
         <script src="./assets/js/bootstrap.min.js"></script>
         <script src="./assets/js/angular.min.js"></script>
         <script src="./assets/js/angular-route.min.js"></script>
         <script src="./assets/js/script.js"></script>
         <script src="./assets/js/dbFactory.js"></script>
+        <script src="./assets/js/moment.js"></script>
 
         <script src="./controllers/userCtrl.js"></script>
         <script src="./controllers/receptCtrl.js"></script>
     </body>
 </html>
+
+<!--<a href="#!/reg">Regisztrálás</a>
+<a href="#!/login">Bejelentkezés</a> -->

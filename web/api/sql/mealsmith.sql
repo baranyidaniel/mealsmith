@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Feb 08. 12:52
+-- Létrehozás ideje: 2023. Feb 08. 13:46
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `mealsmith`
 --
+CREATE DATABASE IF NOT EXISTS `mealsmith` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `mealsmith`;
 
 -- --------------------------------------------------------
 
@@ -84,8 +86,10 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `short_desc`, `elkeszitesi_ido`, `adag`, `ingredients`, `datum`, `points`) VALUES
 (1, 1, 'Chicken adobo', 'aaa', 'aa', 95, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 08:26:34', 5364),
-(2, 1, 'Chicken adobo 2', 'aaa', 'aa', 195, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 08:26:34', 564),
-(3, 1, 'Chicken adobo 3', 'aaa', 'aa', 300, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 08:26:34', 53640);
+(2, 1, 'Halászlé', 'aaa', 'aa', 195, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-06 01:26:34', 564),
+(3, 1, 'Poutine', 'aaa', 'aa', 300, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-01 08:26:34', 53640),
+(4, 1, 'Kimchi', 'aaa', 'aa', 63, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-07 01:26:34', 564),
+(5, 1, 'Chicken adobo 4', 'aaa', 'aa', 100, 1, 'chicken;500 mg|zöldség;400 mg|ketchup;1 kg', '2023-02-08 12:40:34', 12);
 
 -- --------------------------------------------------------
 
@@ -175,7 +179,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT a táblához `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `users`
