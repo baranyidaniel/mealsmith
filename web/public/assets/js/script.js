@@ -1,7 +1,6 @@
 let app = new angular.module('mealsmithApp', ['ngRoute']);
 
 app.run(function($rootScope) {
-
     $rootScope.loggedUser = {};
     $rootScope.settings = {};
     $rootScope.settings.appTitle = 'MealSmith';

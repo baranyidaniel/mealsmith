@@ -5,7 +5,7 @@
 <h3>Legfrissebb</h3>
 <div id="legfrissebb">
     <div class="card-group">
-        <div class="card" ng-repeat="recept in receptek">
+        <div class="card" ng-repeat="recept in legfrissebb">
           <img src="./assets/img/nopic.png" class="card-img-top">
           <span class="elkeszitesi_ido">
             {{ elkeszites(recept.id) }}
@@ -19,6 +19,7 @@
             <p>
               <span class="points">{{ recept.points }}</span> pont
             </p>
+            <p class="text-muted">{{ ido(recept.id) }}</p>
           </div>
         </div>
       </div>
