@@ -24,6 +24,7 @@ nav {
 .container-fluid{
   margin: 0;
   padding: 0;
+  padding-left: 75px;
 }
 
 .container-fluid::-webkit-scrollbar{
@@ -50,16 +51,13 @@ a{
   }
 }
 
-.card-group{
-  padding-bottom: 50px;
-  display: flex;
-}
-
 .card{
+  padding: 10px;
   background-color: rgb(13, 2, 33);
   color: white;
   border-radius: 18px;
-  margin: 1em;
+  max-width: 200px;
+  min-width: 100px;
 }
 
 img{
@@ -69,4 +67,22 @@ img{
 
 i{
   padding-left: 15px;
+}
+
+.keresesgomb{
+  background: #26408B;
+  border-radius: 462px;
+  color: white;
+  width: 150%;
+}
+
+#keresesbar{
+  background-color: rgb(166, 207, 213);
+  border-radius: 462px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4em;
 }
