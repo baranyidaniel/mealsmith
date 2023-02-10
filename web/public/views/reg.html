@@ -6,71 +6,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/web/public/assets/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="/web/public/assets/css/style.css">
     <link rel="stylesheet" href="/web/public/assets/css/reg.css">
     <title>Regisztráció</title>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <header>
+    <header>
 
-        </header>
-        <main>
-            <div class="row">
-                <div class="container">
-                    <form action="">
-
-
-                        <div class="form-floating mb-3">
-                            <h2>Mealsmith</h2>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="userName" ng-model="user.name">
-                            <label for="userName">Felhasználónév</label>
-                        </div>
-
-                        <div class=" form-floating mb-3">
-                            <input type="email" class="form-control" id="userEmail" ng-model="user.email">
-                            <label for="userEmail">Email cím</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="userPhone" ng-model="user.phone">
-                            <label for="userEmail">Telefonszám</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="userPassw1" ng-model="user.pass1">
-                            <label for="userEmail">Jelszó</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="userPassw2" ng-model="user.pass2">
-                            <label for="userEmail">Jelszó újra</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <button type="submit" class="btn btn-light form-control">Regisztráció</button>
-                        </div>
-                    </form>
+    </header>
+    <main>
+        <div class="container">
+            <form action="">
+                <div class="row">
+                    <div class="col">
+                        <h2>Mealsmith</h2>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="form-floating col"> <input type="text" class="form-control" id="userName" ng-model="user.name">
+                        <label for="userName">Felhasználónév</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-floating col">
+                        <input type="email" class="form-control" id="userEmail" ng-model="user.email">
+                        <label for="userEmail">Email cím</label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-floating col>
+                        <input type=" tel " class="form-control " id="userPhone " ng-model="user.phone ">
+                        <label for="userEmail ">Telefonszám</label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-floating col ">
+                        <input type="password " class="form-control " id="userPassw1 " ng-model="user.pass1 ">
+                        <label for="userEmail ">Jelszó</label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-floating col ">
+                        <input type="password " class="form-control " id="userPassw2 " ng-model="user.pass2 ">
+                        <label for="userEmail ">Jelszó újra</label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-floatin col ">
+                        <button type="submit " class="btn btn-light form-control ">Regisztráció</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
 
-            </div>
+    </footer>
 
-        </main>
-        <footer>
+    <script src="/web/public/assets/js/angular.min.js "></script>
+    <script src="/web/public/assets/js/angular-route.min.js "></script>
+    <script src="/web/public/assets/js/bootstrap.min.js "></script>
+    <script src="/web/public/assets/js/script.js "></script>
+    <script src="/web/public/assets/js/dbFactory.js "></script>
 
-        </footer>
-
-        <script src="/web/public/assets/js/angular.min.js "></script>
-        <script src="/web/public/assets/js/angular-route.min.js "></script>
-        <script src="/web/public/assets/js/bootstrap.min.js "></script>
-        <script src="/web/public/assets/js/script.js "></script>
-        <script src="/web/public/assets/js/dbFactory.js "></script>
-
-        <script src="/web/public/controllers/userCtrl.js "></script>
+    <script src="/web/public/controllers/userCtrl.js "></script>
 
 </body>
 
