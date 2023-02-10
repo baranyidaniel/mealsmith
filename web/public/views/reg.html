@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/web/public/assets/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="/web/public/assets/css/reg.css">
     <title>Regisztráció</title>
 </head>
@@ -13,66 +14,63 @@
 <body>
     <div class="container-fluid">
         <header>
-            <nav class="navbar bg-light">
-                <div class="left">
-                    <a href="#">{{ settings.appTitle }}</a>
-                </div>
-                <div class="right">
-                    <a href="#">Regisztrálás</a>
-                    <a href="#">Bejelentkezés</a>
-                </div>
-            </nav>
+
         </header>
         <main>
             <div class="row">
-                <div class="col" id="baloldal">
-                    <div class="container">
+                <div class="container">
+                    <form action="">
 
-                        <form action="">
-                            <div class="form-floating mb-3">
-                                <h2>Mealsmith</h2>
-                            </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="userName" placeholder="Felhasználónév" value="Felhasználónév" ng-model="user.name"><em>*</em>
-                            </div>
+                        <div class="form-floating mb-3">
+                            <h2>Mealsmith</h2>
+                        </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="userEmail" placeholder="Email cím" value="Email cím" ng-model="user.email"><em>*</em>
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="userName" ng-model="user.name">
+                            <label for="userName">Felhasználónév</label>
+                        </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="userPhone" placeholder="Telefonszám" value="Telefonszám" ng-model="user.phone">
-                            </div>
+                        <div class=" form-floating mb-3">
+                            <input type="email" class="form-control" id="userEmail" ng-model="user.email">
+                            <label for="userEmail">Email cím</label>
+                        </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="userPassw1" placeholder="Jelszó" value="Jelszó" ng-model="user.pass1"><em>*</em>
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="userPhone" ng-model="user.phone">
+                            <label for="userEmail">Telefonszám</label>
+                        </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="userPassw2" placeholder="Jelszó újra" value="Jelszó újra" ng-model="user.pass2"><em>*</em>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="button" class="form-floating btn btn-light mb-3" value=" Regisztráció" ng-click="registration()">
-                            </div>
-                        </form>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="userPassw1" ng-model="user.pass1">
+                            <label for="userEmail">Jelszó</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="userPassw2" ng-model="user.pass2">
+                            <label for="userEmail">Jelszó újra</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <button type="submit" class="btn btn-light form-control">Regisztráció</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col " id="jobboldal ">
 
-                </div>
             </div>
-    </div>
-    </main>
-    <footer></footer>
 
-    <script src="/web/public/assets/js/angular.min.js "></script>
-    <script src="/web/public/assets/js/angular-route.min.js "></script>
-    <script src="/web/public/assets/js/bootstrap.min.js "></script>
-    <script src="/web/public/assets/js/script.js "></script>
-    <script src="/web/public/assets/js/dbFactory.js "></script>
+        </main>
+        <footer>
 
-    <script src="/web/public/controllers/userCtrl.js "></script>
+        </footer>
+
+        <script src="/web/public/assets/js/angular.min.js "></script>
+        <script src="/web/public/assets/js/angular-route.min.js "></script>
+        <script src="/web/public/assets/js/bootstrap.min.js "></script>
+        <script src="/web/public/assets/js/script.js "></script>
+        <script src="/web/public/assets/js/dbFactory.js "></script>
+
+        <script src="/web/public/controllers/userCtrl.js "></script>
 
 </body>
 
