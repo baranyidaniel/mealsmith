@@ -59,18 +59,17 @@
         background-color: #26408B;
         color: black !important;
         text-align: left;
-        margin-bottom: 19%;
         box-sizing: border-box;
         width: 150%;
     }
     
-    input[type="button"] {
+    button[type="submit"] {
         border-radius: 121px;
         background-color: #C2E7D9;
         color: black;
         font-weight: bold;
         box-sizing: border-box;
-        width: 150%;
+        width: calc();
     }
     
     label {
@@ -78,10 +77,11 @@
         color: #C2E7D9;
     }
     
-    .btn {
-        color: black !important;
-    }
-    
     footer {
         color: white;
+    }
+    
+    .input-element {
+        width: 100%;
+        height: 40px;
     }
