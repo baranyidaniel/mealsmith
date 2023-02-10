@@ -24,6 +24,7 @@ nav {
 .container-fluid{
   margin: 0;
   padding: 0;
+  padding-left: 75px;
 }
 
 .container-fluid::-webkit-scrollbar{
@@ -69,4 +70,16 @@ img{
 
 i{
   padding-left: 15px;
+}
+
+.keresesgomb{
+  background: #26408B;
+  border-radius: 462px;
+  color: white;
+  width: 150%;
+}
+
+#keresesbar{
+  background-color: rgb(166, 207, 213);
+  border-radius: 462px;
 }
