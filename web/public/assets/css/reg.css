@@ -67,7 +67,7 @@
     input[type="button"] {
         border-radius: 121px;
         background-color: #C2E7D9;
-        color: #26408B;
+        color: black;
         font-weight: bold;
         box-sizing: border-box;
         width: 150%;
@@ -76,6 +76,10 @@
     label {
         margin-top: 5%;
         color: #C2E7D9;
+    }
+    
+    .btn {
+        color: black !important;
     }
     
     footer {
