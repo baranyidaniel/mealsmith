@@ -4,8 +4,6 @@ app.run(function($rootScope) {
     $rootScope.loggedUser = {};
     $rootScope.settings = {};
     $rootScope.settings.appTitle = 'MealSmith';
-    $rootScope.settings.company = 'Bajai SZC Türr István Technikum 2/14.SZFT';
-    $rootScope.settings.author = 'VI-BA-KE csapat';
     $rootScope.loggedUser = angular.fromJson(sessionStorage.getItem('mealsmithApp'));
 });
 
