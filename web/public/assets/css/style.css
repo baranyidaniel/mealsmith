@@ -86,3 +86,14 @@ i{
   flex-wrap: wrap;
   gap: 4em;
 }
+
+#searchbar{
+  background-color: rgba(166, 207, 213);
+  
+}
+
+#searchbutton{
+  color: white;
+  background-color: #26408B;
+  border-radius: 462px;
+}
