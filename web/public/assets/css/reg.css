@@ -1,87 +1,40 @@
-    /*nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #A6CFD5;
-    }
-    
-    body {
-        background-image: url(/web/public/assets/img/regháttér.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-    }
-    
-    h2 {
-        margin-left: 35%;
-        margin-top: 30%;
-        margin-bottom: 20%;
-        color: white;
-        text-align: center;
-    }
-    
-    input[type="text"] {
-        border-radius: 121px;
-        background-color: #26408B;
-        color: white;
-        text-align: left;
-        box-sizing: border-box;
-        width: 150%;
-    }
-    
-    input[type="password"] {
-        border-radius: 121px;
-        background-color: #26408B;
-        color: white;
-        text-align: left;
-        box-sizing: border-box;
-        width: 150%;
-    }
-    
-    input[type="email"] {
-        border-radius: 121px;
-        background-color: #26408B;
-        color: white;
-        text-align: left;
-        box-sizing: border-box;
-        width: 150%;
-    }
-    
-    input[type="tel"] {
-        border-radius: 121px;
-        background-color: #26408B;
-        color: black !important;
-        text-align: left;
-        box-sizing: border-box;
-        width: 150%;
-    }
-    
-    button[type="submit"] {
-        border-radius: 121px;
-        background-color: #C2E7D9;
-        color: black;
-        font-weight: bold;
-        box-sizing: border-box;
-        width: calc();
-    }
-    
-    label {
-        margin-top: 5%;
-        color: #C2E7D9;
-    }
-    
-    footer {
-        color: white;
-    }
-    
-    .input-element {
-        width: 100%;
-        height: 40px;
-    }*/
+                body {
+                    background-image: url(/web/public/assets/img/regháttér.jpg);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                
+                .contents {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 80vh;
+                }
+                
+                h2 {
+                    color: white;
+                    text-align: center;
+                }
+                
+                .row+.row {
+                    margin-top: 30px;
+                }
+                
+                input,
+                button {
+                    border-radius: 100px !important;
+                    outline: none !important;
+                }
+                
+                button {
+                    background-color: #C2E7D9 !important;
+                }
+                
+                input {
+                    background-color: #26408B !important;
+                    color: #C2E7D9;
+                }
+                
+                footer {
+                    color: white;
+                }
