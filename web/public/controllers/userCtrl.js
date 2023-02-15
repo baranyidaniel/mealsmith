@@ -18,8 +18,8 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         }
 
         let data = {
-            name: $scope.user.name,
-            email: $scope.user.email,
+            name: $scope.user.username, //eredetileg name: $scope.user.name, de chatgpt állítása szerint username kell, úgyanígy az email-el is.
+            email: $scope.user.useremail,
             passwd: CryptoJS.SHA1($scope.user.pass1).toString()
         }
 
