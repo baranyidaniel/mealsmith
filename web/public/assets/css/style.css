@@ -128,25 +128,11 @@ i{
   display: flex;
   align-items: center;
   gap: 2em;
-  padding: 2em;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  padding: 1em;   
   background-color: var(--card-bg);
   transform: translateY(-100%);
   transition: .2s ease-in-out;
-}
-
-.card__arc {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  bottom: 100%;
-  right: 0;      
-  z-index: 1;
-}
-
-.card__arc path {
-  fill: var(--card-bg);
-}       
+}    
 
 .card:hover .card__header {
   transform: translateY(0);
@@ -160,7 +146,7 @@ i{
 }
 
 .card__title {
-  font-size: 1em;
+  font-size: 1.1em;
   margin: 0 0 .3em;
   color: white;
 }
@@ -178,6 +164,7 @@ i{
 }
 
 .card__description {
+  font-size: 0.8em;
   padding: 0 2em 2em;
   margin: 0;
   color: white; 
@@ -185,12 +172,6 @@ i{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-}
-
-.icons {
-  text-align: center;
-  justify-content: center;
-  margin: 0 auto;
 }
 
 .heart, .star {
@@ -203,8 +184,6 @@ i{
 
 .star:hover {
   color: goldenrod;
-  flex-wrap: wrap;
-  gap: 4em;
 }
 
 #searchbar{

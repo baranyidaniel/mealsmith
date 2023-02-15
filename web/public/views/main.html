@@ -13,13 +13,13 @@
         <div class="card__header">
           <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
           <div class="card__header-text">
-            <h3 class="card__title">{{ recept.title }}</h3>            
-            <span class="card__status">{{ elkeszites(recept.id) }}</span>
+            <h3 class="card__title">{{ recept.title }}</h3>
+            <span class="card__status text-muted">{{ elkeszites(recept.id) }}</span>
           </div>
-        </div>
-        <div class="icons">
-          <i class="bi bi-heart heart"></i>
-          <i class="bi bi-star star"></i>
+          <div>
+            <i class="bi bi-heart heart" title="Kedvelés"></i>
+            <i class="bi bi-star star" title="Kedvencek közé"></i>
+          </div>
         </div>
         <p class="card__description">{{ recept.short_desc }}</p>
       </div>
