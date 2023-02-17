@@ -3,7 +3,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
     $scope.user = {};
 
     $scope.registration = function() {
-        if ($scope.user.username == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
+        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
             alert('Nem adtál meg minden kötelező adatot!')
             return
         }
@@ -11,6 +11,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             alert('A megadott jelszavak nem egyeznek!')
             return
         }
+        else{
         var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
         if (!$scope.user.pass1.match(pwd_pattern)) {
             alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!')
@@ -18,8 +19,8 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         }
 
         let data = {
-            name: $scope.user.username, //eredetileg name: $scope.user.name, de chatgpt állítása szerint username kell, úgyanígy az email-el is.
-            email: $scope.user.useremail,
+            name: $scope.user.name, 
+            email: $scope.user.email,
             passwd: CryptoJS.SHA1($scope.user.pass1).toString()
         }
 
@@ -30,8 +31,9 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             } else {
                 alert('Váratlan hiba történt az adatbázis művelet során!');
             }
-        })
+        });
     }
+
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
@@ -70,4 +72,4 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         sessionStorage.removeItem('mealsmithApp');
         $location.path('/');
     }
-});
+}});

@@ -1,4 +1,4 @@
-let app = new angular.module('mealsmithApp', ['ngRoute']);
+app = new angular.module('mealsmithApp', ['ngRoute']);// levettem a "let"-et, mert a böngész consolja azt mondja már declarálva van.
 
 app.run(function($rootScope) {
     $rootScope.loggedUser = {};
