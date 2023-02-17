@@ -1,9 +1,10 @@
-app.controller('receptCtrl', function($scope, database, $rootScope, $location) {
+app.controller('receptCtrl', function($scope, database, $filter) {
     $scope.receptek = []
 
     database.selectAll('posts')
     .then(function(res) {
         $scope.receptek = res.data;
+        $scope.receptek = $filter('orderBy')($scope.receptek, '-datum')
     })
 
     $scope.elkeszites = function(id) {
@@ -17,5 +18,13 @@ app.controller('receptCtrl', function($scope, database, $rootScope, $location) {
         moment.locale("hu")
         let idx = $scope.receptek.findIndex(item => item.id === id)
         return moment($scope.receptek[idx].datum, "YYYYMMDD").fromNow()
+    }
+
+    $scope.orderByLatest = function() {
+        $scope.receptek = $filter('orderBy')($scope.receptek, '-datum')
+    }
+
+    $scope.orderByPoints = function() {
+        $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
 });

@@ -1,3 +1,34 @@
 body{
     background-image: url(/web/public/assets/img/regháttér.jpg);
 }
+
+input,
+button {
+    border-radius: 100px !important;
+    outline: none !important;
+}
+
+button {
+    background-color: #C2E7D9 !important;
+}
+
+.contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+.row+.row {
+    margin-top: 30px;
+}
+
+input {
+    background-color: #26408B !important;
+    color: #C2E7D9;
+}

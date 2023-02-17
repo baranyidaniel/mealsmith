@@ -1,27 +1,34 @@
 <div class="form-group">
   <div class="input-group">
-      <input type="text" name="search" class="form-control" id="keresesbar" placeholder="🔎 Mit szeretnél enni?">
+      <input type="text" name="search" class="form-control" id="keresesbar" placeholder="🔎 Mit szeretnél enni?" ng-model="searchText">
       <span><button type="submit" class="keresesgomb"></i>Keresés</button></span>
    </div>
 </div>
+<a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByLatest()">Legfrissebbek</a>
+<a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByPoints()">Legjobbak</a>
 
 <ul class="cards">
-  <li ng-repeat="recept in receptek">
+  <li ng-repeat="recept in receptek | filter:searchText">
     <a href="" class="card">
       <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
       <div class="card__overlay">
-        <div class="card__header">
-          <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
-          <div class="card__header-text">
-            <h3 class="card__title">{{ recept.title }}</h3>
-            <span class="card__status text-muted">{{ elkeszites(recept.id) }}</span>
+        <div class="card__header parent">
+          <div class="div1">
+            <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
           </div>
-          <div>
-            <i class="bi bi-heart heart" title="Kedvelés"></i>
+          <div class="card__header-text div2">
+            <h3 class="card__title">{{ recept.title }}</h3>
+            <span class="card__status text-muted">Elkészítés: {{ elkeszites(recept.id) }}</span>
+          </div>
+          <div class="card__header-text div3">
+            <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
             <i class="bi bi-star star" title="Kedvencek közé"></i>
           </div>
         </div>
-        <p class="card__description">{{ recept.short_desc }}</p>
+        <div class="card__description">
+          <p class="text-muted">{{ ido(recept.id) }}</p>
+          <p>{{ recept.short_desc }}</p>
+        </div>
       </div>
     </a>      
   </li>

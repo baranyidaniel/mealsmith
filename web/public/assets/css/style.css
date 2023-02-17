@@ -99,6 +99,7 @@ i{
   text-decoration: none;
   background-color: var(--card-bg);
   color: white;
+  max-width: 340px;
 }
 
 .card__image {      
@@ -127,8 +128,7 @@ i{
   position: relative;
   display: flex;
   align-items: center;
-  gap: 2em;
-  padding: 1em;   
+  padding: 0.8em;
   background-color: var(--card-bg);
   transform: translateY(-100%);
   transition: .2s ease-in-out;
@@ -140,14 +140,14 @@ i{
 
 .card__thumb {
   flex-shrink: 0;
-  width: 90px;
-  height: 90px;      
+  width: 75px;
+  height: 75px;      
   border-radius: 50%;      
 }
 
 .card__title {
-  font-size: 1.1em;
-  margin: 0 0 .3em;
+  font-size: 1.2em;
+  margin: 0 0 0.1em;
   color: white;
 }
 
@@ -188,11 +188,32 @@ i{
 
 #searchbar{
   background-color: rgba(166, 207, 213);
-  
 }
 
 #searchbutton{
   color: white;
   background-color: #26408B;
   border-radius: 462px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+.div1 { grid-area: 1 / 1 / 2 / 2; }
+.div2 { 
+  grid-area: 1 / 2 / 2 / 6; 
+  margin-bottom: 0;
+}
+.div3 { 
+  grid-area: 2 / 1 / 3 / 6; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.1em;
+  margin: 0;
 }
