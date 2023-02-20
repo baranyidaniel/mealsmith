@@ -202,18 +202,15 @@ i{
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  }
+}
   
 .div1 { grid-area: 1 / 1 / 2 / 2; }
-.div2 { 
-  grid-area: 1 / 2 / 2 / 6; 
-  margin-bottom: 0;
-}
+.div2 { grid-area: 1 / 2 / 2 / 6; }
 .div3 { 
   grid-area: 2 / 1 / 3 / 6; 
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.1em;
+  padding: 0;
   margin: 0;
 }

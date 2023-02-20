@@ -4,7 +4,7 @@ app.controller('receptCtrl', function($scope, database, $filter) {
     database.selectAll('posts')
     .then(function(res) {
         $scope.receptek = res.data;
-        $scope.receptek = $filter('orderBy')($scope.receptek, '-datum')
+        $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     })
 
     $scope.elkeszites = function(id) {
