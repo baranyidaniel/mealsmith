@@ -214,3 +214,12 @@ i{
   padding: 0;
   margin: 0;
 }
+
+.logo{
+  width: 15%;
+}  
+
+.logo_bg{
+  width: 50%;
+  border-radius: 180px;
+}
