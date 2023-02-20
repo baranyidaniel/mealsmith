@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="hu" ng-app="mealsmithApp">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/web/public/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/web/public/assets/css/reg.css">
-    <title>Regisztráció</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/web/public/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/web/public/assets/css/reg.css">
+        <title>Regisztráció</title>
+    </head>
+  
+    <body>
+        <main>
+            <div class="contents">
+                <div class="container-sm" ng-controller="userCtrl">
+                    <div class="mb-3">
 
-<body>
-    <main>
-        <div class="contents">
-            <div class="container-sm" ng-controller="userCtrl">
-                <div class="mb-3">
-
-                    <form action="" method="post ">
-                        <div class="container text-center ">
-                            <div class="row ">
-                                <div class="col-sm-4 ">
-                                    <h2>Mealsmith</h2>
+                        <form>
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h2>Mealsmith</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="text" value="Franklin Clinton" id="userName" placeholder="Felhasználónév " ng-model="user.username">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="email" value="Frankie@eyefind.info" id="userEmail" placeholder="Email cím" ng-model="user.email">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="password" value="Franklin5" id="pass1" placeholder="Jelszó" ng-model="user.pass1">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="password" value="Franklin5" id="pass2" placeholder="Jelszó mégegyszer" ng-model="user.pass2">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <button class="form-control" type="submit" id="submitBtn" ng-click="registration()">Regisztráció</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row ">
-                                <div class="col-sm-4 ">
-                                    <input class="form-control " type="text "  id="userName " placeholder="Felhasználónév " ng-model="user.name ">
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-sm-4 ">
-                                    <input class="form-control " type="email "   id="userEmail " placeholder="Email cím " ng-model="user.email ">
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-sm-4 ">
-                                    <input class="form-control " type="password " id="pass1 " placeholder="Jelszó " ng-model="user.pass1 ">
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-sm-4 ">
-                                    <input class="form-control " type="password "  id="pass2 " placeholder="Jelszó mégegyszer " ng-model="user.pass2 ">
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-sm-4 ">
-                                    <button class="form-control " type="submit " id="submitBtn " ng-click="registration() ">Regisztráció</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
 
-    <script src="/web/public/assets/js/angular.min.js "></script>
-    <script src="/web/public/assets/js/angular-route.min.js "></script>
-    <script src="/web/public/assets/js/bootstrap.min.js "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="/web/public/assets/js/script.js "></script>
-    <script src="/web/public/assets/js/dbFactory.js "></script>
+        <script src="/web/public/assets/js/angular.min.js"></script>
+        <script src="/web/public/assets/js/angular-route.min.js"></script>
+        <script src="/web/public/assets/js/bootstrap.min.js "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="/web/public/assets/js/script.js"></script>
+        <script src="/web/public/assets/js/dbFactory.js"></script>
 
-    <script src="/web/public/controllers/userCtrl.js "></script>
+        <script src="/web/public/controllers/userCtrl.js"></script>
 
-</body>
+    </body>
 
 </html>
