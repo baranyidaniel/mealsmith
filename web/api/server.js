@@ -171,8 +171,7 @@ app.delete('/:table/:field/:value', (req, res) => {
 // LOGINCHECK
 app.post('/login', (req, res) => {
     var email = req.body.email,
-        username = req.body.username,
-        password = req.body.password
+        password = req.body.passw1
 
     pool.query(`SELECT * FROM users WHERE email=? AND passwd=?`, [email, password], (err, results) => {
         if (err) {

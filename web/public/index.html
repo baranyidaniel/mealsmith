@@ -19,26 +19,15 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/sajatreceptek">Saját receptek</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/kedvencek">Kedvencek</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/koveteseim">Követéseim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/toplista">Toplista</a>
-                            </li>
-                            <li class="nav-item" id="jobbNav">
-                                <a class="nav-link active" aria-current="page" href="#!/reg">Regisztráció</a>
-                            </li>
-                            <li class="nav-item" id="jobbNav">
-                                <a class="nav-link active" aria-current="page" href="#!/login">Bejelentkezés</a>
-                            </li>
-                        </ul>
+                        <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+
+                            <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
+
+                            <input type="password" class="form-control me-1" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+
+                            <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
+                            <a href="#!/reg" class="btn btn-secondary">Regisztráció</a>
+                        </form>
                     </div>
                 </div>
             </nav>
