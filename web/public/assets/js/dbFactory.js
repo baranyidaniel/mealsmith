@@ -55,6 +55,19 @@ app.factory('database', function($http, $q) {
                 deferred.reject(res);
             });
             return deferred.promise;
+        },
+
+        selectOne: function(table, id) {
+            var deferred = $q.defer()
+            $http({
+                method: 'GET',
+                url: `${url}/${table}/${id}`
+            }).then(function(res) {
+                deferred.resolve(res)
+            }, function(res) {
+                deferred.reject(res)
+            })
+            return deferred.promise
         }
     }
 })

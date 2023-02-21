@@ -32,6 +32,9 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#!/toplista">Toplista</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#!/sajat">Ideiglenes menüpont kipróbálásként</a>
+                            </li>
                             <li class="nav-item" id="jobbNav">
                                 <a class="nav-link active" aria-current="page" href="#!/reg">Regisztráció</a>
                             </li>
@@ -39,6 +42,15 @@
                                 <a class="nav-link active" aria-current="page" href="#!/login">Bejelentkezés</a>
                             </li>
                         </ul>
+                        <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+
+                            <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
+
+                            <input type="password" class="form-control me-1" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+
+                            <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
+                            <a href="#!/reg" class="btn btn-secondary">Regisztráció</a>
+                        </form>
                     </div>
                 </div>
             </nav>

@@ -11,13 +11,13 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             alert('A megadott jelszavak nem egyeznek!')
             //return
         }
-        else{//Speciális karaktereket nem kezeli
-        var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
-        if (!$scope.user.pass1.match(pwd_pattern)) {
-            alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!')
-            //return
+        else {
+            var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
+            if (!$scope.user.pass1.match(pwd_pattern)) {
+                alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!')
+                return
+            }
         }
-
         let data = {
             name: $scope.user.name,
             email: $scope.user.email,
@@ -34,7 +34,6 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         });
     }
 
-
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
             alert('Nem adtál meg minden kötelező adatot!')
@@ -43,7 +42,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         let data = {
             table: 'users',
             email: $scope.user.email,
-            passwd: CryptoJS.SHA1($scope.user.pass1).toString()
+            passwd: $scope.user.passw1
         }
 
         database.logincheck(data).then(function(res) {
@@ -55,13 +54,17 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
                 alert('Tiltott felhasználó!')
                 return
             }
+            if (res.data[0].jog == 1) {
+                console.log('lyo')
+                return
+            }
 
             res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s')
             $rootScope.loggedUser = res.data[0]
             let data = {
                 last: res.data[0].last
             }
-            database.update('users', res.data[0].ID, data).then(function(res) {
+            database.update(data.table, res.data[0].ID, data).then(function(res) {
                 sessionStorage.setItem('mealsmithApp', angular.toJson($rootScope.loggedUser))
             })
         })
@@ -72,4 +75,10 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         sessionStorage.removeItem('mealsmithApp');
         $location.path('/');
     }
-}});
+
+    database.selectAll('users')
+    .then(function(res) {
+        $scope.users = res.data;
+        $rootScope.loggedUser = res.data[0]
+    })
+});

@@ -23,10 +23,10 @@ app.config(function($routeProvider) {
         })
         .when('/sajat', {
             templateUrl: 'views/sajat.html',
-            controller: 'receptCtrl'
+            controller: 'userCtrl'
         })
         .when('/kedvencek', {
-            templateUrl: 'views/favorites.html',
+            templateUrl: 'views/kedvencek.html',
             controller: 'userCtrl'
         })
         .when('/koveteseim', {

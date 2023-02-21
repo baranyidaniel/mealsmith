@@ -219,6 +219,7 @@ i {
 }
 
 .logo {
+.logo{
   width: 15%;
 }
 
@@ -232,7 +233,10 @@ i {
 }
 .toplistaBg {
   background-image: url(/web/public/assets/img/hatter.PNG);
+.toplistaBg{
+ background-image: url(/web/public/assets/img/hatter.PNG);
 }
+
 .body {
   backdrop-filter: blur(10px); /*Blur nem müködik még*/
 }
