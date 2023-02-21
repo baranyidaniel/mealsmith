@@ -224,3 +224,9 @@ i{
 .profilReceptek {
   background-color: rebeccapurple;
 }
+.toplistaBg{
+ background-image: url(/web/public/assets/img/hatter.PNG);
+}
+.body {
+  backdrop-filter: blur(10px); /*Blur nem müködik még*/
+}
