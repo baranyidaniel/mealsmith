@@ -11,13 +11,13 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             alert('A megadott jelszavak nem egyeznek!')
             return
         }
-        else{
-        var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
-        if (!$scope.user.pass1.match(pwd_pattern)) {
-            alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!')
-            return
+        else {
+            var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
+            if (!$scope.user.pass1.match(pwd_pattern)) {
+                alert('A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!')
+                return
+            }
         }
-
         let data = {
             name: $scope.user.name, 
             email: $scope.user.email,
@@ -33,7 +33,6 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             }
         });
     }
-
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
@@ -72,4 +71,4 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         sessionStorage.removeItem('mealsmithApp');
         $location.path('/');
     }
-}});
+});

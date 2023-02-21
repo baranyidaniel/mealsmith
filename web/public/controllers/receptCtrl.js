@@ -29,6 +29,6 @@ app.controller('receptCtrl', function($scope, database, $filter) {
     }
 
     $scope.showRecipe = function(id) {
-
+        
     }
 });
