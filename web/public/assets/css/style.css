@@ -3,16 +3,17 @@
   --curve: 40;
 }
 
-body{
+body {
   background-image: url(/web/public/assets/img/hatter.PNG);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   font-weight: bold;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.)), url(/web/public/assets/img/hatter.PNG);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
+    url(/web/public/assets/img/hatter.PNG);
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   width: 0px;
   height: 0px;
 }
@@ -26,53 +27,53 @@ nav {
   color: rgb(3, 4, 94);
 }
 
-.container-fluid{
+.container-fluid {
   margin: 0;
   padding: 0;
   padding-left: 75px;
 }
 
-.container-fluid::-webkit-scrollbar{
+.container-fluid::-webkit-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
   display: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
-  
+
 .left h3 {
   margin: 0;
 }
-  
+
 .right a {
   margin-left: 10px;
 }
-  
+
 @media (max-width: 768px) {
   .left h3 {
     display: none;
   }
 }
 
-img{
+img {
   padding: 15px;
   border-radius: 18px;
 }
 
-i{
+i {
   padding-left: 15px;
 }
 
-.keresesgomb{
-  background: #26408B;
+.keresesgomb {
+  background: #26408b;
   border-radius: 462px;
   color: white;
   width: 150%;
 }
 
-#keresesbar{
+#keresesbar {
   background-color: rgb(166, 207, 213);
   border-radius: 462px;
 }
@@ -89,7 +90,7 @@ i{
 .card {
   position: relative;
   display: block;
-  height: 100%;  
+  height: 100%;
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
@@ -98,7 +99,7 @@ i{
   max-width: 340px;
 }
 
-.card__image {      
+.card__image {
   width: 100%;
   height: auto;
   border-radius: calc(var(--curve) * 1px);
@@ -109,11 +110,11 @@ i{
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;      
-  border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--card-bg);    
+  z-index: 1;
+  border-radius: calc(var(--curve) * 1px);
+  background-color: var(--card-bg);
   transform: translateY(100%);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .card:hover .card__overlay {
@@ -127,9 +128,9 @@ i{
   padding: 0.8em;
   background-color: var(--card-bg);
   transform: translateY(-100%);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
   cursor: pointer;
-}    
+}
 
 .card:hover .card__header {
   transform: translateY(0);
@@ -150,7 +151,7 @@ i{
 }
 
 .card__status {
-  font-size: .8em;
+  font-size: 0.8em;
   color: white;
 }
 
@@ -174,7 +175,8 @@ i{
   font-size: 1.2em !important;
 }
 
-.heart, .star {
+.heart,
+.star {
   color: white;
   cursor: pointer;
 }
@@ -187,13 +189,13 @@ i{
   color: goldenrod;
 }
 
-#searchbar{
+#searchbar {
   background-color: rgba(166, 207, 213);
 }
 
-#searchbutton{
+#searchbutton {
   color: white;
-  background-color: #26408B;
+  background-color: #26408b;
   border-radius: 462px;
 }
 
@@ -205,18 +207,22 @@ i{
   grid-row-gap: 0px;
 }
 
-.div1 { grid-area: 1 / 1 / 2 / 2; }
-.div2 { grid-area: 1 / 2 / 2 / 6; }
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.div2 {
+  grid-area: 1 / 2 / 2 / 6;
+}
 
 .profilStat {
   background-color: rebeccapurple;
 }
 
-.logo{
+.logo {
   width: 15%;
-}  
+}
 
-.logo_bg{
+.logo_bg {
   width: 50%;
   border-radius: 180px;
 }
@@ -224,9 +230,25 @@ i{
 .profilReceptek {
   background-color: rebeccapurple;
 }
-.toplistaBg{
- background-image: url(/web/public/assets/img/hatter.PNG);
+.toplistaBg {
+  background-image: url(/web/public/assets/img/hatter.PNG);
 }
 .body {
   backdrop-filter: blur(10px); /*Blur nem müködik még*/
 }
+
+.TopL {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+.div1 { grid-area: 1 / 2 / 2 / 3; }
+.div2 { grid-area: 1 / 3 / 2 / 4; }
+.div3 { grid-area: 1 / 4 / 2 / 5; }
+.div4 { grid-area: 2 / 3 / 3 / 4; }
+.div5 { grid-area: 3 / 3 / 4 / 4; }
+.div6 { grid-area: 5 / 3 / 6 / 4; }
+.div7 { grid-area: 6 / 3 / 7 / 4; }
+.div8 { grid-area: 7 / 3 / 8 / 4; } 
