@@ -207,3 +207,20 @@ i{
 
 .div1 { grid-area: 1 / 1 / 2 / 2; }
 .div2 { grid-area: 1 / 2 / 2 / 6; }
+
+.logo{
+  width: 15%;
+}  
+
+.logo_bg{
+  width: 50%;
+  border-radius: 180px;
+}
+
+.toplistaBg{
+ background-image: url(/web/public/assets/img/hatter.PNG);
+}
+
+.body {
+  backdrop-filter: blur(10px); /*Blur nem müködik még*/
+}

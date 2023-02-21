@@ -3,13 +3,13 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
     $scope.user = {};
 
     $scope.registration = function() {
-        if ($scope.user.name == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
+        if ($scope.user.username == null || $scope.user.email == null || $scope.user.pass1 == null || $scope.user.pass2 == null) {
             alert('Nem adtál meg minden kötelező adatot!')
-            return
+            //return
         }
         if ($scope.user.pass1 != $scope.user.pass2) {
             alert('A megadott jelszavak nem egyeznek!')
-            return
+            //return
         }
         else {
             var pwd_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/
@@ -19,7 +19,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
             }
         }
         let data = {
-            name: $scope.user.name, 
+            name: $scope.user.name,
             email: $scope.user.email,
             passwd: CryptoJS.SHA1($scope.user.pass1).toString()
         }
