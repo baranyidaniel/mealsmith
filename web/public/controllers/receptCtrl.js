@@ -27,8 +27,4 @@ app.controller('receptCtrl', function($scope, database, $filter) {
     $scope.orderByPoints = function() {
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
-
-    $scope.showRecipe = function(id) {
-        
-    }
 });
