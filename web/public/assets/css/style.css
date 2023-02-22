@@ -41,6 +41,7 @@ nav {
 
 a {
   text-decoration: none;
+  padding: 0;
 }
 
 .left h3 {
@@ -204,11 +205,30 @@ i {
 }
 
 .logo {
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div1_1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.div2_1 {
+  grid-area: 1 / 2 / 2 / 6;
+}
+
+.logo{
   width: 15%;
+}
+.profilStat {
+  background-color: rebeccapurple;
 }
 
 .logo_bg {
-  width: 50%;
+  width: 70px;
   border-radius: 180px;
 }
 
@@ -216,6 +236,13 @@ i {
   background-color: rebeccapurple;
 }
 
+.toplistaBg {
+  background-image: url(/web/public/assets/img/hatter.PNG);
+}
+
+body {
+  backdrop-filter: blur(0.7px);
+}
 
 .Top3L {
   display: grid;
@@ -336,3 +363,12 @@ background: url(/web/public/assets/img/nopic.png);
 border-radius: 38px;
 
 }
+.div1 { grid-area: 1 / 2 / 2 / 3; }
+.div2 { grid-area: 1 / 3 / 2 / 4; }
+
+.div3 { grid-area: 1 / 4 / 2 / 5; }
+.div4 { grid-area: 2 / 3 / 3 / 4; }
+.div5 { grid-area: 3 / 3 / 4 / 4; }
+.div6 { grid-area: 5 / 3 / 6 / 4; }
+.div7 { grid-area: 6 / 3 / 7 / 4; }
+.div8 { grid-area: 7 / 3 / 8 / 4; } 

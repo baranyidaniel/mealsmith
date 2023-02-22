@@ -29,6 +29,19 @@ app.factory('database', function($http, $q) {
             return deferred.promise
         },
 
+        selectByValue: function(table, field, value) {
+            var deferred = $q.defer()
+            $http({
+                method: 'GET',
+                url: `${url}/${table}/${field}/${value}`
+            }).then(function(res) {
+                deferred.resolve(res)
+            }, function(res) {
+                deferred.reject(res)
+            })
+            return deferred.promise
+        },
+
         insert: function(tablename, values) {
             var deferred = $q.defer();
             $http({

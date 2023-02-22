@@ -12,37 +12,36 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary" ng-controller="receptCtrl">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a href="#!/index"><img src="/web/public/assets/img/logo.png" alt="Mealsmith logo" class="logo"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
+                    <a class="navbar-brand" href="#"><img src="./" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/sajatreceptek">Saját receptek</a>
+                                <a class="nav-link" href="#!/"><img src="./assets/img/logo_bg.png" alt="Mealsmith logo" class="logo_bg"></a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/kedvencek">Kedvencek</a>
+                                <a class="nav-link" href="#!/sajat">Saját receptek</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/koveteseim">Követéseim</a>
+                                <a class="nav-link" href="#!/kedvencek">Kedvencek</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/toplista">Toplista</a>
+                                <a class="nav-link" href="#!/koveteseim">Követéseim</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#!/sajat">Ideiglenes menüpont kipróbálásként</a>
+                                <a class="nav-link" href="#!/toplista">Toplista</a>
                             </li>
-                            <li class="nav-item" id="jobbNav">
-                                <a class="nav-link active" aria-current="page" href="#!/reg">Regisztráció</a>
-                            </li>
-                            <li class="nav-item" id="jobbNav">
-                                <a class="nav-link active" aria-current="page" href="#!/login">Bejelentkezés</a>
-                            </li>
+
                         </ul>
-                        <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="!loggedUser">
+                        <form class="d-flex" role="search" ng-controller="userCtrl">
 
                             <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
 
@@ -51,6 +50,14 @@
                             <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
                             <a href="#!/reg" class="btn btn-secondary">Regisztráció</a>
                         </form>
+                        <!--<form class="d-flex" role="search" ng-controller="userCtrl" ng-if="loggedUser">
+
+                            <input type="text" class="form-control me-1" id="floatingInput" ng-model="loggedUser.name" disabled>
+
+                            <button class="btn btn-primary me-1" ng-click="logout()">Kilépés</button>
+
+                        </form>
+                    -->
                     </div>
                 </div>
             </nav>
