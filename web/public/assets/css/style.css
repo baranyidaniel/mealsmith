@@ -41,6 +41,7 @@ nav {
 
 a {
   text-decoration: none;
+  padding: 0;
 }
 
 .left h3 {
@@ -217,9 +218,12 @@ i {
 .logo{
   width: 15%;
 }
+.profilStat {
+  background-color: rebeccapurple;
+}
 
 .logo_bg {
-  width: 50%;
+  width: 70px;
   border-radius: 180px;
 }
 
@@ -227,8 +231,8 @@ i {
   background-image: url(/web/public/assets/img/hatter.PNG);
 }
 
-.body {
-  backdrop-filter: blur(10px); /*Blur nem müködik még*/
+body {
+  backdrop-filter: blur(0.7px);
 }
 
 .TopL {
