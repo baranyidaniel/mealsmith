@@ -75,10 +75,4 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
         sessionStorage.removeItem('mealsmithApp');
         $location.path('/');
     }
-
-    database.selectAll('users')
-    .then(function(res) {
-        $scope.users = res.data;
-        $rootScope.loggedUser = res.data[0]
-    })
 });

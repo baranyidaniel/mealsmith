@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
         })
         .when('/sajat', {
             templateUrl: 'views/sajat.html',
-            controller: 'userCtrl'
+            controller: 'profilCtrl'
         })
         .when('/kedvencek', {
             templateUrl: 'views/kedvencek.html',
@@ -35,6 +35,10 @@ app.config(function($routeProvider) {
         })
         .when('/top', {
             templateUrl: 'views/top.html',
+            controller: 'userCtrl'
+        })
+        .when('/profiles/:id', {
+            templateUrl: 'views/profile.html',
             controller: 'userCtrl'
         })
         .otherwise({
