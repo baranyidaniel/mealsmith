@@ -41,6 +41,7 @@ nav {
 
 a {
   text-decoration: none;
+  padding: 0;
 }
 
 .left h3 {
@@ -218,13 +219,8 @@ i {
   background-color: rebeccapurple;
 }
 
-.logo {
-.logo{
-  width: 15%;
-}
-
 .logo_bg {
-  width: 50%;
+  width: 70px;
   border-radius: 180px;
 }
 
@@ -233,12 +229,10 @@ i {
 }
 .toplistaBg {
   background-image: url(/web/public/assets/img/hatter.PNG);
-.toplistaBg{
- background-image: url(/web/public/assets/img/hatter.PNG);
 }
 
-.body {
-  backdrop-filter: blur(10px); /*Blur nem müködik még*/
+body {
+  backdrop-filter: blur(0.7px);
 }
 
 .TopL {
