@@ -41,6 +41,10 @@ app.config(function($routeProvider) {
             templateUrl: 'views/profile.html',
             controller: 'userCtrl'
         })
+        .when('/recept/:id', {
+            templateUrl: 'views/recept.html',
+            controller: 'receptCtrl'
+        })
         .otherwise({
 			redirectTo: '/'
 		})
