@@ -9,8 +9,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-weight: bold;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
-    url(/web/public/assets/img/hatter.PNG);
 }
 
 body::-webkit-scrollbar {
@@ -217,9 +215,6 @@ i {
 
 .logo{
   width: 15%;
-}
-.profilStat {
-  background-color: rebeccapurple;
 }
 
 .logo_bg {
