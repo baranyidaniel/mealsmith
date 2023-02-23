@@ -198,11 +198,6 @@ i {
   border-radius: 462px;
 }
 
-.profilStat {
-  background-color: rebeccapurple;
-}
-
-.logo {
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -225,10 +220,6 @@ i {
 .logo_bg {
   width: 70px;
   border-radius: 180px;
-}
-
-.profilReceptek {
-  background-color: rebeccapurple;
 }
 
 .toplistaBg {
