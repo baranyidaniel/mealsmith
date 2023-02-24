@@ -213,7 +213,7 @@ i {
   grid-area: 1 / 2 / 2 / 6;
 }
 
-.logo{
+.logo {
   width: 15%;
 }
 
@@ -236,7 +236,6 @@ body {
   grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
-  
 }
 .TopLrest {
   display: grid;
@@ -253,7 +252,7 @@ body {
   width: 148px;
   height: 224px;
   align-items: center;
-  color: white;
+  color: #b1b1b1;
   background: #0d0221;
   border-radius: 38px;
 }
@@ -264,7 +263,7 @@ body {
   align-items: center;
   width: 148px;
   height: 261px;
-  color: white;
+  color: #ffd700;
   background: #0d0221;
   border-radius: 38px;
 }
@@ -275,29 +274,27 @@ body {
   width: 148px;
   height: 224px;
   align-items: center;
-  color: white;
+  color: #ff9e68;
   background: #0d0221;
   border-radius: 38px;
 }
-
 .div4 {
   grid-area: 2 / 3 / 3 / 4;
   text-align: center !important;
   display: flex;
-  width: 259px;
+  width: 350px;
   height: 55px;
-  align-items: center;
   color: white;
   background: #0d0221;
   border-radius: 38px;
+  font-size: 24;
 }
 .div5 {
   grid-area: 3 / 3 / 4 / 4;
   text-align: center !important;
   display: flex;
-  width: 259px;
+  width: 350px;
   height: 55px;
-  align-items: center;
   color: white;
   background: #0d0221;
   border-radius: 38px;
@@ -306,9 +303,8 @@ body {
   grid-area: 5 / 3 / 6 / 4;
   text-align: center !important;
   display: flex;
-  width: 259px;
+  width: 350px;
   height: 55px;
-  align-items: center;
   color: white;
   background: #0d0221;
   border-radius: 38px;
@@ -317,9 +313,8 @@ body {
   grid-area: 6 / 3 / 7 / 4;
   text-align: center !important;
   display: flex;
-  width: 259px;
+  width: 350px;
   height: 55px;
-  align-items: center;
   color: white;
   background: #0d0221;
   border-radius: 38px;
@@ -328,9 +323,9 @@ body {
   grid-area: 7 / 3 / 8 / 4;
   text-align: center !important;
   display: flex;
-  width: 259px;
+  width: 350px;
   height: 55px;
-  align-items: center;
+
   color: white;
   background: #0d0221;
   border-radius: 38px;
@@ -342,19 +337,19 @@ footer {
   text-align: center;
   background-color: brown;
 }
-.profilkepSecond{
-width: 112px;
-height: 108px;
-background: url(/web/public/assets/img/nopic.png);
-border-radius: 38px;
-
+.profilkepSecond {
+  width: 117px;
+  border-radius: 50%;
 }
-.div1 { grid-area: 1 / 2 / 2 / 3; }
-.div2 { grid-area: 1 / 3 / 2 / 4; }
-
-.div3 { grid-area: 1 / 4 / 2 / 5; }
-.div4 { grid-area: 2 / 3 / 3 / 4; }
-.div5 { grid-area: 3 / 3 / 4 / 4; }
-.div6 { grid-area: 5 / 3 / 6 / 4; }
-.div7 { grid-area: 6 / 3 / 7 / 4; }
-.div8 { grid-area: 7 / 3 / 8 / 4; } 
+.profilkepFirst {
+  width: 130px;
+  border-radius: 50%;
+}
+.profilkepThird {
+  width: 105px;
+  border-radius: 50%;
+}
+.profilkepRest {
+  width: 70px;
+  border-radius: 50%;
+}
