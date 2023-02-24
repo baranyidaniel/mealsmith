@@ -8,9 +8,16 @@ app.controller('receptCtrl', function($scope, database, $routeParams, $location,
     })
 
     if ($routeParams.id != null){
-        $scope.receptID = $routeParams.id;
-        
+        $scope.recept = {}
+
+        database.selectByValue('posts', 'id', $routeParams.id).then(function(res) {
+            console.log(res.data[0]);
+            $scope.recept = res.data[0]
+        })
+
+        console.log($scope.recept);
     }
+
     $scope.elkeszites = function(id) {
         let idx = $scope.receptek.findIndex(item => item.id === id);
         let ora = Math.floor($scope.receptek[idx].elkeszitesi_ido / 60)
@@ -32,7 +39,7 @@ app.controller('receptCtrl', function($scope, database, $routeParams, $location,
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
 
-    $scope.showRecept= function(id){
-        $location.path('/recept/'+id)
+    $scope.showRecept = function(id) {
+        $location.path('/receptek/'+id)
     }
 });
