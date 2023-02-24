@@ -229,7 +229,22 @@ i {
 body {
   backdrop-filter: blur(0.7px);
 }
-
+.profilkepSecond {
+  width: 117px;
+  border-radius: 50%;
+}
+.profilkepFirst {
+  width: 130px;
+  border-radius: 50%;
+}
+.profilkepThird {
+  width: 105px;
+  border-radius: 50%;
+}
+.profilkepRest {
+  width: 70px;
+  border-radius: 50%;
+}
 .Top3L {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -280,7 +295,7 @@ body {
 }
 .div4 {
   grid-area: 2 / 3 / 3 / 4;
-  text-align: center !important;
+
   display: flex;
   width: 350px;
   height: 55px;
@@ -291,7 +306,7 @@ body {
 }
 .div5 {
   grid-area: 3 / 3 / 4 / 4;
-  text-align: center !important;
+
   display: flex;
   width: 350px;
   height: 55px;
@@ -301,7 +316,7 @@ body {
 }
 .div6 {
   grid-area: 5 / 3 / 6 / 4;
-  text-align: center !important;
+  
   display: flex;
   width: 350px;
   height: 55px;
@@ -311,7 +326,7 @@ body {
 }
 .div7 {
   grid-area: 6 / 3 / 7 / 4;
-  text-align: center !important;
+
   display: flex;
   width: 350px;
   height: 55px;
@@ -325,7 +340,6 @@ body {
   display: flex;
   width: 350px;
   height: 55px;
-
   color: white;
   background: #0d0221;
   border-radius: 38px;
@@ -337,19 +351,4 @@ footer {
   text-align: center;
   background-color: brown;
 }
-.profilkepSecond {
-  width: 117px;
-  border-radius: 50%;
-}
-.profilkepFirst {
-  width: 130px;
-  border-radius: 50%;
-}
-.profilkepThird {
-  width: 105px;
-  border-radius: 50%;
-}
-.profilkepRest {
-  width: 70px;
-  border-radius: 50%;
-}
+
