@@ -21,10 +21,6 @@ app.config(function($routeProvider) {
             templateUrl: 'views/login.html',
             controller: 'userCtrl'
         })
-        .when('/sajat', {
-            templateUrl: 'views/sajat.html',
-            controller: 'profilCtrl'
-        })
         .when('/kedvencek', {
             templateUrl: 'views/kedvencek.html',
             controller: 'userCtrl'
@@ -39,11 +35,11 @@ app.config(function($routeProvider) {
         })
         .when('/profiles/:id', {
             templateUrl: 'views/profile.html',
-            controller: 'userCtrl'
+            controller: 'profilCtrl'
         })
         .when('/receptek/:id', {
             templateUrl: 'views/recept.html',
-            controller: 'receptCtrl'
+            controller: 'receptLeirasCtrl'
         })
         .otherwise({
 			redirectTo: '/'

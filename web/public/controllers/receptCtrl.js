@@ -1,4 +1,4 @@
-app.controller('receptCtrl', function($scope, database, $routeParams, $location, $filter) {
+app.controller('receptCtrl', function($scope, database, $location, $filter) {
     $scope.receptek = []
 
     database.selectAll('posts')
@@ -6,17 +6,6 @@ app.controller('receptCtrl', function($scope, database, $routeParams, $location,
         $scope.receptek = res.data;
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     })
-
-    if ($routeParams.id != null){
-        $scope.recept = {}
-
-        database.selectByValue('posts', 'id', $routeParams.id).then(function(res) {
-            console.log(res.data[0]);
-            $scope.recept = res.data[0]
-        })
-
-        console.log($scope.recept);
-    }
 
     $scope.elkeszites = function(id) {
         let idx = $scope.receptek.findIndex(item => item.id === id);
@@ -40,6 +29,6 @@ app.controller('receptCtrl', function($scope, database, $routeParams, $location,
     }
 
     $scope.showRecept = function(id) {
-        $location.path('/receptek/'+id)
+        $location.path('/receptek/' + id)
     }
 });

@@ -352,3 +352,15 @@ footer {
   background-color: brown;
 }
 
+.hozzavaloTable {
+  background-color: rgba(150, 150, 150, 0.5);
+  border-radius: 5px;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+.carouselpic {
+  width: 50%;
+}
