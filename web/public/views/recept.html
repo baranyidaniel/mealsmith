@@ -1,2 +1,32 @@
-<h1>recept</h1>
-{{ receptID }}
+<h1 class="text-center fw-bold small-caps">{{ recept.title }}</h1>
+
+<p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites(recept.id)}}</p>
+<p class="text-center fw-bold small-caps">Pontok: {{recept.points}}</p>
+
+<h3 class="fw-bold small-caps">Hozzávalók:</h3>
+<table class="table hozzavaloTable table-hover">
+    <thead>
+        <tr class="col-lg-3">
+            <td>Hozzávaló</td>
+            <td>Mennyiség</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="hozzavalo in hozzavalok">
+            <td>{{hozzavalo.hozzavalo}}</td>
+            <td>{{hozzavalo.mennyiseg}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Összesen: {{hozzavalok.length}} hozzávaló</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+<div class="recept-desc">
+    <h3 class="fw-bold small-caps">Elkészítés</h3>
+    {{recept.description}}
+</div>
