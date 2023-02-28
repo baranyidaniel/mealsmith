@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" ng-app="mealsmithApp">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,45 +9,44 @@
     <link rel="stylesheet" href="/web/public/assets/css/style.css" />
   </head>
   <body>
-    <div class="continer">
+    <div class="continer" ng-controller="topLCtrl">
       <header>
         <h3>A legjobb séfek</h3>
       </header>
       <main>
         <div class="Top3L row">
           <div class="div1 col">
-            <p>#2 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepSecond"> user01 17644 pont 123 poszt</p>
-          </div>
-          <div class="div2 col">
-            <p>#1 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepFirst"> walter 17645 pont 123 poszt</p>
-          </div>
-          <div class="div3 col">
-            <p>#3 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepThird"> fazon 17643 pont 123 poszt</p>
+            <p>
+              #2
+              <img
+                src="/web/public/assets/img/blank_profil_pic.jpeg"
+                alt="profilkép"
+                title="profilkép"
+                class="profilkepSecond"
+              />
+              user01 17644 pont 123 poszt
+            </p>
           </div>
         </div>
         <div class="TopLrest row">
           <div class="div4 col-sm-8">
-            <p>#4 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepRest"> carl - 15647 pont</p>
-          </div>
-          <div class="div5 col-sm-8">
-            <p>#5 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepRest"> jesse - 15647 pont</p>
-          </div>
-
-          <div class="div6 col">
-            <p>#6 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepRest"> tcuo - 14647 pont</p>
-          </div>
-          <div class="div7 col">
-            <p>#7 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepRest"> zick - 14646 pont</p>
-          </div>
-          <div class="div8 col">
-            <p>#8 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkepRest"> illike123 - 14645 pont</p>
+            <p>
+              #4
+              <img
+                src="/web/public/assets/img/blank_profil_pic.jpeg"
+                alt="profilkép"
+                title="profilkép"
+                class="profilkepRest"
+              />
+              carl - 15647 pont
+            </p>
           </div>
         </div>
       </main>
-      <footer>
-        <h4>footer</h4>
-      </footer>
+      <footer></footer>
     </div>
+
+    <!--Scripts-->
     <script src="/web/public/assets/js/angular.min.js"></script>
     <script src="/web/public/assets/js/angular-route.min.js"></script>
     <script src="/web/public/assets/js/bootstrap.min.js "></script>
@@ -55,6 +54,8 @@
     <script src="/web/public/assets/js/script.js"></script>
     <script src="/web/public/assets/js/dbFactory.js"></script>
 
+    <!--Controllers-->
     <script src="/web/public/controllers/userCtrl.js"></script>
+    <script src="/web/public/controllers/topLCtrl.js"></script>
   </body>
 </html>

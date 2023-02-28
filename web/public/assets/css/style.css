@@ -347,10 +347,6 @@ body {
 header {
   text-align: center;
 }
-footer {
-  text-align: center;
-  background-color: brown;
-}
 
 .hozzavaloTable {
   background-color: rgba(150, 150, 150, 0.5);
