@@ -1,0 +1,42 @@
+<div class="ujRecept">
+    <div class="form-group row mb-3">
+        <label for="title" class="col-sm-2 col-form-label">Cím</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" placeholder="Cím" ng-model="recept.title">
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label for="elkeszites" class="col-sm-2 col-form-label">Elkészítési idő</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" id="elkeszites" placeholder="Elkészítési idő (perc)" min="1" ng-model="recept.elkeszitesi_ido">
+        </div>
+        <span class="col-sm-1">perc</span>
+    </div>
+    
+    <div class="form-group mb-3">
+        <label for="shortdesc">Rövid leírás (max. 100 karakter)</label>
+        <textarea class="form-control" id="shortdesc" ng-model="recept.short_desc" maxlength="100"></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="desc">Elkészítés</label>
+        <textarea class="form-control" id="desc" ng-model="recept.description" rows="5"></textarea>
+    </div>
+    
+    <div class="form-group row mb-3">
+        <label for="adag" class="col-sm-2 col-form-label">Adagmennyiség</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="adag" placeholder="Adagmennyiség" min="1" max="64" value="1" ng-model="recept.mennyiseg">
+        </div>
+        <small>
+            A megadott hozzávalókból ennyi adag készíthető el. :D
+        </small>
+    </div>
+
+    <div class="form-group row mb-3">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" ng-click="felvetel()">Recept felvétele</button>
+        </div>
+    </div>
+</div>
