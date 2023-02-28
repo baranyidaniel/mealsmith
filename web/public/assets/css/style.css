@@ -360,3 +360,8 @@ header {
 .carouselpic {
   width: 50%;
 }
+.ujRecept {
+  background-color: rgba(150, 150, 150, 0.5);
+  backdrop-filter: blur(2px);
+  padding: 1em;
+}
