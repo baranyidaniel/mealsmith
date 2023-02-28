@@ -40,7 +40,7 @@
                             </li>
 
                         </ul>
-                        <form class="d-flex" role="search" ng-controller="userCtrl">
+                        <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="!loggedUser">
 
                             <input type="email" class="form-control me-1" id="floatingInput" placeholder="E-mail cím" ng-model="user.email">
 
@@ -49,14 +49,6 @@
                             <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
                             <a href="#!/reg" class="btn btn-secondary">Regisztráció</a>
                         </form>
-                        <!--<form class="d-flex" role="search" ng-controller="userCtrl" ng-if="loggedUser">
-
-                            <input type="text" class="form-control me-1" id="floatingInput" ng-model="loggedUser.name" disabled>
-
-                            <button class="btn btn-primary me-1" ng-click="logout()">Kilépés</button>
-
-                        </form>
-                    -->
                     </div>
                 </div>
             </nav>

@@ -54,10 +54,6 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
                 alert('Tiltott felhasználó!')
                 return
             }
-            if (res.data[0].jog == 1) {
-                console.log('lyo')
-                return
-            }
 
             res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s')
             $rootScope.loggedUser = res.data[0]
