@@ -36,34 +36,35 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
 
     $scope.login = function() {
         if ($scope.user.email == null || $scope.user.pass1 == null) {
-            alert('Nem adtál meg minden kötelező adatot!')
-            return
-        }
-        let data = {
-            table: 'users',
-            email: $scope.user.email,
-            passwd: $scope.user.passw1
-        }
-
-        database.logincheck(data).then(function(res) {
-            if (res.data.length == 0) {
-                alert('Hibás belépési adatok!')
-                return
-            }
-            if (res.data[0].jog == 2) {
-                alert('Tiltott felhasználó!')
-                return
-            }
-
-            res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s')
-            $rootScope.loggedUser = res.data[0]
+            alert('Nem adtál meg minden kötelező adatot!');
+        } else {
             let data = {
-                last: res.data[0].last
+                table: 'users',
+                email: $scope.user.email,
+                password: $scope.user.pass1
             }
-            database.update(data.table, res.data[0].ID, data).then(function(res) {
-                sessionStorage.setItem('mealsmithApp', angular.toJson($rootScope.loggedUser))
-            })
-        })
+
+            database.logincheck(data).then(function(res) {
+                console.log(res.data);
+                if (res.data.length == 0) {
+                    alert('Hibás belépési adatok!');
+                } else {
+                    if (res.data[0].status == 0) {
+                        alert('Tiltott felhasználó!');
+                    } else {
+
+                        res.data[0].last = moment(new Date()).format('YYYY-MM-DD H:m:s');
+                        $rootScope.loggedUser = res.data[0];
+                        let data = {
+                            last: res.data[0].last
+                        }
+                        database.update('users', res.data[0].ID, data).then(function(res) {
+                            sessionStorage.setItem('mealsmithApp', angular.toJson($rootScope.loggedUser));
+                        });
+                    }
+                }
+            });
+        }
     }
 
     $scope.logout = function() {
