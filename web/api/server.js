@@ -37,7 +37,6 @@ app.post('/login', (req, res) => {
             res.status(200).send(results);
         }
     });
-
 });
 
 // GET ALL RECORDS FROM [TABLE]
