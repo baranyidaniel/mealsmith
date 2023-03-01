@@ -24,19 +24,19 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#!/profiles/1">Saját receptek</a>
+                                <a class="nav-link" href="#!/profiles/{{loggedUser.id}}" ng-if="loggedUser">Saját receptek</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#!/kedvencek">Kedvencek</a>
+                                <a class="nav-link" href="#!/kedvencek" ng-if="loggedUser">Kedvencek</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#!/koveteseim">Követéseim</a>
+                                <a class="nav-link" href="#!/koveteseim" ng-if="loggedUser">Követéseim</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#!/toplista">Toplista</a>
+                                <a class="nav-link" href="#!/toplista" ng-if="loggedUser">Toplista</a>
                             </li>
 
                         </ul>
@@ -48,6 +48,13 @@
 
                             <button class="btn btn-primary me-1" ng-click="login()">Belépés</button>
                             <a href="#!/reg" class="btn btn-secondary">Regisztráció</a>
+                        </form>
+                        <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="loggedUser">
+
+                            <input type="text" class="form-control me-1" id="floatingInput" ng-model="loggedUser.username" disabled>
+
+                            <button class="btn btn-primary me-1" ng-click="logout()">Kilépés</button>
+
                         </form>
                     </div>
                 </div>

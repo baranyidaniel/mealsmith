@@ -347,10 +347,6 @@ body {
 header {
   text-align: center;
 }
-footer {
-  text-align: center;
-  background-color: brown;
-}
 
 .hozzavaloTable {
   background-color: rgba(150, 150, 150, 0.5);
@@ -361,6 +357,9 @@ footer {
   font-variant: small-caps;
 }
 
+.carouselpic {
+  width: 50%;
+}
 .ujRecept {
   background-color: rgba(150, 150, 150, 0.5);
   backdrop-filter: blur(2px);

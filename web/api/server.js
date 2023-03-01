@@ -23,6 +23,22 @@ app.listen(port, () => {
     log('SERVER', `Listening started on port ${port}.`);
 })
 
+// LOGINCHECK
+app.post('/login', (req, res) => {
+    var email = req.body.email;
+    var password = req.body.password;
+
+    pool.query(`SELECT * FROM users WHERE email=? AND passwd=?`, [email, password], (err, results) => {
+        if (err) {
+            log(req.socket.remoteAddress, err);
+            res.status(500).send(err);
+        } else {
+            log(req.socket.remoteAddress, `${results.length} records sent form users table (logincheck).`);
+            res.status(200).send(results);
+        }
+    });
+});
+
 // GET ALL RECORDS FROM [TABLE]
 app.get('/:table', (req, res) => {
     var table = req.params.table
@@ -166,22 +182,6 @@ app.delete('/:table/:field/:value', (req, res) => {
             res.status(200).send(results)
         }
     })
-})
-
-// LOGINCHECK
-app.post('/login', (req, res) => {
-    var email = req.body.email,
-        password = req.body.passw1
-
-    pool.query(`SELECT * FROM users WHERE email=? AND passwd=?`, [email, password], (err, results) => {
-        if (err) {
-            log("ERROR", err);
-            res.status(500).send(err);
-        } else {
-            log("SERVER", `User details sent from ${table} table.`);
-            res.status(200).send(results);
-        }
-    });
 })
 
 function log(req, res) {
