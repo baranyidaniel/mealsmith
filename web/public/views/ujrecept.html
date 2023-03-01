@@ -1,4 +1,5 @@
 <div class="ujRecept">
+    <h2 class="small-caps text-center fw-bold mb-3">Új recept hozzáadása</h2>
     <div class="form-group row mb-3">
         <label for="title" class="col-sm-2 col-form-label">Cím</label>
         <div class="col-sm-10">
@@ -32,6 +33,11 @@
         <small>
             A megadott hozzávalókból ennyi adag készíthető el. :D
         </small>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="ingredients">Hozzávalók</label>
+        <textarea class="form-control" id="desc" ng-model="recept.ingredients" rows="5" placeholder="Hozzávaló mértékegység, vesszővel elválasztva"></textarea>
     </div>
 
     <div class="form-group row mb-3">
