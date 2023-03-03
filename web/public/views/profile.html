@@ -4,8 +4,7 @@
             <img src="../assets/img/nopic.png" alt="Profilkép" width="40%">
         </div>
         <h3>{{ user.display_name }}</h3>
-        <p class="text-muted">{{ user.username }}</p>
-        <a class="btn btn-primary" ng-if="loggedUser">Követés</a>
+        <p class="text-muted">{{ user.username }}</p>        
 
         <table>
             <thead>
@@ -13,7 +12,7 @@
                     <td colspan="2" class="text-center">Statisztikák</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody ng-controller="profilCtrl">
                 <tr>
                     <td>Regisztrált:</td>
                     <td>{{ user.reg }}</td>
@@ -32,11 +31,13 @@
                 </tr>
                 <tr>
                     <td>Pontok:</td>
-                    <td></td>
+                    <td>{{ users.points }}</td>
                 </tr>
             </tbody>
         </table>
+        <a class="btn btn-primary" ng-if="loggedUser" href="!#/ujrecept">Új recept hozzáadása</a>
     </div>
+    
     <div class="col-lg-9 profilReceptek">
         <ul class="cards">
             <li ng-repeat="recept in userRecipes">
