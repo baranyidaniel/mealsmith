@@ -4,10 +4,16 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
     $scope.userRecipes = {}    
 
     if ($routeParams.id != null){
-        database.selectByValue('posts', 'id', $routeParams.id)
+        database.selectByValue('posts', 'user_id', $routeParams.id)
         .then(function(res) {
             $scope.userRecipes = res.data
             $scope.userRecipes = $filter('orderBy')($scope.receptek, '-points')
+        })
+
+        database.selectByValue('users', 'id', $routeParams.id)
+        .then(function(res){
+            $scope.user = res.data
+            
         })
     }
 })
