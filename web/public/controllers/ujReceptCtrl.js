@@ -16,7 +16,7 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
             user_id: $rootScope.loggedUser.id,
             description: $scope.recept.description,
             short_desc: $scope.recept.short_desc,
-            hozzavalok: $scope.recept.ingredients,
+            ingredients: $scope.recept.ingredients,
             elkeszitesi_ido: $scope.recept.elkeszitesi_ido,
             adag: $scope.recept.adag
         }
@@ -24,6 +24,7 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
         database.insert('posts', data).then(function(res) {
             if (res.data.affectedRows > 0) {
                 alert('A recept sikeresen felvéve!')
+                $scope.recept = {}
             } else alert('Hiba történt az adatbázis művelet során.')
         })
     }
