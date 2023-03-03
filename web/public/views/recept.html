@@ -7,14 +7,14 @@
 <table class="table hozzavaloTable table-hover">
     <thead>
         <tr class="col-lg-3">
-            <td>Hozzávaló</td>
             <td>Mennyiség</td>
+            <td>Hozzávaló</td>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="hozzavalo in hozzavalok">
-            <td>{{hozzavalo.hozzavalo}}</td>
-            <td>{{hozzavalo.mennyiseg}}</td>
+            <td class="col-lg-2">{{hozzavalo.mennyiseg}}</td>
+            <td class="col-lg-10">{{hozzavalo.hozzavalo}}</td>
         </tr>
     </tbody>
     <tfoot>

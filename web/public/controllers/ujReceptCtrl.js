@@ -1,4 +1,4 @@
-app.controller('ujReceptCtrl', function($scope, database, $routeParams) {
+app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootScope) {
     $scope.recept = {}
 
     $scope.felvetel = function() {
@@ -13,8 +13,10 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams) {
 
         let data = {
             title: $scope.recept.title,
+            user_id: $rootScope.loggedUser.id,
             description: $scope.recept.description,
             short_desc: $scope.recept.short_desc,
+            hozzavalok: $scope.recept.ingredients,
             elkeszitesi_ido: $scope.recept.elkeszitesi_ido,
             adag: $scope.recept.adag
         }

@@ -33,7 +33,7 @@ app.post('/login', (req, res) => {
             log(req.socket.remoteAddress, err);
             res.status(500).send(err);
         } else {
-            log(req.socket.remoteAddress, `${results.length} records sent form users table (logincheck).`);
+            log('SERVER', `User info sent from users table (logincheck).`);
             res.status(200).send(results);
         }
     });
@@ -121,7 +121,7 @@ app.post('/:table', (req, res) => {
             log("ERROR", err)
             res.status(500).send(err)
         } else {
-            log("SERVER", `${results.affectedRows} record inserted into ${table} table.`)
+            log("SERVER", `${results.affectedRows} records inserted into ${table} table.`)
             res.status(200).send(results)
         }
     })
