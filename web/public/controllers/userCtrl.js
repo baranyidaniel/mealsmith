@@ -58,7 +58,7 @@ app.controller('userCtrl', function($scope, database, $rootScope, $location) {
                         let data = {
                             last: res.data[0].last
                         }
-                        database.update('users', res.data[0].ID, data).then(function(res) {
+                        database.update('users', res.data[0].id, data).then(function(res) {
                             sessionStorage.setItem('mealsmithApp', angular.toJson($rootScope.loggedUser));
                         });
                     }
