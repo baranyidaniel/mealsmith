@@ -29,8 +29,8 @@ app.config(function($routeProvider) {
             templateUrl: 'views/follows.html',
             controller: 'userCtrl'
         })
-        .when('/top', {
-            templateUrl: 'views/top.html',
+        .when('/toplista', {
+            templateUrl: 'views/toplista.html',
             controller: 'userCtrl'
         })
         .when('/profiles/:id', {
