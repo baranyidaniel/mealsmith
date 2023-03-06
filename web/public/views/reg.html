@@ -1,68 +1,36 @@
-<!DOCTYPE html>
-<html lang="hu" ng-app="mealsmithApp">
+<div class="contents">
+    <div class="container-sm" ng-controller="userCtrl">
+        <div class="mb-3">                    
+            <form>
+                <div class="container">
+                    <h1>Regisztráció</h1>
+                    <hr>
+                    
+                    <label for="username"><b>Felhasználónév</b></label>
+                    <input type="text" placeholder="Felhasználónév" name="username" id="username" ng-model="user.username" required>
+                    <br>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/web/public/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/web/public/assets/css/reg.css">
-        <title>Regisztráció</title>
-    </head>
-    <body>
-    <main>
-        <div class="contents">
-            <div class="container-sm" ng-controller="userCtrl">
-                <div class="mb-3">                    
-                        <form>
-                            <div class="container text-center">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <img src="/web/public/assets/img/logo_bg.png" alt="Mealsmith logo" class="logo_bg">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" type="text" value="Franklin Clinton" id="userName" placeholder="Felhasználónév " ng-model="user.username">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" type="email" value="Frankie@eyefind.info" id="userEmail" placeholder="Email cím" ng-model="user.email">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" type="password" value="Franklin5" id="pass1" placeholder="Jelszó" ng-model="user.pass1">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" type="password" value="Franklin5" id="pass2" placeholder="Jelszó mégegyszer" ng-model="user.pass2">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <button class="form-control" type="submit" id="submitBtn" ng-click="registration()">Regisztráció</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Email cím" name="email" id="email" ng-model="user.email" required>
+                    <br>
+                
+                    <label for="psw"><b>Jelszó</b></label>
+                    <input type="password" placeholder="Jelszó" name="psw" id="psw" ng-model="user.pass1" required>
+                    <br>
+                
+                    <label for="psw-repeat"><b>Jelszó újra</b></label>
+                    <input type="password" placeholder="Jelszó újra" name="psw-repeat" id="psw-repeat" ng-model="user.pass2" required>
+                    <br>
+                    <hr>
+
+                    <button type="submit" class="registerbtn" ng-click="registration()">Regisztráció</button>
                 </div>
+                
+                <div class="container signin">
+                    <p>Van már fiókod? <a href="#!/">Jelentkezz be</a>.</p>
+                </div>
+                </form> 
             </div>
-        </main>
-
-
-        <script src="/web/public/assets/js/angular.min.js"></script>
-        <script src="/web/public/assets/js/angular-route.min.js"></script>
-        <script src="/web/public/assets/js/bootstrap.min.js "></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-        <script src="/web/public/assets/js/script.js"></script>
-        <script src="/web/public/assets/js/dbFactory.js"></script>
-
-        <script src="/web/public/controllers/userCtrl.js"></script>
-
-    </body>
-
-</html>
+        </div>
+    </div>
+</div>

@@ -1,40 +1,30 @@
-                body {
-                    background-image: url(/web/public/assets/img/regháttér.jpg);
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                }
-                
-                .contents {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 80vh;
-                }
-                
-                h2 {
-                    color: white;
-                    text-align: center;
-                }
-                
-                .row+.row {
-                    margin-top: 30px;
-                }
-                
-                input,
-                button {
-                    border-radius: 100px !important;
-                    outline: none !important;
-                }
-                
-                button {
-                    background-color: #C2E7D9 !important;
-                }
-                
-                input {
-                    background-color: #26408B !important;
-                    color: #C2E7D9;
-                }
-                
-                footer {
-                    color: white;
-                }
+body {
+    background-image: url(/web/public/assets/img/regháttér.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+.row+.row {
+    margin-top: 30px;
+}
+
+input,
+button {
+    border-radius: 100px !important;
+    outline: none !important;
+}
+
+button {
+    background-color: #C2E7D9 !important;
+}
+
+input {
+    background-color: #26408B !important;
+    color: #C2E7D9;
+}
