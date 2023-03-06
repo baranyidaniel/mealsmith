@@ -26,7 +26,7 @@ app.listen(port, () => {
 // LOGINCHECK
 app.post('/login', (req, res) => {
     var email = req.body.email;
-    var password = req.body.password;
+    var password = req.body.passwd;
 
     pool.query(`SELECT * FROM users WHERE email=? AND passwd=?`, [email, password], (err, results) => {
         if (err) {
