@@ -1,7 +1,7 @@
 <div class="background-blur">
     <h1 class="text-center fw-bold small-caps">{{ recept.title }}</h1>
     
-    <p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites(recept.id)}}</p>
+    <p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites()}}</p>
     <p class="text-center fw-bold small-caps">Pontok: {{recept.points}}</p>
     
     <h3 class="fw-bold small-caps">Hozzávalók:</h3>
@@ -28,7 +28,11 @@
     <div class="recept-desc">
         <h3 class="fw-bold small-caps">Elkészítés</h3>
         <div>
-            {{recept.description}}
+            <ol>
+                <li ng-repeat="bekezdes in bekezdesek">
+                    {{bekezdes.item}}
+                </li>
+            </ol>
         </div>
     </div>
 </div>

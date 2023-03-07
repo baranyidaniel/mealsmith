@@ -18,7 +18,7 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
             short_desc: $scope.recept.short_desc,
             ingredients: $scope.recept.ingredients,
             elkeszitesi_ido: $scope.recept.elkeszitesi_ido,
-            adag: $scope.recept.adag
+            adag: $scope.recept.mennyiseg
         }
         
         database.insert('posts', data).then(function(res) {
@@ -27,5 +27,9 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
                 $scope.recept = {}
             } else alert('Hiba történt az adatbázis művelet során.')
         })
+    }
+
+    $scope.addIngredient = function() {
+        
     }
 });

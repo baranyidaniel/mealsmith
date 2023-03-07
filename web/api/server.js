@@ -64,7 +64,7 @@ app.get('/:table/:id', (req, res) => {
             log("ERROR", err)
             res.status(500).send(err)
         } else {
-            log("SERVER", `${results.length} records sent from ${table} table.`)
+            log("SERVER", `1 record sent from ${table} table.`)
             res.status(200).send(results)
         }
     })
@@ -81,7 +81,7 @@ app.get('/:table/:field/:value', (req, res) => {
             log("ERROR", err)
             res.status(500).send(err)
         } else {
-            log("SERVER", `${results.affectedRows} records sent from ${table} table.`)
+            log("SERVER", `1 records sent from ${table} table.`)
             res.status(200).send(results)
         }
     })

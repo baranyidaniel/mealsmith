@@ -95,7 +95,7 @@ i {
   text-decoration: none;
   background-color: var(--card-bg);
   color: white;
-  max-width: 340px;
+  max-width: 300px;
 }
 
 .card__image {

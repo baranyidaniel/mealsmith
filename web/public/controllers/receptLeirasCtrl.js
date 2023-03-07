@@ -1,6 +1,7 @@
 app.controller('receptLeirasCtrl', function($scope, database, $routeParams) {
     $scope.recept = {}
     $scope.hozzavalok = []
+    $scope.bekezdesek = []
 
     if ($routeParams.id != null){
         $scope.recept = {}
@@ -14,10 +15,16 @@ app.controller('receptLeirasCtrl', function($scope, database, $routeParams) {
                 }
                 $scope.hozzavalok.push(hv)
             })
+
+            $scope.recept.description.split('\n').forEach(item => {
+                $scope.bekezdesek.push({
+                    item: item
+                })
+            });
         })
     }
 
-    $scope.elkeszites = function(id) {
+    $scope.elkeszites = function() {
         let ora = Math.floor($scope.recept.elkeszitesi_ido / 60)
         let perc = $scope.recept.elkeszitesi_ido % 60
         return `${ora != 0 ? ora + " óra" : ""} ${perc != 0 ? perc + " perc" : ""}`
