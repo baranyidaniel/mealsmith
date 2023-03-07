@@ -1,30 +1,24 @@
 <div class="contents">
     <div class="container-sm" ng-controller="userCtrl">
         <div class="mb-3">                    
-            <form>
-                <div class="container">
-                    <h1>Regisztráció</h1>
-                    <hr>
-                    
-                    <label for="username"><b>Felhasználónév</b></label>
-                    <input type="text" placeholder="Felhasználónév" name="username" id="username" ng-model="user.username" required>
-                    <br>
-
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Email cím" name="email" id="email" ng-model="user.email" required>
-                    <br>
-                
-                    <label for="psw"><b>Jelszó</b></label>
-                    <input type="password" placeholder="Jelszó" name="psw" id="psw" ng-model="user.pass1" required>
-                    <br>
-                
-                    <label for="psw-repeat"><b>Jelszó újra</b></label>
-                    <input type="password" placeholder="Jelszó újra" name="psw-repeat" id="psw-repeat" ng-model="user.pass2" required>
-                    <br>
-                    <hr>
-
-                    <button type="submit" class="registerbtn" ng-click="registration()">Regisztráció</button>
-                </div>
+            <form class="reg">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Felhasználónév" ng-model="user.username">
+                    <label for="floatingInput">Felhasználónév</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingPassword" placeholder="Email cím" ng-model="user.email">
+                    <label for="floatingPassword">Email cím</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
+                    <label for="floatingPassword">Jelszó</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó újra" ng-model="user.pass2">
+                    <label for="floatingPassword">Jelszó újra</label>
+                  </div>
+                  <button type="button" class="btn btn-primary btn-lg" ng-click="registration()">Regisztráció</button>
                 
                 <div class="container signin">
                     <p>Van már fiókod? <a href="#!/">Jelentkezz be</a>.</p>
