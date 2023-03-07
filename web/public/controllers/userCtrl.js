@@ -63,8 +63,10 @@ app.controller("userCtrl", function ($scope, database, $rootScope, $location) {
       }
       res.data[0].last = moment(new Date()).format("YYYY-MM-DD H:m:s");
       $rootScope.loggedUser = res.data[0];
-      
-      database.update('users', res.data[0].id, data).then(function(res) {
+      let data = {
+        last: res.data[0].last
+      }
+      database.update('users', $rootScope.loggedUser.id, data).then(function(res) {
         sessionStorage.setItem('mealsmithApp', angular.toJson($rootScope.loggedUser));
       });
     });

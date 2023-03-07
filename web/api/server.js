@@ -140,7 +140,7 @@ app.patch('/:table/:id', (req, res) => {
         str += `${fields[i]}='${values[i]}'${i != fields.length - 1 ? ',' : ''}`
     }
 
-    pool.query(`UPDATE ${table} SET ${str} WHERE ID=${id}`, (err, results) => {
+    pool.query(`UPDATE ${table} SET ${str} WHERE id=${id}`, (err, results) => {
         if (err) {
             log("ERROR", err)
             res.status(500).send(err)
