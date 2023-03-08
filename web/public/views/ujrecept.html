@@ -8,7 +8,7 @@
     </div>
 
     <div class="form-group row mb-3">
-        <label for="elkeszites" class="col-sm-2 col-form-label">Elkészítési idő</label>
+        <label for="elkeszites" class="col-sm-2 col-form-label">Elkészítési idő (percben megadva, pozitív egész számokkal)</label>
         <div class="col-sm-9">
             <input type="number" class="form-control" id="elkeszites" placeholder="Elkészítési idő (perc)" min="1" ng-model="recept.elkeszitesi_ido">
         </div>
@@ -26,26 +26,28 @@
     </div>
     
     <div class="form-group row mb-3">
-        <label for="adag" class="col-sm-2 col-form-label">Adagmennyiség</label>
+        <label for="adag" class="col-sm-2 col-form-label">Adagmennyiség (pozitív egész számokkal megadva)</label>
         <div class="col-sm-10">
             <input type="number" class="form-control" id="adag" placeholder="Adagmennyiség" min="1" max="64" value="1" ng-model="recept.mennyiseg">
         </div>
         <small>
-            A megadott hozzávalókból ennyi adag készíthető el. :D
+            A megadott hozzávalókból ennyi adag készíthető el
         </small>
     </div>
 
-    <div class="form-group mb-3">
-        
-        <label for="ingredients">Hozzávalók</label><br>
-
-        <div class="hozzavalok">
-            <input type="text" name="hozzavalo" id="">
-            <input type="text" name="mennyiseg" id="">
-            <i class="" ng-click="addIngredient()">asdasdasd</i>
+    <div class="form-group row mb-3">
+        <label for="title" class="col-sm-2 col-form-label">Hozzávaló neve</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="hozzavalo" placeholder="Hozzávaló neve (pl: ketchup)" ng-model="recept.hozzavalo">
         </div>
 
-        <textarea class="form-control" id="desc" ng-model="recept.ingredients" rows="5" placeholder="Hozzávaló mértékegység, vesszővel elválasztva"></textarea>
+        <label for="title" class="col-sm-2 col-form-label">Mennyiség</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="mennyiseg" placeholder="Mennyiség (pl: 1 kg)" ng-model="recept.mennyiseg">
+        </div>
+        <i class="bi bi-plus-square" ng-click="addIngredient()">
+            Új hozzávaló...
+        </i>
     </div>
 
     <div class="form-group row mb-3">

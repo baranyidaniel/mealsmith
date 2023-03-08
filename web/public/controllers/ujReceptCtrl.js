@@ -30,6 +30,10 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
     }
 
     $scope.addIngredient = function() {
+        if ($scope.recept.hozzavalo == null || $scope.recept.mennyiseg == null) {
+            alert("Adj meg nevet és mennyiéget a hozzávalónak")
+            return;
+        }
         
     }
 });
