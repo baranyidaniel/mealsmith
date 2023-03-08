@@ -174,10 +174,14 @@ i {
   font-size: 1.2em !important;
 }
 
-.heart,
-.star {
-  color: white;
+i {
+  font-style: normal;
   cursor: pointer;
+}
+
+i:hover {
+  color: greenyellow;
+  transition: color 0.2s;
 }
 
 .heart:hover {
