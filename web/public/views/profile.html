@@ -15,11 +15,11 @@
             <tbody ng-controller="profilCtrl">
                 <tr>
                     <td>Regisztrált:</td>
-                    <td>{{ loggedUser.reg }}</td>
+                    <td>{{ moment().format(user.reg, YYYYMMDD) }}</td>
                 </tr>
                 <tr>
                     <td>Utolsó bejelentkezés:</td>
-                    <td>{{ loggedUser.last }}</td>
+                    <td>{{ moment().format(user.last, YYYYMMDD) }}</td>
                 </tr>
                 <tr>
                     <td>Megosztott receptek:</td>
@@ -44,7 +44,7 @@
               <div class="card" data-aos="fade-up" data-aos-anchor-placement="bottom-center">
                 <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
                 <div class="card__overlay">
-                  <div class="card__header parent" ng-click="">
+                  <div class="card__header parent" ng-click="showRecept(recept.id)">
                     <div class="div1_1">
                       <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
                     </div>

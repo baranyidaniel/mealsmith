@@ -12,8 +12,7 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
 
         database.selectByValue('users', 'id', $routeParams.id)
         .then(function(res){
-            $scope.user = res.data
-            
+            $scope.user = res.data[0]
         })
     }
 })
