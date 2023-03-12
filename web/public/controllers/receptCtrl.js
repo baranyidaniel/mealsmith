@@ -30,6 +30,5 @@ app.controller('receptCtrl', function($scope, database, $location, $filter) {
 
     $scope.showRecept = function(id) {
         $location.path('/receptek/' + id)
-        $location.path('/receptek' + id)
     }
 });

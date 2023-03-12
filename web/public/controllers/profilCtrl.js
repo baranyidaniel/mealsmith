@@ -15,4 +15,8 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
             $scope.user = res.data[0]
         })
     }
+
+    $scope.showRecept = function(id) {
+        $location.path('/receptek/' + id)
+    }
 })
