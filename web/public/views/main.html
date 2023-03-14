@@ -9,7 +9,7 @@
 
 <ul class="cards">
   <li ng-repeat="recept in receptek | filter:searchText">
-    <div class="card" data-aos="fade-up" data-aos-anchor-placement="bottom-center">
+    <div class="card">
       <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
       <div class="card__overlay">
         <div class="card__header parent" ng-click="showRecept(recept.id)">
@@ -24,7 +24,7 @@
         <div class="card__description">
           <div class="icons">
             <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
-            <i class="bi bi-star star" title="Kedvencek közé"></i>
+            <i class="bi bi-star star" title="Kedvencek közé" ng-click="addToFavorites(recept.id)"></i>
           </div>
           <p class="text-muted">{{ ido(recept.id) }}</p>
           <p>{{ recept.short_desc }}</p>

@@ -1,4 +1,4 @@
-app.controller('receptCtrl', function($scope, database, $location, $filter) {
+app.controller('receptCtrl', function($scope, $rootScope, database, $location, $filter) {
     $scope.receptek = []
 
     database.selectAll('posts')
@@ -9,8 +9,10 @@ app.controller('receptCtrl', function($scope, database, $location, $filter) {
 
     $scope.elkeszites = function(id) {
         let idx = $scope.receptek.findIndex(item => item.id === id);
+
         let ora = Math.floor($scope.receptek[idx].elkeszitesi_ido / 60)
         let perc = $scope.receptek[idx].elkeszitesi_ido % 60
+
         return `${ora != 0 ? ora + " óra" : ""} ${perc != 0 ? perc + " perc" : ""}`
     }
 
@@ -30,5 +32,26 @@ app.controller('receptCtrl', function($scope, database, $location, $filter) {
 
     $scope.showRecept = function(id) {
         $location.path('/receptek/' + id)
+    }
+
+    $scope.addToFavorites = function(id) {
+        database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
+            .then(function(res) {
+                let tomb = res.data
+                tomb.forEach(item => {
+                    if (item.post_id == id) {
+                        database.delete('favorites', 'post_id', id)
+                        return
+                    }
+                })
+                
+                let data = {
+                    user_id: $rootScope.loggedUser.id,
+                    post_id: id
+                }
+
+                database.insert('favorites', data)
+            }
+        )
     }
 });

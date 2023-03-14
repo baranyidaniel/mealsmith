@@ -81,6 +81,19 @@ app.factory('database', function($http, $q) {
                 deferred.reject(res)
             })
             return deferred.promise
-        }
+        },
+
+        delete: function(tablename, field, value) {
+            var deferred = $q.defer();
+            $http({
+                method: 'DELETE',
+                url: `${url}/${tablename}/${field}/${value}`
+            }).then(function(res) {
+                deferred.resolve(res);
+            }, function(res) {
+                deferred.reject(res);
+            });
+            return deferred.promise;
+        },
     }
 })
