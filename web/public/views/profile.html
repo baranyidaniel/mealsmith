@@ -15,11 +15,11 @@
             <tbody ng-controller="profilCtrl">
                 <tr>
                     <td>Regisztrált:</td>
-                    <td>{{ moment().format(user.reg, YYYYMMDD) }}</td>
+                    <td>{{ userRegTime() }}</td>
                 </tr>
                 <tr>
                     <td>Utolsó bejelentkezés:</td>
-                    <td>{{ moment().format(user.last, YYYYMMDD) }}</td>
+                    <td>{{ userLastLoginTime() }}</td>
                 </tr>
                 <tr>
                     <td>Megosztott receptek:</td>

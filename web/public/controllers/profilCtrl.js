@@ -16,6 +16,14 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
         })
     }
 
+    $scope.userRegTime = function(){
+        return moment($rootScope.loggedUser.reg).format('YYYY-MM-DD')
+    }
+
+    $scope.userLastLoginTime = function(){
+        return moment($rootScope.loggedUser.last).format('YYYY-MM-DD')
+    }
+
     $scope.showRecept = function(id) {
         $location.path('/receptek/' + id)
     }
