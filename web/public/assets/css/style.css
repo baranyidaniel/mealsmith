@@ -217,17 +217,9 @@ i:hover {
   grid-area: 1 / 2 / 2 / 6;
 }
 
-.logo {
-  width: 15%;
-}
-
 .logo_bg {
   width: 70px;
   border-radius: 180px;
-}
-
-.toplistaBg {
-  background-image: url(/web/public/assets/img/hatter.PNG);
 }
 
 body {
@@ -348,6 +340,7 @@ body {
   background: #0d0221;
   border-radius: 38px;
 }
+
 header {
   text-align: center;
 }
@@ -369,4 +362,8 @@ header {
 form.reg{
   text-align: center;
   padding-top: 100px;
+}
+
+.displayName{
+  color: var(--card-bg);
 }
