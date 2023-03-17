@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
         })
         .when('/kedvencek', {
             templateUrl: 'views/kedvencek.html',
-            controller: 'userCtrl'
+            controller: 'kedvencekCtrl'
         })
         .when('/koveteseim', {
             templateUrl: 'views/follows.html',
