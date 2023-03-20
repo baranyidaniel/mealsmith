@@ -1,10 +1,45 @@
 app = new angular.module('mealsmithApp', ['ngRoute']);
 
-app.run(function($rootScope) {
+app.run(function($rootScope, $location, database) {
     $rootScope.loggedUser = {};
     $rootScope.settings = {};
     $rootScope.settings.appTitle = 'MealSmith';
     $rootScope.loggedUser = angular.fromJson(sessionStorage.getItem('mealsmithApp'));
+
+    $rootScope.addToFavorites = function(id) {
+        database.selectAll('favorites')
+            .then(function(res) {
+                
+                res.data.forEach(item => {
+                    
+                });
+
+                if (res.data.length > 0 && res.data[0].user_id == $rootScope.loggedUser.id) {
+                    database.delete('favorites', 'post_id', id).then(function() {
+                        console.log("törölve");
+                        return
+                    })
+                } else {
+                    let data = {
+                        user_id: $rootScope.loggedUser.id,
+                        post_id: id
+                    }
+    
+                    database.insert('favorites', data).then(function() {
+                        console.log("felvéve");
+                        return
+                    })
+
+                }
+                
+            }
+        )
+    }
+
+    $rootScope.showRecept = function(id) {
+        $location.path('/receptek/' + id)
+    }
+
 });
 
 app.config(function($routeProvider) {
