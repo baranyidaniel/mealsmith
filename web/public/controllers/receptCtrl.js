@@ -40,8 +40,7 @@ app.controller('receptCtrl', function($scope, $rootScope, database, $location, $
                 let tomb = res.data
                 tomb.forEach(item => {
                     if (item.post_id == id) {
-                        database.delete('favorites', 'post_id', id)
-                        return
+                        database.delete('favorites', 'post_id', id).then(function(res) {return})
                     }
                 })
                 

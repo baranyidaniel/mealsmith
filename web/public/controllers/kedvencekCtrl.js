@@ -7,6 +7,7 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
             let favorites = res.data;
             favorites.forEach(item => {
                 database.selectByValue('posts', 'id', item.post_id).then(function(res) {
+                    console.log(res.data[0]);
                     $scope.receptek.push(res.data[0])
                 })
             })
@@ -33,13 +34,14 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     $scope.addToFavorites = function(id) {
         database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
             .then(function(res) {
-                let tomb = res.data
-                tomb.forEach(item => {
-                    if (item.post_id == id) {
-                        database.delete('favorites', 'post_id', id)
-                        return
-                    }
-                })
+                if (res.data.length > 0) {
+                    tomb.forEach(item => {
+                        if (item.post_id == id) {
+                            database.delete('favorites', 'post_id', id)
+                            return
+                        }
+                    })
+                }
                 
                 let data = {
                     user_id: $rootScope.loggedUser.id,
