@@ -1,27 +1,2 @@
 <h2 class="text-center fw-bold small-caps">{{loggedUser.username}} kedvenc receptjei</h2>
-<ul class="cards">
-    <li ng-repeat="recept in receptek">
-        <div class="card">
-            <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
-            <div class="card__overlay">
-                <div class="card__header parent" ng-click="showRecept(recept.id)">
-                    <div class="div1_1">
-                        <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
-                    </div>
-                    <div class="div2_1">
-                        <h3 class="card__title">{{ recept.title }}</h3>
-                        <span class="card__status text-muted">Elkészítés: {{ elkeszites(recept.id) }}</span>
-                    </div>
-                </div>
-                <div class="card__description">
-                    <div class="icons">
-                        <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
-                        <i class="bi bi-star star" title="Kedvencek közé"></i>
-                    </div>
-                    <p class="text-muted">{{ ido(recept.id) }}</p>
-                    <p>{{ recept.short_desc }}</p>
-                </div>
-            </div>
-        </div>      
-    </li>
-</ul>
+<div ng-include src="'views/cards.html'"></div>
