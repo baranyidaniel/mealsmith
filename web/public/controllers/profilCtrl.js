@@ -1,7 +1,7 @@
 app.controller('profilCtrl', function($scope, database, $rootScope, $location, $routeParams, $filter) {
 
     $scope.user = {}
-    $scope.userRecipes = {}    
+    $scope.userRecipes = {}
 
     if ($routeParams.id != null){
         database.selectByValue('posts', 'user_id', $routeParams.id)

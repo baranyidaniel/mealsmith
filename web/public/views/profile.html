@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-lg-3 profilStat">
         <div>
-            <img src="./assets/img/nopic.png" alt="Profilkép" width="40%">
+            <img src="./assets/img/MicrosoftTeams-image.png" alt="Profilkép" width="70%">
         </div>
-        <h3>{{ user.display_name }}</h3>
+        <h3 class="displayName">{{ user.display_name }}</h3>
         <p class="text-muted">{{ user.username }}</p>        
 
         <table>
@@ -18,20 +18,16 @@
                     <td>{{ userRegTime() }}</td>
                 </tr>
                 <tr>
-                    <td>Utolsó bejelentkezés:</td>
+                    <td>Utoljára elérhető:</td>
                     <td>{{ userLastLoginTime() }}</td>
                 </tr>
                 <tr>
                     <td>Megosztott receptek:</td>
-                    <td>{{ }}</td>
-                </tr>
-                <tr>
-                    <td>Kommentek:</td>
-                    <td></td>
+                    <td>{{ userRecipes.length }}</td>
                 </tr>
                 <tr>
                     <td>Pontok:</td>
-                    <td></td>
+                    <td>{{ user.points }}</td>
                 </tr>
             </tbody>
         </table>
