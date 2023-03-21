@@ -30,7 +30,7 @@ app.config(function($routeProvider) {
             controller: 'kedvencekCtrl'
         })
         .when('/koveteseim', {
-            templateUrl: 'views/follows.html',
+            templateUrl: 'views/koveteseim.html',
             controller: 'userCtrl'
         })
         .when('/toplista', {
