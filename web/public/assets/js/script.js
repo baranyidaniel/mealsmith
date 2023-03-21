@@ -35,7 +35,7 @@ app.config(function($routeProvider) {
         })
         .when('/toplista', {
             templateUrl: 'views/toplista.html',
-            controller: 'userCtrl'
+            controller: 'topLCtrl'
         })
         .when('/profiles/:id', {
             templateUrl: 'views/profile.html',

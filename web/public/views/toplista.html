@@ -1,11 +1,10 @@
 <!--bootstrap ideiglenesen behelyezve-->
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../assets/css/style.css" />
+
 <h3 style="text-align: center">A legjobb séfek</h3>
-<div class="parent">
+<!--<div class="parent">
   <div class="div1"></div>
   <div class="div2"></div>
-</div>
+</div>-->
 <div class="container" ng-controller="topLCtrl">
   <table>
     <thead>
@@ -17,7 +16,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="top in tops">
-        <td>{{ top.id }}</td>
+
         <td>{{ top.username}}</td>
         <td>{{ top.points}}</td>
       </tr>
@@ -40,19 +39,4 @@
   </div>
 </div>-->
 <!--js file-ok ideiglenesen behelyezve-->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/angular.min.js"></script>
-<script src="../assets/js/angular-route.min.js"></script>
-<script src="../assets/js/script.js"></script>
-<script src="../assets/js/sha1.js"></script>
-<script src="../assets/js/dbFactory.js"></script>
-<script src="../assets/js/moment.js"></script>
 
-<script src="../controllers/userCtrl.js"></script>
-<script src="../controllers/topLCtrl.js"></script>
-<script src="../controllers/receptCtrl.js"></script>
-<script src="../controllers/ujReceptCtrl.js"></script>
-<script src="../controllers/receptLeirasCtrl.js"></script>
-<script src="../controllers/kedvencekCtrl.js"></script>
-<script src="../controllers/profilCtrl.js"></script>

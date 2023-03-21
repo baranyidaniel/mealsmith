@@ -1,6 +1,7 @@
-app.controller("topLCtrl", ["$scope", "dbfactory", "database", "$rootScope", "$location", function ($scope, dbFactory, database, $rootScope, $location) {
+  app.controller("topLCtrl", function ($scope, database, $rootScope, $location) {
+    $scope.tops =   [];
   database.selectAll("users", {}).then(function (res) {
-    $scope.tops = [];
+    $scope.tops =res.data;
     for (let i = 0; i < res.length; i++) {
       $scope.top = {
         username: res[i].username,
@@ -13,4 +14,4 @@ app.controller("topLCtrl", ["$scope", "dbfactory", "database", "$rootScope", "$l
   }).catch(function (err) {
     console.error(err);
   });
-}]);
+});
