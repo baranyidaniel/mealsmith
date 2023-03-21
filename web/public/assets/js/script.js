@@ -6,40 +6,9 @@ app.run(function($rootScope, $location, database) {
     $rootScope.settings.appTitle = 'MealSmith';
     $rootScope.loggedUser = angular.fromJson(sessionStorage.getItem('mealsmithApp'));
 
-    $rootScope.addToFavorites = function(id) {
-        database.selectAll('favorites')
-            .then(function(res) {
-                
-                res.data.forEach(item => {
-                    
-                });
-
-                if (res.data.length > 0 && res.data[0].user_id == $rootScope.loggedUser.id) {
-                    database.delete('favorites', 'post_id', id).then(function() {
-                        console.log("törölve");
-                        return
-                    })
-                } else {
-                    let data = {
-                        user_id: $rootScope.loggedUser.id,
-                        post_id: id
-                    }
-    
-                    database.insert('favorites', data).then(function() {
-                        console.log("felvéve");
-                        return
-                    })
-
-                }
-                
-            }
-        )
-    }
-
     $rootScope.showRecept = function(id) {
         $location.path('/receptek/' + id)
     }
-
 });
 
 app.config(function($routeProvider) {
@@ -61,7 +30,7 @@ app.config(function($routeProvider) {
             controller: 'kedvencekCtrl'
         })
         .when('/koveteseim', {
-            templateUrl: 'views/follows.html',
+            templateUrl: 'views/koveteseim.html',
             controller: 'userCtrl'
         })
         .when('/toplista', {
@@ -83,4 +52,4 @@ app.config(function($routeProvider) {
         .otherwise({
 			redirectTo: '/'
 		})
-    });
+});

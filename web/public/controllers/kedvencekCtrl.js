@@ -1,18 +1,16 @@
 app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location, $filter) {
     $scope.receptek = []
 
-    $scope.feltolt = function() {
-        database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
-        .then(function(res) {
-            let favorites = res.data;
-            favorites.forEach(item => {
-                database.selectByValue('posts', 'id', item.post_id).then(function(res) {
-                    console.log(res.data[0]);
-                    $scope.receptek.push(res.data[0])
-                })
+    database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
+    .then(function(res) {
+        let favorites = res.data;
+        favorites.forEach(item => {
+            database.selectByValue('posts', 'id', item.post_id).then(function(res) {
+                $scope.receptek.push(res.data[0])
             })
         })
-    }
+        console.log($scope.receptek.length);
+    })
 
     $scope.elkeszites = function(id) {
         let idx = $scope.receptek.findIndex(item => item.id === id);
@@ -27,29 +25,41 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
         return moment($scope.receptek[idx].datum, "YYYYMMDD").fromNow()
     }
 
-    $scope.showRecept = function(id) {
-        $location.path('/receptek/' + id)
-    }
-
     $scope.addToFavorites = function(id) {
-        database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
+        database.selectAll('favorites')
             .then(function(res) {
-                if (res.data.length > 0) {
-                    tomb.forEach(item => {
-                        if (item.post_id == id) {
-                            database.delete('favorites', 'post_id', id)
+                
+                let talalt = false
+                res.data.forEach(item => {
+                    if (item.user_id == $rootScope.loggedUser.id && item.post_id == id) {
+                        database.delete('favorites', 'post_id', id).then(function() {
+                            console.log('töröl');
+                            talalt = true
                             return
-                        }
+                        })
+                    }
+                });
+
+                if (!talalt) {
+                    let data = {
+                        user_id: $rootScope.loggedUser.id,
+                        post_id: id
+                    }
+    
+                    database.insert('favorites', data).then(function() {
+                        console.log("felvéve");
+                        return
                     })
                 }
-                
-                let data = {
-                    user_id: $rootScope.loggedUser.id,
-                    post_id: id
-                }
-
-                database.insert('favorites', data)
             }
         )
+    }
+
+    $scope.orderByLatest = function() {
+        $scope.receptek = $filter('orderBy')($scope.receptek, '-datum')
+    }
+
+    $scope.orderByPoints = function() {
+        $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
 });
