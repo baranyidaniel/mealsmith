@@ -77,4 +77,28 @@ app.controller("userCtrl", function ($scope, database, $rootScope, $location) {
     sessionStorage.removeItem("mealsmithApp");
     $location.path("/");
   };
+
+  $scope.addToFollow = function (id){
+    database.selectAll('follows')
+      .then(function(res){
+        res.data.forEach(item => {
+          if (item.user_id == $rootScope.loggedUser.id && item.kovetett_user_id == id) {
+              database.delete('follows', 'kovetett_user_id', id).then(function() {
+                  return
+              })
+          }
+      });
+
+      let data = {
+          user_id: $rootScope.loggedUser.id,
+          kovetett_user_id: id
+      }
+
+      database.insert('follows', data).then(function() {
+          return
+      })
+  }
+)
+}
+
 });

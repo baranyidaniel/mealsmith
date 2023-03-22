@@ -1,4 +1,4 @@
-<div  ng-controller="kartyaCtrl">
+<div ng-controller="kartyaCtrl">
     <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByLatest()">Legfrissebbek</a>
     <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByPoints()">Legjobbak</a>
 
@@ -18,8 +18,8 @@
             </div>
             <div class="card__description">
                 <div class="icons">
-                <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
-                <i class="bi bi-star star" title="Kedvencek közé" ng-click="addToFavorites(recept.id)"></i>
+                    <i class="bi bi-heart heart" title="Kedvelés" ng-mouseover="heartHover(recept.id)" ng-mouseleave="heartLeave(recept.id)" id="heart_{{recept.id}}"> {{ recept.points }}</i>
+                    <i class="bi bi-star star" title="Kedvencek közé"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}" ng-click="addToFavorites(recept.id)" ></i>
                 </div>
                 <p class="text-muted">{{ ido(recept.id) }}</p>
                 <p>{{ recept.short_desc }}</p>

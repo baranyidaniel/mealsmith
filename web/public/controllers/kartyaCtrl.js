@@ -5,6 +5,14 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
     .then(function(res) {
         $scope.receptek = res.data;
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
+
+        $scope.receptek.forEach(item => {
+            database.selectByValue('favorites', 'post_id', item.post_id).then(function(res) {
+                if (res.data.length != 0 && res.data[0].user_id == $rootScope.loggedUser.id) {
+                    item.favorited = true
+                }
+            })
+        })
     })
 
     $scope.elkeszites = function(id) {
@@ -37,6 +45,9 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
                 res.data.forEach(item => {
                     if (item.user_id == $rootScope.loggedUser.id && item.post_id == id) {
                         database.delete('favorites', 'post_id', id).then(function() {
+                            document.getElementById('star_' + id).classList.remove('bi-star')
+                            document.getElementById('star_' + id).classList.add('bi-star-fill')
+                            item.favorited = false
                             return
                         })
                     }
@@ -48,10 +59,32 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
                 }
 
                 database.insert('favorites', data).then(function() {
+                    document.getElementById('star_' + id).classList.remove('bi-star')
+                    document.getElementById('star_' + id).classList.add('bi-star-fill')
+                    $scope.receptek.find(x => x.id == id).favorited = true
                     return
                 })
             }
         )
     }
 
+    $scope.heartHover = function(id) {
+        document.getElementById('heart_' + id).classList.remove('bi-heart')
+        document.getElementById('heart_' + id).classList.add('bi-heart-fill')
+    }
+    
+    $scope.heartLeave = function(id) {
+        document.getElementById('heart_' + id).classList.remove('bi-heart-fill')
+        document.getElementById('heart_' + id).classList.add('bi-heart')
+    }
+
+    $scope.starHover = function(id) {
+        document.getElementById('star_' + id).classList.remove('bi-star')
+        document.getElementById('star_' + id).classList.add('bi-star-fill')
+    }
+
+    $scope.starLeave = function(id) {
+        document.getElementById('star_' + id).classList.remove('bi-star-fill')
+        document.getElementById('star_' + id).classList.add('bi-star')
+    }
 });
