@@ -202,17 +202,6 @@ i:hover {
   border-radius: 462px;
 }
 
-.parent {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-
-.div1 { grid-area: 1 / 2 / 2 / 5; }
-.div2 { grid-area: 2 / 3 / 6 / 4; }
 
 .div1_1 {
   grid-area: 1 / 1 / 2 / 2;
@@ -256,3 +245,70 @@ form.reg{
 .displayName{
   color: var(--card-bg);
 }
+
+
+/*Toplista*/
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+
+.div1 { grid-area: 1 / 2 / 2 / 5;
+  text-align: center;
+  display: flex;
+  width: 148px;
+  height: 224px;
+  align-items: center;
+  color: #b1b1b1;
+  background: #0d0221;
+  border-radius: 38px; 
+  padding-bottom: ;
+}
+.div2 { grid-area: 2 / 3 / 6 / 4; }
+/*
+.profilkepSecond {
+  width: 117px;
+  border-radius: 50%;
+}
+.profilkepFirst {
+  width: 130px;
+  border-radius: 50%;
+}
+.profilkepThird {
+  width: 105px;
+  border-radius: 50%;
+}
+.profilkepRest {
+  width: 70px;
+  border-radius: 50%;
+}*/
+.profilkepBG{
+  padding-top: 0%;
+  background-color: white;
+  border-radius: 20%;
+}
+.profilkep {
+  
+  width: 130px;
+  border-radius: 50%;
+}
+.Top3L {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+.TopLrest {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+

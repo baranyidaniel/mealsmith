@@ -1,11 +1,4 @@
-<!--bootstrap ideiglenesen behelyezve-->
-
-<h3 style="text-align: center">A legjobb séfek</h3>
-<!--<div class="parent">
-  <div class="div1"></div>
-  <div class="div2"></div>
-</div>-->
-<div class="container" ng-controller="topLCtrl">
+<!--<div class="container" ng-controller="topLCtrl">
   <table>
     <thead>
       <tr>
@@ -22,21 +15,19 @@
       </tr>
     </tbody>
   </table>
-</div>
-<!--<div class="Top3L row">
+</div>-->
+<div class="Top3L row" ng-repeat="top in tops | orderBy:'-points'">
   <div class="div1 col">
     <p>
-      <!--helyezés száma, utána a kép--><!--
-      
+      <div class="profilkepBG">
       <img
         src="/web/public/assets/img/blank_profil_pic.jpeg"
         alt="profilkép"
         title="profilkép"
         class="profilkep"
       />
-      user01 17644 pont 123 poszt
+    </div>
+      {{top.username}} {{top.points}} pont 123 poszt
     </p>
   </div>
-</div>-->
-<!--js file-ok ideiglenesen behelyezve-->
-
+</div>
