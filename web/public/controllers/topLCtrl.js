@@ -1,12 +1,17 @@
-app.controller('topLCtrl',['$scope', 'dbfactory','database', '$rootScope', '$location', function($scope, dbFactory, database, $rootScope, $location) {
-$scope.tops = [];
-  
-  $scope.fill = function () {
-    let data = {
-      points : database.selectAll('users', data).then(function(res) {
-        if(res.data.affectedRows != 0){
-          let 
-        }
-      })
-    };
-  }}]);
+  app.controller("topLCtrl", function ($scope, database, $rootScope, $location) {
+    $scope.tops =   [];
+  database.selectAll("users", {}).then(function (res) {
+    $scope.tops =res.data;
+    for (let i = 0; i < res.length; i++) {
+      $scope.top = {
+        username: res[i].username,
+        points: res[i].points
+      };
+      $scope.tops.push($scope.top);
+      console.log($scope.tops);
+    }
+   
+  }).catch(function (err) {
+    console.error(err);
+  });
+});
