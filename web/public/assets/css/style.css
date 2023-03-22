@@ -179,16 +179,11 @@ i {
   cursor: pointer;
 }
 
-i:hover {
-  color: greenyellow;
-  transition: color 0.2s;
-}
-
-.heart:hover {
+.heart {
   color: red;
 }
 
-.star:hover {
+.star {
   color: goldenrod;
 }
 
