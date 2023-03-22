@@ -1,16 +1,18 @@
 app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location, $filter) {
     $scope.receptek = []
-
-    database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
-    .then(function(res) {
-        let favorites = res.data;
-        favorites.forEach(item => {
-            database.selectByValue('posts', 'id', item.post_id).then(function(res) {
-                $scope.receptek.push(res.data[0])
+    
+    $scope.fill = function() {
+        $scope.receptek = []
+        database.selectByValue('favorites', 'user_id', $rootScope.loggedUser.id)
+        .then(function(res) {
+            let favorites = res.data;
+            favorites.forEach(item => {
+                database.selectByValue('posts', 'id', item.post_id).then(function(res) {
+                    $scope.receptek.push(res.data[0])
+                })
             })
         })
-        console.log($scope.receptek.length);
-    })
+    }
 
     $scope.elkeszites = function(id) {
         let idx = $scope.receptek.findIndex(item => item.id === id);
@@ -25,32 +27,19 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
         return moment($scope.receptek[idx].datum, "YYYYMMDD").fromNow()
     }
 
-    $scope.addToFavorites = function(id) {
+    $scope.removeFromFavorites = function(id) {
         database.selectAll('favorites')
             .then(function(res) {
                 
-                let talalt = false
                 res.data.forEach(item => {
                     if (item.user_id == $rootScope.loggedUser.id && item.post_id == id) {
+                        talalt = true
                         database.delete('favorites', 'post_id', id).then(function() {
-                            console.log('töröl');
-                            talalt = true
+                            $scope.fill()
                             return
                         })
                     }
                 });
-
-                if (!talalt) {
-                    let data = {
-                        user_id: $rootScope.loggedUser.id,
-                        post_id: id
-                    }
-    
-                    database.insert('favorites', data).then(function() {
-                        console.log("felvéve");
-                        return
-                    })
-                }
             }
         )
     }
@@ -62,4 +51,6 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     $scope.orderByPoints = function() {
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
+
+    $scope.fill()
 });
