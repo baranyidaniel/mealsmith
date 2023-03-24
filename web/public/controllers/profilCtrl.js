@@ -2,6 +2,7 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
 
     $scope.user = {}
     $scope.userRecipes = {}
+    $scope.kovetettUserek = {}
 
     if ($routeParams.id != null){
         database.selectByValue('posts', 'user_id', $routeParams.id)
@@ -26,5 +27,28 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
 
     $scope.showRecept = function(id) {
         $location.path('/receptek/' + id)
+    }
+
+    $scope.addToFollow = function (id){
+        database.selectAll('follows')
+          .then(function(res){
+            res.data.forEach(item => {
+              if (item.user_id == $rootScope.loggedUser.id && item.kovetett_user_id == id) {
+                  database.delete('follows', 'kovetett_user_id', id).then(function() {
+                      return
+                  })
+              }
+          });
+    
+          let data = {
+              user_id: $rootScope.loggedUser.id,
+              kovetett_user_id: id
+          }
+    
+          database.insert('follows', data).then(function() {
+              return
+          })
+      }
+    )
     }
 })
