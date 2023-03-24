@@ -52,5 +52,25 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
 
+    $scope.heartHover = function(id) {
+        document.getElementById('heart_' + id).classList.remove('bi-heart')
+        document.getElementById('heart_' + id).classList.add('bi-heart-fill')
+    }
+    
+    $scope.heartLeave = function(id) {
+        document.getElementById('heart_' + id).classList.remove('bi-heart-fill')
+        document.getElementById('heart_' + id).classList.add('bi-heart')
+    }
+
+    $scope.starHover = function(id) {
+        document.getElementById('star_' + id).classList.remove('bi-star')
+        document.getElementById('star_' + id).classList.add('bi-star-fill')
+    }
+
+    $scope.starLeave = function(id) {
+        document.getElementById('star_' + id).classList.remove('bi-star-fill')
+        document.getElementById('star_' + id).classList.add('bi-star')
+    }
+
     $scope.fill()
 });

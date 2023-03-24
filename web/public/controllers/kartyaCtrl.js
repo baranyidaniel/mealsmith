@@ -8,6 +8,7 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
 
         $scope.receptek.forEach(item => {
             database.selectByValue('favorites', 'post_id', item.post_id).then(function(res) {
+                item.favorited = false
                 if (res.data.length != 0 && res.data[0].user_id == $rootScope.loggedUser.id) {
                     item.favorited = true
                 }
@@ -45,8 +46,8 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
                 res.data.forEach(item => {
                     if (item.user_id == $rootScope.loggedUser.id && item.post_id == id) {
                         database.delete('favorites', 'post_id', id).then(function() {
-                            document.getElementById('star_' + id).classList.remove('bi-star')
-                            document.getElementById('star_' + id).classList.add('bi-star-fill')
+                            document.getElementById('star_' + id).classList.remove('bi-star-fill')
+                            document.getElementById('star_' + id).classList.add('bi-star')
                             item.favorited = false
                             return
                         })
@@ -79,12 +80,16 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
     }
 
     $scope.starHover = function(id) {
-        document.getElementById('star_' + id).classList.remove('bi-star')
-        document.getElementById('star_' + id).classList.add('bi-star-fill')
+        if (!$scope.receptek.find(x => x.id == id).favorited) {
+            document.getElementById('star_' + id).classList.remove('bi-star')
+            document.getElementById('star_' + id).classList.add('bi-star-fill')
+        }
     }
 
     $scope.starLeave = function(id) {
-        document.getElementById('star_' + id).classList.remove('bi-star-fill')
-        document.getElementById('star_' + id).classList.add('bi-star')
+        if (!$scope.receptek.find(x => x.id == id).favorited) {
+            document.getElementById('star_' + id).classList.remove('bi-star-fill')
+            document.getElementById('star_' + id).classList.add('bi-star')
+        }
     }
 });
