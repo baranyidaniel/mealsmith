@@ -1,10 +1,14 @@
 app = new angular.module('mealsmithApp', ['ngRoute']);
 
-app.run(function($rootScope) {
+app.run(function($rootScope, $location, database) {
     $rootScope.loggedUser = {};
     $rootScope.settings = {};
     $rootScope.settings.appTitle = 'MealSmith';
     $rootScope.loggedUser = angular.fromJson(sessionStorage.getItem('mealsmithApp'));
+
+    $rootScope.showRecept = function(id) {
+        $location.path('/receptek/' + id)
+    }
 });
 
 app.config(function($routeProvider) {
@@ -23,15 +27,15 @@ app.config(function($routeProvider) {
         })
         .when('/kedvencek', {
             templateUrl: 'views/kedvencek.html',
-            controller: 'userCtrl'
+            controller: 'kedvencekCtrl'
         })
         .when('/koveteseim', {
-            templateUrl: 'views/follows.html',
+            templateUrl: 'views/koveteseim.html',
             controller: 'userCtrl'
         })
         .when('/toplista', {
             templateUrl: 'views/toplista.html',
-            controller: 'userCtrl'
+            controller: 'topLCtrl'
         })
         .when('/profiles/:id', {
             templateUrl: 'views/profile.html',
@@ -48,4 +52,4 @@ app.config(function($routeProvider) {
         .otherwise({
 			redirectTo: '/'
 		})
-    });
+});

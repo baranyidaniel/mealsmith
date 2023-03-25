@@ -14,10 +14,10 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                        <a class="nav-link" href="#!/"><img src="./assets/img/logo_bg.png" alt="Mealsmith logo" class="logo_bg"></a>
+                    <a class="nav-link" href="#!/"><img src="./assets/img/logo_bg.png" alt="Mealsmith logo" class="logo_bg"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">                            
                             <li class="nav-item">
@@ -35,7 +35,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#!/toplista" ng-if="loggedUser">Toplista</a>
                             </li>
-
                         </ul>
                         <form class="d-flex" role="search" ng-controller="userCtrl" ng-if="!loggedUser">
 
@@ -56,7 +55,7 @@
                     </div>
                 </div>
             </nav>
-            </header>
+        </header>
         <main>
             <div class="container" ng-view>
                     
@@ -77,6 +76,9 @@
         <script src="./controllers/receptCtrl.js"></script>
         <script src="./controllers/ujReceptCtrl.js"></script>
         <script src="./controllers/receptLeirasCtrl.js"></script>
+        <script src="./controllers/kedvencekCtrl.js"></script>
         <script src="./controllers/profilCtrl.js"></script>
+        <script src="./controllers/kartyaCtrl.js"></script>
+        <script src="./controllers/topLCtrl.js"></script>
     </body>
 </html>
