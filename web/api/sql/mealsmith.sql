@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Feb 08. 13:46
--- Kiszolgáló verziója: 10.4.6-MariaDB
--- PHP verzió: 7.3.8
+-- Létrehozás ideje: 2023. Már 25. 14:18
+-- Kiszolgáló verziója: 10.4.11-MariaDB
+-- PHP verzió: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -35,7 +34,7 @@ CREATE TABLE `comments` (
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `comment` text COLLATE utf8_hungarian_ci NOT NULL,
-  `datum` datetime NOT NULL DEFAULT current_timestamp(),
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
   `points` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -46,6 +45,7 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `favorites` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -57,6 +57,7 @@ CREATE TABLE `favorites` (
 --
 
 CREATE TABLE `follows` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `kovetett_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -98,6 +99,7 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `short_desc`, `elk
 --
 
 CREATE TABLE `recept_kepek` (
+  `id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `filename` text COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -127,9 +129,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `passwd`, `display_name`, `description`, `points`, `reg`, `last`, `jog`, `img`) VALUES
-(1, 'admin', 'admin@admin.hu', 'a', NULL, NULL, 0, '2023-01-30 10:07:34', NULL, 0, NULL),
-(2, 'Teszt1', 'teszt@teszt.hu', 'a', 'Teszt Elek', 'asdasd', 32313, '2023-01-31 09:05:25', NULL, 1, NULL),
-(4, 'teszter', 'teszt@er.gov', 'gfdff', NULL, NULL, 0, '2023-01-31 09:29:36', NULL, 1, NULL);
+(1, 'admin', 'admin@admin.hu', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', NULL, NULL, 0, '2023-01-30 10:07:34', '2023-03-25 14:17:05', 0, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -145,18 +145,24 @@ ALTER TABLE `comments`
 -- A tábla indexei `favorites`
 --
 ALTER TABLE `favorites`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A tábla indexei `follows`
 --
 ALTER TABLE `follows`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A tábla indexei `posts`
 --
 ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `recept_kepek`
+--
+ALTER TABLE `recept_kepek`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -176,10 +182,28 @@ ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT a táblához `favorites`
+--
+ALTER TABLE `favorites`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `follows`
+--
+ALTER TABLE `follows`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT a táblához `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT a táblához `recept_kepek`
+--
+ALTER TABLE `recept_kepek`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `users`
