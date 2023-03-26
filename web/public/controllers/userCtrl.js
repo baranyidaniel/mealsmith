@@ -1,4 +1,4 @@
-app.controller("userCtrl", function ($scope, database, $rootScope, $location) {
+app.controller("userCtrl", function ($scope, database, $rootScope, $location, $route) {
   $scope.user = {};
 
   $scope.registration = function () {
@@ -69,6 +69,9 @@ app.controller("userCtrl", function ($scope, database, $rootScope, $location) {
       database.update('users', $rootScope.loggedUser.id, data).then(function(res) {
         sessionStorage.setItem('mealsmithApp', angular.toJson($rootScope.loggedUser));
       });
+
+      $location.path("/");
+      $route.reload()
     });
   };
 
@@ -76,5 +79,6 @@ app.controller("userCtrl", function ($scope, database, $rootScope, $location) {
     $rootScope.loggedUser = null;
     sessionStorage.removeItem("mealsmithApp");
     $location.path("/");
+    $route.reload()
   };
 });
