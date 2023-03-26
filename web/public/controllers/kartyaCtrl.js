@@ -1,20 +1,89 @@
 app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $filter) {
     $scope.receptek = []
-
-    database.selectAll('posts')
-    .then(function(res) {
+    $scope.favorites = []
+    $scope.likes = []
+    
+    database.selectAll('posts').then(function(res) {
         $scope.receptek = res.data;
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
 
-        $scope.receptek.forEach(item => {
-            database.selectByValue('favorites', 'post_id', item.post_id).then(function(res) {
-                item.favorited = false
-                if (res.data.length != 0 && res.data[0].user_id == $rootScope.loggedUser.id) {
-                    item.favorited = true
-                }
-            })
-        })
+        $scope.determineFavorited()
+        $scope.determineLiked()
     })
+
+    $scope.like = function(id) {
+        let recept = $scope.receptek.find(x => x.id == id)
+        
+        if (recept.liked) {
+            recept.points--
+            database.delete('likes', 'id', $scope.likes.find(x => x.post_id == id && x.user_id == $rootScope.loggedUser.id).id).then(function(res) {
+                database.update('posts', recept.id, {points: recept.points}).then(function(res) {
+                    $scope.determineLiked()
+                })
+            })
+        } else {
+            recept.points++
+            let data = {
+                user_id: $rootScope.loggedUser.id,
+                post_id: id
+            }
+
+            database.insert('likes', data).then(function() {
+                database.update('posts', id, {points: recept.points}).then(function(res) {
+                    $scope.determineLiked()
+                })
+            })
+        }
+    }
+
+    $scope.addToFavorites = function(id) {
+        let recept = $scope.receptek.find(x => x.id == id)
+        
+        if (recept.favorited) {
+            database.delete('favorites', 'id', $scope.favorites.find(x => x.post_id == id).id).then(function(res) {
+                $scope.determineFavorited()
+            })
+        } else {
+            let data = {
+                user_id: $rootScope.loggedUser.id,
+                post_id: id
+            }
+
+            database.insert('favorites', data).then(function() {
+                $scope.determineFavorited()
+            })
+        }
+    }
+
+    $scope.determineFavorited = function() {
+        $scope.favorites = []
+        database.selectAll('favorites').then(function(res) {
+            $scope.favorites = res.data
+
+            $scope.receptek.forEach(item => {
+                item.favorited = false
+                if ($scope.favorites.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
+                    item.favorited = true
+                    document.getElementById('star_' + item.id).classList.replace('bi-star', 'bi-star-fill')
+                }
+            });
+        })
+    }
+
+    $scope.determineLiked = function() {
+        $scope.likes = []
+        database.selectAll('likes').then(function(res) {
+            $scope.likes = res.data
+
+            $scope.receptek.forEach(item => {
+                item.liked = false
+                if ($scope.likes.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
+                    item.liked = true
+                    document.getElementById('heart_' + item.id).classList.replace('bi-heart', 'bi-heart-fill')
+                }
+            });
+        })
+    }
 
     $scope.elkeszites = function(id) {
         let idx = $scope.receptek.findIndex(item => item.id === id);
@@ -39,57 +108,35 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
         $scope.receptek = $filter('orderBy')($scope.receptek, '-points')
     }
 
-    $scope.addToFavorites = function(id) {
-        database.selectAll('favorites')
-            .then(function(res) {
-                
-                res.data.forEach(item => {
-                    if (item.user_id == $rootScope.loggedUser.id && item.post_id == id) {
-                        database.delete('favorites', 'post_id', id).then(function() {
-                            document.getElementById('star_' + id).classList.remove('bi-star-fill')
-                            document.getElementById('star_' + id).classList.add('bi-star')
-                            item.favorited = false
-                            return
-                        })
-                    }
-                });
-
-                let data = {
-                    user_id: $rootScope.loggedUser.id,
-                    post_id: id
-                }
-
-                database.insert('favorites', data).then(function() {
-                    document.getElementById('star_' + id).classList.remove('bi-star')
-                    document.getElementById('star_' + id).classList.add('bi-star-fill')
-                    $scope.receptek.find(x => x.id == id).favorited = true
-                    return
-                })
-            }
-        )
-    }
-
     $scope.heartHover = function(id) {
-        document.getElementById('heart_' + id).classList.remove('bi-heart')
-        document.getElementById('heart_' + id).classList.add('bi-heart-fill')
+        if (!$scope.receptek.find(x => x.id == id).liked) {
+            document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
+        } else {
+            document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+        }
     }
     
     $scope.heartLeave = function(id) {
-        document.getElementById('heart_' + id).classList.remove('bi-heart-fill')
-        document.getElementById('heart_' + id).classList.add('bi-heart')
+        if (!$scope.receptek.find(x => x.id == id).liked) {
+            document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+        } else {
+            document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
+        }
     }
 
     $scope.starHover = function(id) {
         if (!$scope.receptek.find(x => x.id == id).favorited) {
-            document.getElementById('star_' + id).classList.remove('bi-star')
-            document.getElementById('star_' + id).classList.add('bi-star-fill')
+            document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+        } else {
+            document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
         }
     }
-
+    
     $scope.starLeave = function(id) {
         if (!$scope.receptek.find(x => x.id == id).favorited) {
-            document.getElementById('star_' + id).classList.remove('bi-star-fill')
-            document.getElementById('star_' + id).classList.add('bi-star')
+            document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+        } else {
+            document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
         }
     }
 });
