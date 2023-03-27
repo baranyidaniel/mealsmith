@@ -95,5 +95,18 @@ app.factory('database', function($http, $q) {
             });
             return deferred.promise;
         },
+
+        select: function(tablename, field, value) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: url + '/' + tablename + '/' + field + '/' + value,
+            }).then(function(res) {
+                deferred.resolve(res);
+            }, function(res) {
+                deferred.reject(res);
+            });
+            return deferred.promise;
+        },
     }
 })
