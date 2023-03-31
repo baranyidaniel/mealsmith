@@ -30,7 +30,9 @@ app.controller("topLCtrl", function ($scope, database, $rootScope, $location) {
                 username: res[i].username,
                 points: res[i].points,
                 img: res[i].img,
+                posts: 0
             };
+             $scope.tops = angular.extend($scope.posts)
             $scope.tops.push($scope.top);
             console.log($scope.tops);
         }
