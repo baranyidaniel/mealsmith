@@ -6,7 +6,7 @@ app.controller("topLCtrl", function ($scope, database, $rootScope, $location) {
         for (let i = 0; i < res.length; i++) {
             $scope.post = {
                 id: res[i].id,
-                uid: res[i].userid
+                user_id: res[i].user_id
             };
             var tempArr = ($scope.posts).filter(function(d){
                 return (d.select == uid);
