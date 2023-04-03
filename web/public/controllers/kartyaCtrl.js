@@ -12,77 +12,86 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
     })
 
     $scope.like = function(id) {
-        let recept = $scope.receptek.find(x => x.id == id)
+        if ($rootScope.loggedUser != null) {
+            let recept = $scope.receptek.find(x => x.id == id)
         
-        if (recept.liked) {
-            recept.points--
-            database.delete('likes', 'id', $scope.likes.find(x => x.post_id == id && x.user_id == $rootScope.loggedUser.id).id).then(function(res) {
-                database.update('posts', recept.id, {points: recept.points}).then(function(res) {
-                    $scope.determineLiked()
+            if (recept.liked) {
+                recept.points--
+                database.delete('likes', 'id', $scope.likes.find(x => x.post_id == id && x.user_id == $rootScope.loggedUser.id).id).then(function(res) {
+                    database.update('posts', recept.id, {points: recept.points}).then(function(res) {
+                        $scope.determineLiked()
+                    })
                 })
-            })
-        } else {
-            recept.points++
-            let data = {
-                user_id: $rootScope.loggedUser.id,
-                post_id: id
-            }
+            } else {
+                recept.points++
+                let data = {
+                    user_id: $rootScope.loggedUser.id,
+                    post_id: id
+                }
 
-            database.insert('likes', data).then(function() {
-                database.update('posts', id, {points: recept.points}).then(function(res) {
-                    $scope.determineLiked()
+                database.insert('likes', data).then(function() {
+                    database.update('posts', id, {points: recept.points}).then(function(res) {
+                        $scope.determineLiked()
+                    })
                 })
-            })
+            }
         }
     }
 
     $scope.addToFavorites = function(id) {
-        let recept = $scope.receptek.find(x => x.id == id)
-        
-        if (recept.favorited) {
-            database.delete('favorites', 'id', $scope.favorites.find(x => x.post_id == id).id).then(function(res) {
-                $scope.determineFavorited()
-            })
-        } else {
-            let data = {
-                user_id: $rootScope.loggedUser.id,
-                post_id: id
+        if ($rootScope.loggedUser != null) {
+            let recept = $scope.receptek.find(x => x.id == id)
+            
+            if (recept.favorited) {
+                database.delete('favorites', 'id', $scope.favorites.find(x => x.post_id == id).id).then(function(res) {
+                    $scope.determineFavorited()
+                })
+            } else {
+                let data = {
+                    user_id: $rootScope.loggedUser.id,
+                    post_id: id
+                }
+    
+                database.insert('favorites', data).then(function() {
+                    $scope.determineFavorited()
+                })
             }
-
-            database.insert('favorites', data).then(function() {
-                $scope.determineFavorited()
-            })
         }
     }
 
     $scope.determineFavorited = function() {
-        $scope.favorites = []
-        database.selectAll('favorites').then(function(res) {
-            $scope.favorites = res.data
-
-            $scope.receptek.forEach(item => {
-                item.favorited = false
-                if ($scope.favorites.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
-                    item.favorited = true
-                    document.getElementById('star_' + item.id).classList.replace('bi-star', 'bi-star-fill')
-                }
-            });
-        })
+        if ($rootScope.loggedUser != null) {
+            $scope.favorites = []
+            database.selectAll('favorites').then(function(res) {
+                $scope.favorites = res.data
+    
+                $scope.receptek.forEach(item => {
+                    item.favorited = false
+                    if ($scope.favorites.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
+                        item.favorited = true
+                        document.getElementById('star_' + item.id).classList.replace('bi-star', 'bi-star-fill')
+                    }
+                });
+            })
+        }
     }
 
     $scope.determineLiked = function() {
-        $scope.likes = []
-        database.selectAll('likes').then(function(res) {
-            $scope.likes = res.data
-
-            $scope.receptek.forEach(item => {
-                item.liked = false
-                if ($scope.likes.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
-                    item.liked = true
-                    document.getElementById('heart_' + item.id).classList.replace('bi-heart', 'bi-heart-fill')
-                }
-            });
-        })
+        if ($rootScope.loggedUser != null) {
+            $scope.likes = []
+            database.selectAll('likes').then(function(res) {
+                $scope.likes = res.data
+    
+                $scope.receptek.forEach(item => {
+                    item.liked = false
+                    if ($scope.likes.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
+                        item.liked = true
+                        document.getElementById('heart_' + item.id).classList.replace('bi-heart', 'bi-heart-fill')
+                    }
+                });
+       
+            })
+        }
     }
 
     $scope.elkeszites = function(id) {

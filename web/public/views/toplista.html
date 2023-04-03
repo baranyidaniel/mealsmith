@@ -1,10 +1,10 @@
-<div class="Top3L row" ng-repeat="top in tops | orderBy:'-points'">
-    <div class="div1 col" ng-repeat="post in posts | groupBy:'user_id">
+<div class="Top3L row" ng-repeat="top in tops">
+    <div class="div1 col" ng-repeat="post in posts">
         <p>
             <div class="profilkepBG">
                 <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
             </div>
-            {{top.username}}|{{top.points}} pont| {{post.user_id}}poszt
+            {{top.username}} | {{top.points}} pont | {{top.posts}} poszt
         </p>
     </div>
 </div>
