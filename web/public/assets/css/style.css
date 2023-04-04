@@ -42,6 +42,10 @@ a {
     padding: 0;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .left h3 {
     margin: 0;
 }

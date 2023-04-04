@@ -1,6 +1,8 @@
 <div class="background-blur">
     <h1 class="text-center fw-bold small-caps">{{ recept.title }}</h1>
-    
+    <h3 class="text-center fw-bold small-caps"> 
+        Feltöltő: <a ng-click="showProfile(recept.user_id)">{{ feltolto.username }}</a>
+    </h3>
     <p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites()}}</p>
     <p class="text-center fw-bold small-caps">Pontok: {{recept.points}}</p>
     
