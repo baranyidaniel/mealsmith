@@ -1,66 +1,65 @@
 <div class="row">
-    <div class="col-lg-3 profilStat">
-        <div>
-            <img src="./assets/img/MicrosoftTeams-image.png" alt="Profilkép" width="70%">
-        </div>
-        <h3 class="displayName">{{ user.display_name }}</h3>
-        <p class="text-muted">{{ user.username }}</p>        
+  <div class="col-lg-3 profilStat">
+      <div>
+          <img src="./assets/img/MicrosoftTeams-image.png" alt="Profilkép" width="70%">
+      </div>
+      <h3 class="displayName">{{ user.display_name }}</h3>
+      <p class="text-muted">{{ user.username }}</p>        
 
-        <table>
-            <thead>
-                <tr>
-                    <td colspan="2" class="text-center">Statisztikák</td>
-                </tr>
-            </thead>
-            <tbody ng-controller="profilCtrl">
-                <tr>
-                    <td>Regisztrált:</td>
-                    <td>{{ userRegTime() }}</td>
-                </tr>
-                <tr>
-                    <td>Utoljára elérhető:</td>
-                    <td>{{ userLastLoginTime() }}</td>
-                </tr>
-                <tr>
-                    <td>Megosztott receptek:</td>
-                    <td>{{ userRecipes.length }}</td>
-                </tr>
-                <tr>
-                    <td>Pontok:</td>
-                    <td>{{ user.points }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <a class="btn btn-primary" ng-if="loggedUser.id == user.id" href="#!/ujrecept">Új recept hozzáadása</a><a class="btn btn-light" ng-if="loggedUser.id != user.id" ng-click="addToFollow(user.id)" class="followBtn">Követés</a>
-    </div>
+      <table>
+          <thead>
+              <tr>
+                  <td colspan="2" class="text-center">Statisztikák</td>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Regisztrált:</td>
+                  <td>{{ userRegTime() }}</td>
+              </tr>
+              <tr>
+                  <td>Utoljára elérhető:</td>
+                  <td>{{ userLastLoginTime() }}</td>
+              </tr>
+              <tr>
+                  <td>Megosztott receptek:</td>
+                  <td>{{ userRecipes.length }}</td>
+              </tr>
+              <tr>
+                  <td>Pontok:</td>
+                  <td>{{ user.points }}</td>
+              </tr>
+          </tbody>
+      </table>
+      <a class="btn btn-primary" ng-if="loggedUser.id == user.id" href="#!/ujrecept">Új recept hozzáadása</a><a class="btn btn-light" ng-if="loggedUser.id != user.id" ng-click="addToFollow(user.id)">Követés</a>
+  </div>
     
-    <div class="col-lg-9 profilReceptek">
-        <ul class="cards">
-            <li ng-repeat="recept in userRecipes">
-              <div class="card" data-aos="fade-up" data-aos-anchor-placement="bottom-center">
-                <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
-                <div class="card__overlay">
-                  <div class="card__header parent" ng-click="showRecept(recept.id)">
-                    <div class="div1_1">
-                      <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
-                    </div>
-                    <div class="div2_1">
-                      <h3 class="card__title">{{ recept.title }}</h3>
-                      <span class="card__status text-muted">Elkészítés: {{ elkeszites(recept.id) }}</span>
-                    </div>
-                  </div>
-                  <div class="card__description">
-                    <div class="icons">
-                      <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
-                      <i class="bi bi-star star" title="Kedvencek közé"></i>
-                    </div>
-                    <p class="text-muted">{{ ido(recept.id) }}</p>
-                    <p>{{ recept.short_desc }}</p>
-                  </div>
+  <div class="col-lg-9 profilReceptek">
+    <ul class="cards">
+        <li ng-repeat="recept in userRecipes">
+          <div class="card" data-aos="fade-up" data-aos-anchor-placement="bottom-center">
+            <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
+            <div class="card__overlay">
+              <div class="card__header parent" ng-click="showRecept(recept.id)">
+                <div class="div1_1">
+                  <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
                 </div>
-              </div>      
-            </li>
-          </ul>
-          
+                <div class="div2_1">
+                  <h3 class="card__title">{{ recept.title }}</h3>
+                  <span class="card__status text-muted">Elkészítés: {{ elkeszites(recept.id) }}</span>
+                </div>
+              </div>
+              <div class="card__description">
+                <div class="icons">
+                  <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
+                  <i class="bi bi-star star" title="Kedvencek közé"></i>
+                </div>
+                <p class="text-muted">{{ ido(recept.id) }}</p>
+                <p>{{ recept.short_desc }}</p>
+              </div>
+            </div>
+          </div>      
+        </li>
+      </ul>
     </div>
 </div>

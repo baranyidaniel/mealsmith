@@ -1,7 +1,8 @@
-app.controller('receptLeirasCtrl', function($scope, database, $routeParams) {
+app.controller('receptLeirasCtrl', function($scope, database, $routeParams, $location) {
     $scope.recept = {}
     $scope.hozzavalok = []
     $scope.bekezdesek = []
+    $scope.feltolto = {}
 
     if ($routeParams.id != null){
         $scope.recept = {}
@@ -21,6 +22,10 @@ app.controller('receptLeirasCtrl', function($scope, database, $routeParams) {
                     item: item
                 })
             });
+
+            database.selectByValue('users', 'id', $scope.recept.user_id).then(function(res) {
+                $scope.feltolto = res.data[0]
+            })
         })
     }
 
@@ -29,4 +34,8 @@ app.controller('receptLeirasCtrl', function($scope, database, $routeParams) {
         let perc = $scope.recept.elkeszitesi_ido % 60
         return `${ora != 0 ? ora + " óra" : ""} ${perc != 0 ? perc + " perc" : ""}`
     }
+
+    $scope.showProfile = function(id) {
+        $location.path('/profiles/' + id)
+      }
 });

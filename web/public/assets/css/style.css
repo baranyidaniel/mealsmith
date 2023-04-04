@@ -42,6 +42,10 @@ a {
     padding: 0;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .left h3 {
     margin: 0;
 }
@@ -243,29 +247,27 @@ form.reg {
 
 
 /*Toplista*/
-
+.Top3L{
+    
+}
+.kard{
+    display: flex !important;
+    direction: row !important;
+    flex-wrap: wrap !important;
+}
 .div1{
-    background-color: #26408b !important;
+    background-color: #26408b !important; 
+    border-radius: 10%;
+    color: white;
+    font-weight: lighter;
+    margin: 1%;
+    padding: 1%;
 }
-/*
-.profilkepSecond {
-  width: 117px;
-  border-radius: 50%;
+.profilkepBG{
+    background-color: white;
+    border-radius: 25%;
 }
-.profilkepFirst {
-  width: 130px;
-  border-radius: 50%;
-}
-.profilkepThird {
-  width: 105px;
-  border-radius: 50%;
-}
-.profilkepRest {
-  width: 70px;
-  border-radius: 50%;
-}*/
-
 .profilkep {
     width: 130px;
-    border-radius: 50%;
+    border-radius: 25%;
 }
