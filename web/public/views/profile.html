@@ -31,7 +31,7 @@
                 </tr>
             </tbody>
         </table>
-        <a class="btn btn-primary" ng-if="loggedUser.id == user.id" href="#!/ujrecept">Új recept hozzáadása</a><a class="btn btn-light" ng-if="loggedUser.id != user.id" ng-click="addToFollow(user.id)">Követés</a>
+        <a class="btn btn-primary" ng-if="loggedUser.id == user.id" href="#!/ujrecept">Új recept hozzáadása</a><a class="btn btn-light" ng-if="loggedUser.id != user.id" ng-click="addToFollow(user.id)" class="followBtn">Követés</a>
     </div>
     
     <div class="col-lg-9 profilReceptek">
