@@ -5,7 +5,6 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
     $scope.felvetel = function() {
         if ($scope.recept.title == null || 
             $scope.recept.elkeszitesi_ido == null ||
-            $scope.recept.short_desc == null ||
             $scope.recept.description == null ||
             $scope.recept.hozzavalok.length == 0) {
             alert('Tölts ki minden mezőt!!!!!!!!!')

@@ -9,10 +9,8 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   $scope.determineFollowed = function() {
     database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
       if (res.data.find(x => x.kovetett_user_id == $routeParams.id)) {
-        console.log('true');
         return true;
       }
-      console.log('false');
       return false;
     })
   }
