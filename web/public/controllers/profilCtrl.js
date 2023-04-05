@@ -3,6 +3,8 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   $scope.user = {}
   $scope.userRecipes = []
   $scope.userFollowed = false
+  $scope.favorites = []
+  $scope.likes = []
 
   $scope.determineFollowed = function() {
     database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
@@ -14,21 +16,38 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
       return false;
     })
   }
-  
-  if ($routeParams.id != null){
-    database.selectByValue('posts', 'user_id', $routeParams.id)
-    .then(function(res) {
-      $scope.userRecipes = res.data
-      $scope.userRecipes = $filter('orderBy')($scope.userRecipes, '-points')
-    })
 
-    database.selectByValue('users', 'id', $routeParams.id)
-    .then(function(res){
-      $scope.user = res.data[0]
-    })
+  $scope.determineFavorited = function() {
+    if ($rootScope.loggedUser != null) {
+      $scope.favorites = []
+      database.selectAll('favorites').then(function(res) {
+        $scope.favorites = res.data
 
-    if ($routeParams.id != $rootScope.loggedUser.id) {
-      $scope.userFollowed = $scope.determineFollowed()
+        $scope.userRecipes.forEach(item => {
+          item.favorited = false
+          if ($scope.favorites.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
+            item.favorited = true
+            document.getElementById('star_' + item.id).classList.replace('bi-star', 'bi-star-fill')
+          }
+        })
+      })
+    }
+  }
+
+  $scope.determineLiked = function() {
+    if ($rootScope.loggedUser != null) {
+      $scope.likes = []
+      database.selectAll('likes').then(function(res) {
+        $scope.likes = res.data
+
+        $scope.userRecipes.forEach(item => {
+          item.liked = false
+          if ($scope.likes.find(x => x.post_id == item.id && x.user_id == $rootScope.loggedUser.id)) {
+            item.liked = true
+            document.getElementById('heart_' + item.id).classList.replace('bi-heart', 'bi-heart-fill')
+          }
+        })
+      })
     }
   }
 
@@ -45,12 +64,14 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   }
 
   $scope.addToFollow = function (id){
+    let element = document.getElementById('kovetBtn')
     if ($scope.userFollowed) {
       let follows = []
       database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
         follows = res.data
         database.delete('follows', 'id', follows.find(x => x.kovetett_user_id == id).id).then(function() {
-          alert('követés megszüntetve :)')
+          element.innerText = 'Követés'
+          $scope.userFollowed = false
         })
       })
     }
@@ -62,8 +83,109 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
       }
 
       database.insert('follows', data).then(function() {
-        return
+        element.innerText = 'Követés leállítása'
+        $scope.userFollowed = true
       })
     }
+  }
+
+  $scope.like = function(id) {
+    if ($rootScope.loggedUser != null) {
+      let recept = $scope.userRecipes.find(x => x.id == id)
+  
+      if (recept.liked) {
+        recept.points--
+        database.delete('likes', 'id', $scope.likes.find(x => x.post_id == id && x.user_id == $rootScope.loggedUser.id).id).then(function(res) {
+          database.update('posts', recept.id, {points: recept.points}).then(function(res) {
+            $scope.determineLiked()
+          })
+        })
+      } else {
+        recept.points++
+        let data = {
+          user_id: $rootScope.loggedUser.id,
+          post_id: id
+        }
+
+        database.insert('likes', data).then(function() {
+          database.update('posts', id, {points: recept.points}).then(function(res) {
+            $scope.determineLiked()
+          })
+        })
+      }
+    }
+  }
+
+  $scope.addToFavorites = function(id) {
+    if ($rootScope.loggedUser != null) {
+      let recept = $scope.userRecipes.find(x => x.id == id)
+      
+      if (recept.favorited) {
+        database.delete('favorites', 'id', $scope.favorites.find(x => x.post_id == id).id).then(function(res) {
+          $scope.determineFavorited()
+        })
+      } else {
+        let data = {
+          user_id: $rootScope.loggedUser.id,
+          post_id: id
+        }
+
+        database.insert('favorites', data).then(function() {
+          $scope.determineFavorited()
+        })
+      }
+    }
+  }
+
+  $scope.heartHover = function(id) {
+    if (!$scope.userRecipes.find(x => x.id == id).liked) {
+      document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
+    } else {
+      document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+    }
+  }
+
+  $scope.heartLeave = function(id) {
+    if (!$scope.userRecipes.find(x => x.id == id).liked) {
+      document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+    } else {
+      document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
+    }
+  }
+
+  $scope.starHover = function(id) {
+    if (!$scope.userRecipes.find(x => x.id == id).favorited) {
+      document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+    } else {
+      document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+    }
+  }
+
+  $scope.starLeave = function(id) {
+    if (!$scope.userRecipes.find(x => x.id == id).favorited) {
+      document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+    } else {
+      document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+    }
+  }
+
+  if ($routeParams.id != null){
+    database.selectByValue('posts', 'user_id', $routeParams.id)
+    .then(function(res) {
+      $scope.userRecipes = res.data
+      $scope.userRecipes = $filter('orderBy')($scope.userRecipes, '-points')
+    })
+
+    database.selectByValue('users', 'id', $routeParams.id)
+    .then(function(res){
+      $scope.user = res.data[0]
+    })
+
+    if ($routeParams.id != $rootScope.loggedUser.id) {
+      $scope.userFollowed = $scope.determineFollowed()
+    }
+
+    $scope.determineFavorited()
+    $scope.determineLiked()
   }
 })

@@ -31,7 +31,8 @@
               </tr>
           </tbody>
       </table>
-      <a class="btn btn-primary" ng-if="loggedUser.id == user.id" href="#!/ujrecept">Új recept hozzáadása</a><a class="btn btn-light" ng-if="loggedUser.id != user.id" ng-click="addToFollow(user.id)">Követés</a>
+      <a class="btn btn-primary" ng-if="loggedUser.id == user.id" href="#!/ujrecept">Új recept hozzáadása</a>
+      <a class="btn btn-light" ng-if="loggedUser.id != user.id" ng-click="addToFollow(user.id)" id="kovetBtn">Követés</a>
   </div>
     
   <div class="col-lg-9 profilReceptek">
@@ -51,8 +52,8 @@
               </div>
               <div class="card__description">
                 <div class="icons">
-                  <i class="bi bi-heart heart" title="Kedvelés"> {{ recept.points }}</i>
-                  <i class="bi bi-star star" title="Kedvencek közé"></i>
+                  <i class="bi bi-heart heart" title="Kedvelés" ng-mouseover="heartHover(recept.id)" ng-mouseleave="heartLeave(recept.id)" id="heart_{{recept.id}}" ng-click="like(recept.id)"> {{ recept.points }}</i>
+                    <i class="bi bi-star star" title="Kedvencek közé" ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}" ng-click="addToFavorites(recept.id)"></i>
                 </div>
                 <p class="text-muted">{{ ido(recept.id) }}</p>
                 <p>{{ recept.short_desc }}</p>
