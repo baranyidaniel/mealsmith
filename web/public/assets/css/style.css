@@ -247,19 +247,18 @@ form.reg {
 
 
 /*Toplista*/
-.Top3L{
-    
-}
+
 .kard{
     display: flex !important;
     direction: row !important;
     flex-wrap: wrap !important;
 }
 .div1{
-    background-color: #26408b !important; 
+    background-color: #0D0221 !important; 
     border-radius: 10%;
     color: white;
     font-weight: lighter;
+    text-align: center !important;
     margin: 1%;
     padding: 1%;
 }
@@ -270,4 +269,7 @@ form.reg {
 .profilkep {
     width: 130px;
     border-radius: 25%;
+}
+.tg{
+    align-items: center;
 }
