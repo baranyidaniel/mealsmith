@@ -248,13 +248,14 @@ form.reg {
 
 /*Toplista*/
 
-.kard{
+.kard {
     display: flex !important;
     direction: row !important;
     flex-wrap: wrap !important;
 }
-.div1{
-    background-color: #0D0221 !important; 
+
+.topThree {
+    background-color: #0D0221 !important;
     border-radius: 10%;
     color: white;
     font-weight: lighter;
@@ -262,14 +263,27 @@ form.reg {
     margin: 1%;
     padding: 1%;
 }
-.profilkepBG{
+
+.topRest {
+    background-color: #0D0221 !important;
+    border-radius: 10%;
+    color: white;
+    font-weight: lighter;
+    text-align: center !important;
+    margin: 1%;
+    padding: 1%;
+}
+
+.profilkepBG {
     background-color: white;
     border-radius: 25%;
 }
+
 .profilkep {
     width: 130px;
     border-radius: 25%;
 }
-.tg{
+
+.tg {
     align-items: center;
 }
