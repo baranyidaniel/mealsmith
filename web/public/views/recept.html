@@ -35,4 +35,23 @@
             </ol>
         </div>
     </div>
+
+    <hr>
+    <h2 class="small-caps fw-bold text-center">Kommentek</h2>
+
+    <div class="newComment">
+        <textarea name="comment" ng-model="newComment"></textarea>
+        <button class="btn btn-primary" ng-click="addComment()">Komment</button>
+    </div>
+
+    <div class="comments">
+        <div class="comment" ng-repeat="comment in comments">
+            <div class="commentHeader">
+                <p>{{comment.poster.username}}</p> - <p>{{comment.date}}</p>
+            </div>
+            <div class="commentBody">
+                {{comment.comment}}
+            </div>
+        </div>
+    </div>
 </div>

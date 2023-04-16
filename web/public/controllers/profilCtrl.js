@@ -135,6 +135,15 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
     }
   }
 
+  $scope.elkeszites = function(id) {
+    let idx = $scope.userRecipes.findIndex(item => item.id === id);
+
+    let ora = Math.floor($scope.userRecipes[idx].elkeszitesi_ido / 60)
+    let perc = $scope.userRecipes[idx].elkeszitesi_ido % 60
+
+    return `${ora != 0 ? ora + " óra" : ""} ${perc != 0 ? perc + " perc" : ""}`
+}
+
   $scope.heartHover = function(id) {
     if (!$scope.userRecipes.find(x => x.id == id).liked) {
       document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')

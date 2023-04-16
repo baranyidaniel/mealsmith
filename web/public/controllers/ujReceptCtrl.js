@@ -1,4 +1,4 @@
-app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootScope) {
+app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
     $scope.recept = {}
     $scope.recept.hozzavalok = []
 
@@ -7,7 +7,7 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
             $scope.recept.elkeszitesi_ido == null ||
             $scope.recept.description == null ||
             $scope.recept.hozzavalok.length == 0) {
-            alert('Tölts ki minden mezőt!!!!!!!!!')
+            alert('Tölts ki minden *-al jelzett mezőt!')
             return
         }
 
@@ -25,19 +25,26 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
             if (res.data.affectedRows > 0) {
                 alert('A recept sikeresen felvéve!')
                 $scope.recept = {}
-            } else alert('Hiba történt az adatbázis művelet során.')
+            } 
+            else alert('Hiba történt az adatbázis művelet során.')
         })
 
         document.getElementById('hozzavalok').innerHTML = '';
     }
 
+    $scope.removeIngredient = function(id) {
+        $scope.recept.hozzavalok.splice(id, 1)
+        $scope.showIngredients()
+    }
+
     $scope.addIngredient = function() {
-        if ($scope.recept.hozzavalo == null || $scope.recept.mennyiseg == null) {
-            alert("Adj meg nevet és mennyiséget a hozzávalónak")
+        if ($scope.recept.hozzavalo == null) {
+            alert("Adj meg nevet a hozzávalónak")
             return;
         }
 
         $scope.recept.hozzavalok.push({
+            "id": $scope.recept.hozzavalok.length + 1,
             "hozzavalo": $scope.recept.hozzavalo,
             "mennyiseg": $scope.recept.mennyiseg
         })
@@ -52,12 +59,11 @@ app.controller('ujReceptCtrl', function($scope, database, $routeParams, $rootSco
         let div = document.getElementById('hozzavalok')
         div.innerHTML = ''
         let hozzavalokLista = document.createElement('ul')
+        hozzavalokLista.classList.add("hozzavalok")
         for (let i = 0; i < $scope.recept.hozzavalok.length; i++) {
-            let hozzavaloElem = document.createElement('li')
 
-            hozzavaloElem.innerText = `${$scope.recept.hozzavalok[i].hozzavalo} - ${$scope.recept.hozzavalok[i].mennyiseg}`
+            hozzavalokLista.innerHTML += `<li id="${$scope.recept.hozzavalok[i].id}">${$scope.recept.hozzavalok[i].hozzavalo} ${$scope.recept.hozzavalok[i].mennyiseg != "" ? " -" + $scope.recept.hozzavalok[i].mennyiseg : ""}<i class="bi bi-trash-fill" ng-click="removeIngredient(${$scope.recept.hozzavalok[i].id})"></i></li>`
 
-            hozzavalokLista.appendChild(hozzavaloElem)
         }
         
         div.appendChild(hozzavalokLista)

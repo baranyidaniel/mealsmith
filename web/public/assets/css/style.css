@@ -183,12 +183,20 @@ i {
     cursor: pointer;
 }
 
-.heart {
+.bi-plus-square:hover {
+    color: green;
+}
+
+em, .heart, .bi-trash-fill:hover {
     color: red;
 }
 
 .star {
     color: goldenrod;
+}
+
+.hozzavalok {
+    list-style-type: none;
 }
 
 #searchbar {
@@ -245,7 +253,6 @@ form.reg {
     color: var(--card-bg);
 }
 
-
 /*Toplista*/
 
 .kard {
@@ -287,3 +294,4 @@ form.reg {
 .tg {
     align-items: center;
 }
+
