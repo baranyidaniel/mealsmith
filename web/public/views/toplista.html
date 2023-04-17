@@ -1,9 +1,31 @@
-<div class="d-flex flex-row mb-3">
-  <section class="kard">
-    <section class="topThree p-2" ng-repeat="top in tops | orderBy:'-points' | limitTo: 3 ">
-      <section class="profilkepBG">
+<div class="d-inline-flex p-2">
+  <div class="kard">
+    <div class="topThree p-2" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
+      <div class="profilkepBG">
         <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-      </section>
+      </div>
+      <table class="tg">
+        <tbody>
+          <tr>
+            <td class="tg-0pky">{{item.username | limitTo: 8}}</td>
+          </tr>
+          <tr>
+            <td class="tg">{{item.points}} pont</td>
+          </tr>
+          <tr>
+            <td class="tg">{{item.posts}} poszt</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="d-inline-flex p-2">
+  <div class="kard">
+    <div class="topRest p-2" ng-repeat="top in tops | orderBy:'-points' ">
+      <div class="profilkepBG">
+        <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+      </div>
       <table class="tg">
         <tbody>
           <tr>
@@ -17,24 +39,6 @@
           </tr>
         </tbody>
       </table>
-    </section>
-    <section class="topRest p-2" ng-repeat="top in tops | orderBy:'-points' ">
-      <section class="profilkepBG">
-        <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-      </section>
-      <table class="tg">
-        <tbody>
-          <tr>
-            <td class="tg-0pky">{{top.username | limitTo: 8}}</td>
-          </tr>
-          <tr>
-            <td class="tg">{{top.points}} pont</td>
-          </tr>
-          <tr>
-            <td class="tg">{{top.posts}} poszt</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </section>
+    </div>
+  </div>
 </div>
