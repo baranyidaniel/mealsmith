@@ -8,6 +8,10 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
 
         database.selectAll('posts').then(function(res) {
             let posts = res.data
+            res.data.forEach(item => {
+                item.favorited = true
+            })
+            
             database.selectAll('favorites').then(function(res) {
                 res.data.forEach(item => {
                     if (item.user_id == $rootScope.loggedUser.id) {
@@ -92,19 +96,35 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     }
 
     $scope.heartHover = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).liked) {
         document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
-    }
-    
-    $scope.heartLeave = function(id) {
+        } else {
         document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+        }
+    }
+
+    $scope.heartLeave = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).liked) {
+        document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+        } else {
+        document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
+        }
     }
 
     $scope.starHover = function(id) {
-        document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
-    }
-    
-    $scope.starLeave = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).favorited) {
         document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+        } else {
+        document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+        }
+    }
+
+    $scope.starLeave = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).favorited) {
+        document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+        } else {
+        document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+        }
     }
 
     $scope.getFavorites()

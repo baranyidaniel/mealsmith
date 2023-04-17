@@ -142,7 +142,7 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
     let perc = $scope.userRecipes[idx].elkeszitesi_ido % 60
 
     return `${ora != 0 ? ora + " óra" : ""} ${perc != 0 ? perc + " perc" : ""}`
-}
+  }
 
   $scope.heartHover = function(id) {
     if (!$scope.userRecipes.find(x => x.id == id).liked) {

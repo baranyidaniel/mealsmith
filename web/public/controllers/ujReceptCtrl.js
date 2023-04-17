@@ -62,7 +62,7 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
         hozzavalokLista.classList.add("hozzavalok")
         for (let i = 0; i < $scope.recept.hozzavalok.length; i++) {
 
-            hozzavalokLista.innerHTML += `<li id="${$scope.recept.hozzavalok[i].id}">${$scope.recept.hozzavalok[i].hozzavalo} ${$scope.recept.hozzavalok[i].mennyiseg != "" ? " -" + $scope.recept.hozzavalok[i].mennyiseg : ""}<i class="bi bi-trash-fill" ng-click="removeIngredient(${$scope.recept.hozzavalok[i].id})"></i></li>`
+            hozzavalokLista.innerHTML += `<li id="${$scope.recept.hozzavalok[i].id}">${$scope.recept.hozzavalok[i].hozzavalo} ${$scope.recept.hozzavalok[i].mennyiseg != "" ? " - " + $scope.recept.hozzavalok[i].mennyiseg : ""}<i class="bi bi-trash-fill" ng-click="removeIngredient(${$scope.recept.hozzavalok[i].id})"></i></li>`
 
         }
         

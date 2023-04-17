@@ -1,7 +1,7 @@
-app.controller('receptLeirasCtrl', function($scope, $rootScope, database, $routeParams, $location) {
+app.controller('receptLeirasCtrl', function($scope, $filter, $rootScope, database, $routeParams, $location) {
     $scope.recept = {}
     $scope.feltolto = {}
-    $scope.newComment = ""
+    $scope.newComment = {}
     $scope.comments = []
     $scope.hozzavalok = []
     $scope.bekezdesek = []
@@ -33,9 +33,17 @@ app.controller('receptLeirasCtrl', function($scope, $rootScope, database, $route
         })
     }
 
+    $scope.deleteComment = function(id) {
+        if (confirm('Biztosan törölni akarod a kommentet?')) {
+            database.delete('comments', 'id', id).then(function(res) {
+                $scope.getComments()
+            })
+        }
+    }
+
     $scope.getComments = function() {
         database.selectByValue('comments', 'post_id', $routeParams.id).then(function(res) {
-            $scope.comments = res.data
+            $scope.comments = $filter('orderBy')(res.data, '-date')
 
             database.selectAll('users').then(function(res) {
                 $scope.comments.forEach(comment => {
@@ -56,19 +64,25 @@ app.controller('receptLeirasCtrl', function($scope, $rootScope, database, $route
     }
 
     $scope.addComment = function() {
-        if ($scope.newComment != "") {
+        if ($scope.newComment.comment != "") {
             let data = {
                 post_id: $routeParams.id,
                 user_id: $rootScope.loggedUser.id,
-                comment: $scope.newComment
+                comment: $scope.newComment.comment
             }
 
             database.insert('comments', data).then(function(res) {
                 if (res.data.affectedRows == 0) {
                     alert('Hiba')
                 } 
+                $scope.newComment.comment = ""
                 $scope.getComments()
             })
         }
+    }
+
+    $scope.ido = function(datum) {
+        moment.locale("hu")
+        return moment(datum).calendar()
     }
 });
