@@ -1,44 +1,39 @@
-<div class="d-inline-flex p-2">
-  <div class="kard">
-    <div class="topThree p-2" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
-      <div class="profilkepBG">
-        <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+<div class="d-flex justify-content-center">
+  <div class="topThree p-2 justify-content-center" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
+    <section class="profilkepBG">
+      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+    </section>
+    <section>
+      <div>
+        <div>
+          {{item.username}}
+        </div>
+        <div>
+          {{item.points}} pont
+        </div>
+        <div>
+          {{item.posts}} poszt
+        </div>
       </div>
-      <table class="tg">
-        <tbody>
-          <tr>
-            <td class="tg-0pky">{{item.username | limitTo: 8}}</td>
-          </tr>
-          <tr>
-            <td class="tg">{{item.points}} pont</td>
-          </tr>
-          <tr>
-            <td class="tg">{{item.posts}} poszt</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    </section>
   </div>
 </div>
-<div class="d-inline-flex p-2">
-  <div class="kard">
-    <div class="topRest p-2" ng-repeat="top in tops | orderBy:'-points' ">
-      <div class="profilkepBG">
-        <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+
+<div class="d-flex flex-column mb-3 align-items-center">
+  <div class="topRest p-2 " ng-repeat="top in tops | orderBy:'-points' ">
+    <section class="profilkepBG">
+      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+    </section>
+    <section>
+      <div>
+        {{top.username}}
       </div>
-      <table class="tg">
-        <tbody>
-          <tr>
-            <td class="tg-0pky">{{top.username | limitTo: 8}}</td>
-          </tr>
-          <tr>
-            <td class="tg">{{top.points}} pont</td>
-          </tr>
-          <tr>
-            <td class="tg">{{top.posts}} poszt</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div>
+        {{top.points}} pont
+      </div>
+      <div>
+        {{top.posts}} poszt
+      </div>
+    </section>
   </div>
 </div>
