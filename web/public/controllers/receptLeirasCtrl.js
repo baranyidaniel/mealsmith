@@ -64,7 +64,9 @@ app.controller('receptLeirasCtrl', function($scope, $filter, $rootScope, databas
     }
 
     $scope.addComment = function() {
-        if ($scope.newComment.comment != "") {
+        if ($scope.newComment.comment == "" || $scope.newComment.comment.trim() == "") {
+            alert('Írj be egy kommentet!')
+        } else {
             let data = {
                 post_id: $routeParams.id,
                 user_id: $rootScope.loggedUser.id,
@@ -78,7 +80,7 @@ app.controller('receptLeirasCtrl', function($scope, $filter, $rootScope, databas
                 $scope.newComment.comment = ""
                 $scope.getComments()
             })
-        }
+        }   
     }
 
     $scope.ido = function(datum) {
