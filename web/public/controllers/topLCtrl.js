@@ -11,6 +11,22 @@ app.controller("topLCtrl", function ($scope, database) {
       $scope.tops.forEach((item) => {
         item.posts = $scope.getUserPosts(item.id);
       });
+
+      //top 3 külön vétele
+      $scope.tops.sort(function (a, b) {
+        return b.points - a.points;
+      });
+      $scope.top3.push.apply($scope.top3, $scope.tops.slice(0, 3));
+      $scope.tops.splice(0, 3);
+
+      //top 3 sorrendbe állításas: 3rd - 1st - 2nd
+      $scope.top3.sort(function (a, b) {
+        return b.points - a.points;
+      });
+
+      var temp = $scope.top3[0];
+      $scope.top3[0] = $scope.top3[1];
+      $scope.top3[1] = temp;
     });
   });
 
@@ -23,10 +39,4 @@ app.controller("topLCtrl", function ($scope, database) {
 
     return num;
   };
-
-    $scope.tops.sort(function (a, b){
-        return b.points - a.points;
-    });
-    $scope.top3.push.apply($scope.top3, $scope.tops.slice(0, 3));
-    $scope.tops.splice(0, 3);
 });

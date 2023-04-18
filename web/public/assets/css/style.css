@@ -246,7 +246,6 @@ header {
 
 form.reg {
     text-align: center;
-    padding-top: 100px;
 }
 
 .displayName {
@@ -255,11 +254,6 @@ form.reg {
 
 /*Toplista*/
 
-.kard {
-    display: flex !important;
-    direction: row !important;
-    flex-wrap: wrap !important;
-}
 
 .topThree {
     background-color: #0D0221 !important;
@@ -277,8 +271,10 @@ form.reg {
     color: white;
     font-weight: lighter;
     text-align: center !important;
+    justify-content: center !important;
     margin: 1%;
     padding: 1%;
+    width: min-content;
 }
 
 .profilkepBG {

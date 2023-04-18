@@ -1,42 +1,39 @@
-<div class="d-flex flex-row mb-3">
-  <section class="kard">
-    <section class="topThree p-2" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
-      <section class="profilkepBG">
-        <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-      </section>
-      <table class="tg">
-        <tbody>
-          <tr>
-            <td class="tg-0pky">{{item.username | limitTo: 8}}</td>
-          </tr>
-          <tr>
-            <td class="tg">{{item.points}} pont</td>
-          </tr>
-          <tr>
-            <td class="tg">{{item.posts}} poszt</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="d-flex justify-content-center">
+  <div class="topThree p-2 justify-content-center" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
+    <section class="profilkepBG">
+      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
     </section>
+    <section>
+      <div>
+        <div>
+          {{item.username}}
+        </div>
+        <div>
+          {{item.points}} pont
+        </div>
+        <div>
+          {{item.posts}} poszt
+        </div>
+      </div>
     </section>
-    <section class="kard">
-    <section class="topRest p-2" ng-repeat="top in tops | orderBy:'-points' ">
-      <section class="profilkepBG">
-        <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-      </section>
-      <table class="tg">
-        <tbody>
-          <tr>
-            <td class="tg-0pky">{{top.username | limitTo: 8}}</td>
-          </tr>
-          <tr>
-            <td class="tg">{{top.points}} pont</td>
-          </tr>
-          <tr>
-            <td class="tg">{{top.posts}} poszt</td>
-          </tr>
-        </tbody>
-      </table>
+  </div>
+</div>
+
+<div class="d-flex flex-column mb-3 align-items-center">
+  <div class="topRest p-2 " ng-repeat="top in tops | orderBy:'-points' ">
+    <section class="profilkepBG">
+      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
     </section>
-  </section>
+    <section>
+      <div>
+        {{top.username}}
+      </div>
+      <div>
+        {{top.points}} pont
+      </div>
+      <div>
+        {{top.posts}} poszt
+      </div>
+    </section>
+  </div>
 </div>

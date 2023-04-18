@@ -1,7 +1,7 @@
 <div class="background-blur">
     <h1 class="text-center fw-bold small-caps">{{ recept.title }}</h1>
     <h3 class="text-center fw-bold small-caps"> 
-        Feltöltő: <a ng-click="showProfile(recept.user_id)">{{ feltolto.username }}</a>
+        Feltöltő: <a ng-click="showProfile(recept.user_id)">{{ feltolto.display_name != null ? feltolto.display_name : feltolto.username }}</a>
     </h3>
     <p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites()}}</p>
     <p class="text-center fw-bold small-caps">Pontok: {{recept.points}}</p>
@@ -39,19 +39,27 @@
     <hr>
     <h2 class="small-caps fw-bold text-center">Kommentek</h2>
 
-    <div class="newComment">
-        <textarea name="comment" ng-model="newComment"></textarea>
-        <button class="btn btn-primary" ng-click="addComment()">Komment</button>
+    <div class="newComment" ng-if="loggedUser != null">
+        <div class="form-floating">
+            <textarea class="form-control mb-3" placeholder="Leave a comment here" style="height: 100px" ng-model="newComment.comment"></textarea>
+            <label for="floatingTextarea2">Mondj valamit...</label>
+          </div>
+        <a class="btn btn-primary" ng-click="addComment()">Komment</a>
+        <hr>
     </div>
 
     <div class="comments">
+        <div ng-if="comments.length == 0">
+            <p class="small-caps fw-bold text-center">Még nem érkezett komment.</p>
+        </div>
         <div class="comment" ng-repeat="comment in comments">
             <div class="commentHeader">
-                <p>{{comment.poster.username}}</p> - <p>{{comment.date}}</p>
+                <p><a ng-click="showProfile(comment.poster.id)">{{comment.poster.display_name != null ? comment.poster.display_name : comment.poster.username }}</a> - {{ido(comment.date)}} <i class="bi bi-trash-fill" ng-click="deleteComment(comment.id)" ng-if="comment.user_id == loggedUser.id"></i></p>
             </div>
             <div class="commentBody">
                 {{comment.comment}}
             </div>
+            <hr>
         </div>
     </div>
 </div>
