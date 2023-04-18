@@ -257,24 +257,24 @@ form.reg {
 
 .topThree {
     background-color: #0D0221 !important;
-    border-radius: 10%;
+
+    border-radius: 25px;
     color: white;
     font-weight: lighter;
     text-align: center !important;
-    margin: 1%;
-    padding: 1%;
+    margin: 3%;
+    padding: 20px; 
 }
 
 .topRest {
     background-color: #0D0221 !important;
-    border-radius: 10%;
+    border-radius: 25px;
     color: white;
     font-weight: lighter;
-    text-align: center !important;
-    justify-content: center !important;
-    margin: 1%;
-    padding: 1%;
-    width: min-content;
+    height: fit-content;
+    padding: 20px; 
+    margin-bottom: 25px;
+    width: 40%;
 }
 
 .profilkepBG {
@@ -290,4 +290,6 @@ form.reg {
 .tg {
     align-items: center;
 }
-
+h2{
+    text-align: center;
+}
