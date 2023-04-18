@@ -5,14 +5,31 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   $scope.userFollowed = false
   $scope.favorites = []
   $scope.likes = []
+  $scope.followersNumber = 0
+
+  $scope.editProfile = function() {
+    $location.path('/editprofile/' + $routeParams.id)
+  }
+
+  $scope.getFollowersNumber = function() {
+    database.selectByValue('follows', 'kovetett_user_id', $routeParams.id).then(function(res) {
+      $scope.followersNumber = res.data.length
+    })
+  }
 
   $scope.determineFollowed = function() {
-    database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
-      if (res.data.find(x => x.kovetett_user_id == $routeParams.id)) {
-        return true;
-      }
-      return false;
-    })
+    if ($routeParams.id != $rootScope.loggedUser.id) {
+      database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
+        if (res.data.find(x => x.kovetett_user_id == $routeParams.id)) {
+          document.getElementById('kovetBtn').innerText = 'Követés leállítása'
+          $scope.getFollowersNumber()
+          return true;
+        }
+        document.getElementById('kovetBtn').innerText = 'Követés'
+        $scope.getFollowersNumber()
+        return false;
+      })
+    }
   }
 
   $scope.determineFavorited = function() {
@@ -63,28 +80,31 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
 
   $scope.addToFollow = function (id){
     let element = document.getElementById('kovetBtn')
-    if ($scope.userFollowed) {
-      let follows = []
-      database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
-        follows = res.data
+    let follows = []
+    database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
+      follows = res.data
+
+      if (follows.find(x => x.kovetett_user_id == id)) {
         database.delete('follows', 'id', follows.find(x => x.kovetett_user_id == id).id).then(function() {
           element.innerText = 'Követés'
           $scope.userFollowed = false
+          $scope.getFollowersNumber()
         })
-      })
-    }
-    else 
-    {
-      let data = {
-        user_id: $rootScope.loggedUser.id,
-        kovetett_user_id: id
       }
-
-      database.insert('follows', data).then(function() {
-        element.innerText = 'Követés leállítása'
-        $scope.userFollowed = true
-      })
-    }
+      else 
+      {
+        let data = {
+          user_id: $rootScope.loggedUser.id,
+          kovetett_user_id: id
+        }
+  
+        database.insert('follows', data).then(function() {
+          element.innerText = 'Követés leállítása'
+          $scope.userFollowed = true
+          $scope.getFollowersNumber()
+        })
+      }
+    })
   }
 
   $scope.like = function(id) {
@@ -175,6 +195,9 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
       document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
     }
   }
+
+  $scope.getFollowersNumber()
+  $scope.determineFollowed()
 
   if ($routeParams.id != null){
     database.selectByValue('posts', 'user_id', $routeParams.id)
