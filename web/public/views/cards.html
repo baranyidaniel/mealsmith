@@ -1,7 +1,9 @@
 <div ng-controller="kartyaCtrl">
-    <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByLatest()">Legfrissebbek</a>
-    <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByPoints()">Legjobbak</a>
-
+    <div class="text-center">
+        <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByLatest()">Legfrissebbek</a>
+        <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByPoints()">Legjobbak</a>
+    </div>
+    
     <ul class="cards">
         <li ng-repeat="recept in receptek | filter:searchText">
         <div class="card">

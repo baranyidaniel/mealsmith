@@ -233,6 +233,7 @@ header {
 .background-blur {
     background-color: rgba(150, 150, 150, 0.5);
     backdrop-filter: blur(2px);
+    border-radius: 5px;
     padding: 1em;
 }
 
@@ -292,4 +293,19 @@ form.reg {
 }
 h2{
     text-align: center;
+}
+
+.btn-primary {
+    background-color: #26408b;
+    border-color: #26408b;
+}
+
+.btn-warning {
+    background-color: #a6cfd5;
+    border-color: #a6cfd5;
+}
+
+.btn-warning:hover {
+    background-color: #c2f7ff !important;
+    border-color: #c2f7ff !important;
 }

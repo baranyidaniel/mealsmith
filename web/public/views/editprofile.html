@@ -1,0 +1,47 @@
+<h2 class="text-center fw-bold small-caps">Profil módosítása</h2>
+
+<div class="background-blur">
+    <a class="btn btn-primary mb-3" ng-click="backToProfile()"><i class="bi bi-arrow-left"></i> Vissza a profilomhoz</a>
+
+    <div class="mb-3">
+        <h3 class="small-caps fw-bold">Megjelenítési név</h3>
+        <p class="text-muted">Ez a név fog megjelenni a feltöltött recepteknél, valamint a kommentjeidnél.</p>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" placeholder="Megjelenítési név" ng-model="userEdit.display_name">
+            <label for="floatingInput">Megjelenítési név</label>
+        </div>
+        <a class="btn btn-primary" ng-click="modDisplayName()">Módosít</a><hr>
+    </div>
+    
+    <div class="mb-3">
+        <h3 class="small-caps fw-bold">E-mail cím</h3>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" placeholder="E-mail" ng-model="userEdit.email">
+            <label for="floatingInput">E-mail cím</label>
+        </div>
+        <a class="btn btn-primary" ng-click="modEmail()">Módosít</a><hr>
+    </div>
+    
+    <div class="mb-3">
+        <h3 class="small-caps fw-bold">Jelszó</h3>
+        <p class="text-muted">A jelszavadnak 8-32 karakter hosszúságúnak kell lennie, valamint tartalmaznia kell legalább egy kisbetűt, nagybetűt és számot.</p>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" placeholder="Jelszó" ng-model="userEdit.oldpw">
+            <label for="floatingInput">Jelenlegi jelszó</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" placeholder="Jelszó" ng-model="userEdit.newpw1">
+            <label for="floatingInput">Új jelszó</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" placeholder="Jelszó" ng-model="userEdit.newpw2">
+            <label for="floatingInput">Új jelszó mégegyszer</label>
+        </div>
+
+        <a class="btn btn-primary" ng-click="modPassword()">Módosít</a>
+    </div>
+
+</div>
