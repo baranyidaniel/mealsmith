@@ -30,8 +30,10 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
                 }
 
                 database.insert('likes', data).then(function() {
-                    database.update('posts', id, {points: recept.points}).then(function(res) {
-                        $scope.determineLiked()
+                    database.update('posts', id, {points: recept.points}).then(function() {
+                        database.update('users', recept.user_id, {points: recept.points}).then(function() {
+                            $scope.determineLiked()
+                        })
                     })
                 })
             }

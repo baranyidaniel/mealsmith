@@ -68,6 +68,9 @@
     </div>
 
     <div id="hozzavalok">
+        <ul>
+            <li ng-repeat="item in recept.hozzavalok" id="{{'li_' + item.id}}">{{item.hozzavalo}}{{item.mennyiseg != "" ? " - " + item.mennyiseg : ""}}<i class="bi bi-trash-fill" ng-click="removeIngredient(item.id)"></i></li>
+        </ul>
     </div>
 
     <div class="form-group row mb-3">
