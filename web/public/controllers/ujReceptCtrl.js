@@ -32,13 +32,10 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
         document.getElementById('hozzavalok').innerHTML = '';
     }
 
-    $scope.removeIngredient = function(id) {
-        $scope.recept.hozzavalok.splice(id, 1)
-        $scope.showIngredients()
-    }
+    
 
     $scope.addIngredient = function() {
-        if ($scope.recept.hozzavalo == null) {
+        if ($scope.recept.hozzavalo == null || $scope.recept.hozzavalo == "") {
             alert("Adj meg nevet a hozzávalónak")
             return;
         }
@@ -52,7 +49,7 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
         $scope.recept.hozzavalo = ''
         $scope.recept.mennyiseg = ''
 
-        $scope.showIngredients()
+        //$scope.showIngredients()
     }
 
     $scope.showIngredients = function() {
@@ -76,5 +73,12 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
         });
 
         return string;
+    }
+
+    $scope.removeIngredient = function(id) {
+        let element = document.getElementById('li_'+id)
+        $scope.recept.hozzavalok.splice(id, 1)
+        document.getElementById('hozzavalok').removeChild(element)
+        console.log($scope.recept.hozzavalok);
     }
 });
