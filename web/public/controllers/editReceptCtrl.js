@@ -1,13 +1,37 @@
-app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
+app.controller('editReceptCtrl', function($scope, database, $rootScope, $routeParams, $location) {
     $scope.recept = {}
     $scope.recept.hozzavalok = []
 
-    $scope.felvetel = function() {
+    $scope.displayIngredients = function() {
+        $scope.recept.hozzavalok = []
+
+        $scope.recept.ingredients.split('|').forEach(line => {
+            $scope.recept.hozzavalok.push({
+                "id": $scope.recept.hozzavalok.length + 1,
+                "hozzavalo": line.split(';')[0],
+                "mennyiseg": line.split(';')[1]
+            })
+        });
+    }
+
+    $scope.getDetails = function() {
+        database.selectByValue('posts', 'id', $routeParams.id).then(function(res) {
+            $scope.recept = res.data[0]
+
+            $scope.displayIngredients()
+        })
+    }
+
+    $scope.apply = function() {
         if ($scope.recept.title == null || 
             $scope.recept.elkeszitesi_ido == null ||
-            $scope.recept.description == null ||
-            $scope.recept.hozzavalok.length == 0) {
+            $scope.recept.description == null) {
             alert('Tölts ki minden *-al jelzett mezőt!')
+            return
+        }
+
+        if ($scope.recept.hozzavalok.length == 0) {
+            alert('Adj meg legalább egy hozzávalót!')
             return
         }
 
@@ -21,16 +45,20 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
             adag: $scope.recept.adag
         }
         
-        database.insert('posts', data).then(function(res) {
+        database.update('posts', $routeParams.id, data).then(function(res) {
             if (res.data.affectedRows > 0) {
-                alert('A recept sikeresen felvéve!')
-                $scope.recept = {}
+                alert('A recept sikeresen módosítva!')
+                $location.path('/receptek/' + $routeParams.id)
             } 
             else alert('Hiba történt az adatbázis művelet során.')
         })
     }
 
-    
+    $scope.cancel = function() {
+        if (confirm('Ha visszalépsz, az összes módosított adat elvész!')) {
+            $location.path('/receptek/' + $routeParams.id)
+        }
+    }
 
     $scope.addIngredient = function() {
         if ($scope.recept.hozzavalo == null || $scope.recept.hozzavalo == "") {
@@ -51,7 +79,7 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
 
     $scope.getIngredients = function() {
         let string = ""
-        
+
         for (let i = 0; i < $scope.recept.hozzavalok.length; i++) {
             const item = $scope.recept.hozzavalok[i];
             string += `${item.hozzavalo};${item.mennyiseg}${i == $scope.recept.hozzavalok.length - 1 ? '' : '|'}`
@@ -68,4 +96,6 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
 
         document.getElementById('hozzavalokLista').removeChild(element)
     }
+
+    $scope.getDetails()
 });

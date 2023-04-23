@@ -2,6 +2,7 @@ app.controller("kovetesCtrl", function ($scope, database, $rootScope, $location,
     $scope.follows = []
 
     $scope.getFollows = function() {
+        $scope.follows = []
         database.selectAll("follows").then(function(res) {
             let followed = res.data
             database.selectAll("users").then(function(res) {

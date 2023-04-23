@@ -33,6 +33,26 @@ app.controller('receptLeirasCtrl', function($scope, $filter, $rootScope, databas
         })
     }
 
+    $scope.editRecept = function() {
+        $location.path('/editrecept/' + $routeParams.id)
+    }
+
+    $scope.deleteRecept = function() {
+        if (confirm('Biztosan törölni akarod ezt a receptet? Ez nem vonható vissza.')) {
+
+            //recepttel kapcsolatos dolgok törlése...
+            database.delete('comments', 'post_id', $routeParams.id).then(function() {
+                database.delete('likes', 'post_id', $routeParams.id).then(function() {
+                    database.delete('favorites', 'post_id', $routeParams.id).then(function() {
+                        database.delete('posts', 'id', $routeParams.id).then(function() {
+                            $location.path('/')
+                        })
+                    })
+                })
+            })
+        }
+    }
+
     $scope.deleteComment = function(id) {
         if (confirm('Biztosan törölni akarod a kommentet?')) {
             database.delete('comments', 'id', id).then(function(res) {

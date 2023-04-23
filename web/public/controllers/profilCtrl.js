@@ -115,7 +115,9 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
         recept.points--
         database.delete('likes', 'id', $scope.likes.find(x => x.post_id == id && x.user_id == $rootScope.loggedUser.id).id).then(function(res) {
           database.update('posts', recept.id, {points: recept.points}).then(function(res) {
-            $scope.determineLiked()
+            database.update('users', recept.user_id, {points: recept.points}).then(function() {
+              $scope.determineLiked()
+            })
           })
         })
       } else {
@@ -127,7 +129,9 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
 
         database.insert('likes', data).then(function() {
           database.update('posts', id, {points: recept.points}).then(function(res) {
-            $scope.determineLiked()
+            database.update('users', recept.user_id, {points: recept.points}).then(function() {
+              $scope.determineLiked()
+            })
           })
         })
       }

@@ -1,8 +1,5 @@
 <div class="background-blur">
-    <h1 class="small-caps text-center fw-bold mb-3">Új recept hozzáadása</h1>
-
-    <h3 class="small-caps text-center fw-bold mb-3">A <em>*</em>-al jelölt mezők kitöltése kötelező!</h3>
-    <hr>
+    <h1 class="small-caps text-center fw-bold mb-3">Recept szerkesztése</h1>
 
     <div class="form-group row mb-3">
         <label for="title" class="col-sm-2 col-form-label">Cím<em>*</em></label>
@@ -80,7 +77,8 @@
 
     <div class="form-group row mb-3">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary" ng-click="felvetel()">Recept felvétele</button>
+            <button type="submit" class="btn btn-primary" ng-click="apply()">Módosít</button>
+            <button type="submit" class="btn btn-warning" ng-click="cancel()">Mégsem</button>
         </div>
     </div>
 </div>

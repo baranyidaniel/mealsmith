@@ -85,7 +85,7 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
         if ($scope.userEdit.oldpw == null || $scope.userEdit.oldpw.trim() == "" ||
             $scope.userEdit.newpw1 == null || $scope.userEdit.newpw1.trim() == "" ||
             $scope.userEdit.newpw2 == null || $scope.userEdit.newpw2.trim() == "") {
-            alert('Az jelszó nem lehet üres!')
+            alert('Adj meg egy jelszót!')
             return
         }
 

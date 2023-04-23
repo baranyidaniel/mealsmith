@@ -6,6 +6,11 @@
     <p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites()}}</p>
     <p class="text-center fw-bold small-caps">Pontok: {{recept.points}}</p>
     
+    <div class="text-center" ng-if="loggedUser.id == feltolto.id || loggedUser.jog == 0">
+        <a class="btn btn-warning" ng-click="editRecept()">Szerkesztés</a>
+        <a class="btn btn-danger" ng-click="deleteRecept()">Törlés</a>
+    </div>
+
     <h3 class="fw-bold small-caps">Hozzávalók:</h3>
     <table class="table table-borderless ingredientsTable">
         <thead>
@@ -29,7 +34,7 @@
         <h3 class="fw-bold small-caps">Elkészítés</h3>
         <div>
             <ol>
-                <li ng-repeat="bekezdes in bekezdesek">
+                <li class="mb-3" ng-repeat="bekezdes in bekezdesek">
                     {{bekezdes.item}}
                 </li>
             </ol>
