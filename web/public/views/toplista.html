@@ -1,7 +1,7 @@
 <h2>A legjobb séfek</h2>
 <div class="topThreeContainer d-flex justify-content-center">
   <!--Top 2-->
-  <div class="d-flex justify-content-center top2 mb-7">
+  <div class="d-flex justify-content-center mb-7 top2">
     <div class="topThree p-2 justify-content-center" ng-repeat="item in top2 | orderBy:'-points' | limitTo: 3 ">
       <section class="profilkepBG">
         <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
@@ -9,7 +9,7 @@
       <section>
         <div>
           <div>
-            {{item.username}}
+            #2 - {{item.username}}
           </div>
           <div>
             {{item.points}} pont
@@ -22,7 +22,7 @@
     </div>
   </div>
   <!--Top 1-->
-  <div class="d-flex justify-content-center top1 mb-10">
+  <div class="d-flex justify-content-center mb-10 top1">
     <div class="topThree p-2 justify-content-center" ng-repeat="item in top1 | orderBy:'-points' | limitTo: 3 ">
       <section class="profilkepBG">
         <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
@@ -30,7 +30,7 @@
       <section>
         <div>
           <div>
-            {{item.username}}
+            #1 - {{item.username}}
           </div>
           <div>
             {{item.points}} pont
@@ -43,7 +43,7 @@
     </div>
   </div>
   <!--Top 3-->
-  <div class="d-flex justify-content-center top3 mb-5">
+  <div class="d-flex justify-content-center mb-5 top3">
     <div class="topThree p-2 justify-content-center" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
       <section class="profilkepBG">
         <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
@@ -51,7 +51,7 @@
       <section>
         <div>
           <div>
-            {{item.username}}
+            #3 - {{item.username}}
           </div>
           <div>
             {{item.points}} pont

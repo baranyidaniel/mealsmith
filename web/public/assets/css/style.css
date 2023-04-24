@@ -257,9 +257,10 @@ form.reg {
 
 /*Toplista*/
 
-.topThreeContainer{
+.topThreeContainer {
     padding-bottom: 3%;
 }
+
 .topThree {
     background-color: #0D0221 !important;
     border-radius: 25px;
@@ -292,16 +293,21 @@ form.reg {
 }
 
 .top2 {
-color: #B1B1B1 !important;
+    height: 300px;
+    color: #B1B1B1 !important;
+    width: max-content;
 }
 
 .top1 {
+    height: 350px;
     margin-left: 5%;
     margin-right: 5%;
+    width: max-content;
 }
 
 .top3 {
-
+    height: 250px;
+    width: max-content;
 }
 
 .tg {
