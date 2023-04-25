@@ -41,7 +41,17 @@
             <label for="floatingInput">Új jelszó mégegyszer</label>
         </div>
 
-        <a class="btn btn-primary" ng-click="modPassword()">Módosít</a>
+        <a class="btn btn-primary" ng-click="modPassword()">Módosít</a><hr>
+    </div>
+
+    <div class="mb-3">
+        <h3 class="small-caps fw-bold">Profilkép beállítása</h3>
+        <div class="form-floating mb-3">
+            <input type="file" class="form-control" id="pic" placeholder="Kép:" file-model="userEdit.file" accept="image/*">
+            <label for="name">Kép:</label>
+        </div>
+
+        <a class="btn btn-primary" ng-click="imageUpload()">Módosít</a>
     </div>
 
 </div>

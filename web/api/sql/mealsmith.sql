@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Ápr 24. 13:58
+-- Létrehozás ideje: 2023. Ápr 25. 08:29
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `mealsmith`
 --
-CREATE DATABASE IF NOT EXISTS `mealsmith` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
-USE `mealsmith`;
 
 -- --------------------------------------------------------
 
@@ -203,18 +201,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `passwd`, `display_name`, `description`, `points`, `reg`, `last`, `jog`, `img`) VALUES
 (1, 'admin', 'admin@admin.hu', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', NULL, NULL, 0, '2023-01-30 10:07:34', '2023-03-26 15:03:51', 0, NULL),
-(7, 'petyerka', 'szabopeter@turr.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', 'óbazS retéP', '-', 0, '2023-03-01 11:34:50', '2023-04-21 11:57:41', 1, NULL),
-(10, 'barany', 'baranyidaniel@turr.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-03-06 14:07:39', '2023-04-21 12:06:36', 1, NULL),
-(15, 'vighakos', 'vighakos@turr.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:45:35', '2023-04-21 12:11:29', 1, NULL),
-(16, 'illike123', 'illike123@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 1, '2023-04-05 09:47:45', '2023-04-21 12:17:52', 1, NULL),
-(17, 'zsolt_ginal', 'zsoltiabeka@yahoo.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:49:02', '2023-04-21 11:08:16', 1, NULL),
-(18, 'zickyxdd', 'zick_balage@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:49:44', '2023-04-21 11:10:58', 1, NULL),
-(19, 'kocsisdave', 'dave_carhaver@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:50:31', '2023-04-21 11:19:06', 1, NULL),
-(20, 'gardenerchris', 'kerteszcurtis@gmail.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:51:18', '2023-04-21 11:24:07', 1, NULL),
-(21, 'kerekadamtamas', 'kerekadamt@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:52:01', '2023-04-24 13:20:43', 1, NULL),
-(22, 'molnarvitya', 'viktor.molnar@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:52:57', '2023-04-21 11:28:47', 1, NULL),
-(23, 'korell0', 'korsos.fordfan@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 09:54:52', '2023-04-24 12:57:29', 1, NULL),
-(24, 'kerekessteve', 'kerekessteve@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 0, '2023-04-05 10:37:29', '2023-04-21 11:47:06', 1, NULL);
+(7, 'petyerka', 'szabopeter@turr.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', 'óbazS retéP', '-', 87, '2023-03-01 11:34:50', '2023-04-21 11:57:41', 1, NULL),
+(10, 'barany', 'baranyidaniel@turr.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 179, '2023-03-06 14:07:39', '2023-04-21 12:06:36', 1, NULL),
+(15, 'vighakos', 'vighakos@turr.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 222, '2023-04-05 09:45:35', '2023-04-21 12:11:29', 1, NULL),
+(16, 'illike123', 'illike123@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 78, '2023-04-05 09:47:45', '2023-04-21 12:17:52', 1, NULL),
+(17, 'zsolt_ginal', 'zsoltiabeka@yahoo.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 101, '2023-04-05 09:49:02', '2023-04-21 11:08:16', 1, NULL),
+(18, 'zickyxdd', 'zick_balage@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 101, '2023-04-05 09:49:44', '2023-04-21 11:10:58', 1, NULL),
+(19, 'kocsisdave', 'dave_carhaver@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 100, '2023-04-05 09:50:31', '2023-04-21 11:19:06', 1, NULL),
+(20, 'gardenerchris', 'kerteszcurtis@gmail.hu', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 38, '2023-04-05 09:51:18', '2023-04-21 11:24:07', 1, NULL),
+(21, 'kerekadamtamas', 'kerekadamt@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 37, '2023-04-05 09:52:01', '2023-04-24 13:20:43', 1, NULL),
+(22, 'molnarvitya', 'viktor.molnar@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 40, '2023-04-05 09:52:57', '2023-04-21 11:28:47', 1, NULL),
+(23, 'korell0', 'korsos.fordfan@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', NULL, NULL, 52, '2023-04-05 09:54:52', '2023-04-24 12:57:29', 1, NULL),
+(24, 'kerekessteve', 'kerekessteve@gmail.com', '3810f3c42b21d2bc4f26609152909346c5a04923', 'Stewie', NULL, 1, '2023-04-05 10:37:29', '2023-04-21 11:47:06', 1, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
