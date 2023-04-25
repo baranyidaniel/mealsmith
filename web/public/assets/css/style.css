@@ -187,7 +187,9 @@ i {
     color: green;
 }
 
-em, .heart, .bi-trash-fill:hover {
+em,
+.heart,
+.bi-trash-fill:hover {
     color: red;
 }
 
@@ -255,16 +257,18 @@ form.reg {
 
 /*Toplista*/
 
+.topThreeContainer {
+    padding-bottom: 3%;
+}
 
 .topThree {
     background-color: #0D0221 !important;
-
     border-radius: 25px;
     color: white;
     font-weight: lighter;
     text-align: center !important;
     margin: 3%;
-    padding: 20px; 
+    padding-bottom: 50%;
 }
 
 .topRest {
@@ -273,7 +277,7 @@ form.reg {
     color: white;
     font-weight: lighter;
     height: fit-content;
-    padding: 20px; 
+    padding: 20px;
     margin-bottom: 25px;
     width: 40%;
 }
@@ -285,13 +289,32 @@ form.reg {
 
 .profilkep {
     width: 130px;
-    border-radius: 25%;
+    border-radius: 50%;
+}
+
+.top2 {
+    height: 300px;
+    color: #B1B1B1 !important;
+    width: max-content;
+}
+
+.top1 {
+    height: 350px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: max-content;
+}
+
+.top3 {
+    height: 250px;
+    width: max-content;
 }
 
 .tg {
     align-items: center;
 }
-h2{
+
+h2 {
     text-align: center;
 }
 

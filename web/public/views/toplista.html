@@ -1,76 +1,78 @@
 <h2>A legjobb séfek</h2>
-<div class="d-flex align-items-center p-2">
-<!--Top 2-->
-<div class="d-flex justify-content-center">
-  <div class="topThree p-2 justify-content-center" ng-repeat="item in top2 | orderBy:'-points' | limitTo: 3 ">
-    <section class="profilkepBG">
-      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-    </section>
-    <section>
-      <div>
-        <div>
-          {{item.username}}
-        </div>
-        <div>
-          {{item.points}} pont
-        </div>
-        <div>
-          {{item.posts}} poszt
-        </div>
+<div class="topThreeContainer d-flex justify-content-center">
+  <div class="d-flex align-items-end">
+    <!--Top 2-->
+    <div class="d-flex justify-content-center mb-7 top2">
+      <div class="topThree p-2 justify-content-center" ng-repeat="item in top2 | orderBy:'-points' | limitTo: 3 ">
+        <section class="profilkepBG">
+          <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+        </section>
+        <section>
+          <div style="color: #B1B1B1 !important;">
+            <div>
+              #2 - {{item.username}}
+            </div>
+            <div>
+              {{item.points}} pont
+            </div>
+            <div>
+              {{item.posts}} poszt
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
-  </div>
-</div>
-<!--Top 1-->
-<div class="d-flex justify-content-center p-2">
-  <div class="topThree p-2 justify-content-center" ng-repeat="item in top1 | orderBy:'-points' | limitTo: 3 ">
-    <section class="profilkepBG">
-      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-    </section>
-    <section>
-      <div>
-        <div>
-          {{item.username}}
-        </div>
-        <div>
-          {{item.points}} pont
-        </div>
-        <div>
-          {{item.posts}} poszt
-        </div>
+    </div>
+    <!--Top 1-->
+    <div class="d-flex justify-content-center mb-10 top1">
+      <div class="topThree p-2 justify-content-center" ng-repeat="item in top1 | orderBy:'-points' | limitTo: 3 ">
+        <section class="profilkepBG">
+          <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+        </section>
+        <section>
+          <div style="color: #FFD700 !important;">
+            <div>
+              #1 - {{item.username}}
+            </div>
+            <div>
+              {{item.points}} pont
+            </div>
+            <div>
+              {{item.posts}} poszt
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
-  </div>
-</div>
-<!--Top 3-->
-<div class="d-flex justify-content-center p-2">
-  <div class="topThree p-2 justify-content-center" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
-    <section class="profilkepBG">
-      <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-    </section>
-    <section>
-      <div>
-        <div>
-          {{item.username}}
-        </div>
-        <div>
-          {{item.points}} pont
-        </div>
-        <div>
-          {{item.posts}} poszt
-        </div>
+    </div>
+    <!--Top 3-->
+    <div class="d-flex justify-content-center mb-5 top3">
+      <div class="topThree p-2 justify-content-center" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
+        <section class="profilkepBG">
+          <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
+        </section>
+        <section>
+          <div style="color: #FF9E68 !important;">
+            <div>
+              #3 - {{item.username}}
+            </div>
+            <div>
+              {{item.points}} pont
+            </div>
+            <div>
+              {{item.posts}} poszt
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   </div>
-</div>
 </div>
 <!--Mindenki más-->
-<div class="d-flex flex-column mb-3 align-items-sm-center">
+<div class="topRestContainer d-flex flex-column mb-3 align-items-sm-center">
   <div class="topRest p-2 " ng-repeat="top in tops | orderBy:'-points' ">
     <section>
       <!--{{index}}-->
       <img src="/web/public/assets/img/blank_profil_pic.jpeg" alt="profilkép" title="profilkép" class="profilkep" />
-        {{top.username}} - {{top.points}} pont
+      {{top.username}} - {{top.points}} pont
     </section>
   </div>
 </div>
