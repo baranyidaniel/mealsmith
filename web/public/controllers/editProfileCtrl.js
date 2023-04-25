@@ -15,15 +15,6 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
         $location.path('/profiles/' + $routeParams.id)
     }
 
-    $scope.confirmEmail = function() {
-        database.selectByValue('users', 'email', $scope.userEdit.email).then(function(res) {
-            if (res.data.length == 0) {
-                return true
-            }
-            return false
-        })
-    }
-
     $scope.modDisplayName = function() {
         if ($scope.userEdit.display_name == null || $scope.userEdit.display_name.trim() == "") {
             alert('A megjelenítési név nem lehet üres!')
@@ -96,7 +87,7 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
         }
 
         let data = {
-            passwd: $scope.userEdit.newpw1
+            passwd: CryptoJS.SHA1($scope.userEdit.newpw1).toString()
         }
 
         database.update('users', $routeParams.id, data).then(function(res) {
