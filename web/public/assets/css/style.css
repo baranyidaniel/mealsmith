@@ -69,13 +69,6 @@ i {
     padding-left: 15px;
 }
 
-.keresesgomb {
-    background: #26408b;
-    border-radius: 462px;
-    color: white;
-    width: 150%;
-}
-
 #keresesbar {
     background-color: rgb(166, 207, 213);
     border-radius: 462px;
@@ -203,12 +196,6 @@ em,
 
 #searchbar {
     background-color: rgba(166, 207, 213);
-}
-
-#searchbutton {
-    color: white;
-    background-color: #26408b;
-    border-radius: 462px;
 }
 
 .div1_1 {
