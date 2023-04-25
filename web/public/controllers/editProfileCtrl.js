@@ -1,4 +1,4 @@
-app.controller("editProfileCtrl", function ($scope, $routeParams, database, $rootScope, $location, $route) {
+app.controller("editProfileCtrl", function ($scope, $routeParams, database, $rootScope, $location, $route, fileUpload) {
     
     $scope.user = {}
     $scope.userEdit = {}
@@ -70,6 +70,28 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
                 alert('Ez az e-mail cím már foglalt!')
             }
         })
+    }
+
+    $scope.imageUpload = function() {
+        let file = $scope.userEdit.file;
+        let filename = '';
+
+        if (file != null) {
+            let uploadurl = 'http://localhost:5000/fileupload';
+
+            fileUpload.uploadFile(file, uploadurl).then(function(res) {
+
+                filename = res.data.filename;
+
+                database.update('users', $rootScope.loggedUser.id, { img: filename }).then(function(res) {
+                    if (res.data.affectedRows != 0) {
+                        alert('Kép feltöltve!');
+                    } else {
+                        alert('Váratlan hiba történt az adatbázis művelet során!');
+                    }
+                });
+            });
+        } 
     }
 
     $scope.modPassword = function() {
