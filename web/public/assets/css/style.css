@@ -244,55 +244,88 @@ form.reg {
 
 /*Toplista*/
 
-.topThreeContainer {
-    padding-bottom: 3%;
-}
-
 .topThree {
-    background-color: #0D0221 !important;
-    border-radius: 25px;
+    justify-content: flex-end !important;
     color: white;
-    font-weight: lighter;
     text-align: center !important;
-    margin: 3%;
-    padding-bottom: 50%;
 }
 
 .topRest {
-    background-color: #0D0221 !important;
+    align-items: flex-end;
+    font-size: 20px;
+    background-color: #0D0221;
     border-radius: 25px;
     color: white;
-    font-weight: lighter;
-    height: fit-content;
-    padding: 20px;
-    margin-bottom: 25px;
-    width: 40%;
+    padding: 25px 0 25px 0;
+    margin: 10px 0 10px 0;
+    width: 520px;
+    height: 100px;
 }
 
-.profilkepBG {
+.profilkepBG1 {
+    width: 250px;
+    height: 250px;
     background-color: white;
     border-radius: 25%;
 }
 
-.profilkep {
-    width: 130px;
+.profilkepBG2 {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 25%;
+}
+
+.profilkepBG3 {
+    width: 175px;
+    height: 175px;
+    background-color: white;
+    border-radius: 25%;
+}
+
+.profilkep1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.profilkep2 {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+}
+
+.profilkep3 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.restProfilkep {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
 }
 
 .top2 {
-    height: 300px;
+    background-color: #0D0221 !important;
+    border-radius: 25px;
     color: #B1B1B1 !important;
     width: max-content;
 }
 
 .top1 {
-    height: 350px;
+    background-color: #0D0221 !important;
+    border-radius: 25px;
+    height: 500px;
     margin-left: 5%;
     margin-right: 5%;
-    width: max-content;
+    width: 300px;
 }
 
 .top3 {
+    background-color: #0D0221 !important;
+    border-radius: 25px;
     height: 250px;
     width: max-content;
 }
