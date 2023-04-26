@@ -41,7 +41,7 @@ app.post('/fileupload', upload.single('file'), (req, res) => {
     res.status(200).json(req.file);
 });
 
-// file Delete
+// file delete
 app.delete('/filedelete/:table/:id', (req, res) => {
     let table = req.params.table;
     let id = req.params.id;
