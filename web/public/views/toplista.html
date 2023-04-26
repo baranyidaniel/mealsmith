@@ -68,7 +68,7 @@
 <div class="topRestContainer d-flex flex-column align-items-sm-center">
   <div class="topRest" ng-repeat="top in tops | orderBy:'-points' ">
     <section>
-      <!--{{index}}-->
+      #{{ ($index + 1) + 3}}
       <img src="/web/public/assets/img/default.jpeg" alt="profilkép" title="profilkép" class="restProfilkep" />
       {{top.username}} - {{top.points}} pont
     </section>
