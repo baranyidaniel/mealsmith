@@ -9,6 +9,7 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
 
         $scope.determineFavorited()
         $scope.determineLiked()
+        $scope.getProfilePictures()
     })
 
     $scope.like = function(id) {
@@ -59,6 +60,14 @@ app.controller('kartyaCtrl', function($scope, $rootScope, database, $location, $
                 })
             }
         }
+    }
+
+    $scope.getProfilePictures = function() {
+        database.selectAll('users').then(function(res) {
+            $scope.receptek.forEach(item => {
+                item.profilePic = res.data.find(x => x.id == item.user_id).img
+            })
+        })
     }
 
     $scope.determineFavorited = function() {
