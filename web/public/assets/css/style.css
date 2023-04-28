@@ -245,60 +245,75 @@ form.reg {
 /*Toplista*/
 
 .topThree {
-    justify-content: flex-end !important;
+    justify-content: flex-end;
     color: white;
-    text-align: center !important;
+    text-align: center;
+    width: 250px;
+    height: 450px;
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .topRest {
     align-items: flex-end;
+    text-align: center;
     font-size: 20px;
     background-color: #0D0221;
     border-radius: 25px;
     color: white;
-    padding: 25px 0 25px 0;
-    margin: 10px 0 10px 0;
-    width: 520px;
+    margin-bottom: 2%;
+    width: 500px;
     height: 100px;
 }
 
+.topRestData{
+padding-bottom: 5%;
+}
+
 .profilkepBG1 {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     background-color: white;
     border-radius: 25%;
+    margin: 20px;
 }
 
 .profilkepBG2 {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     background-color: white;
     border-radius: 25%;
+    margin: 20px;
 }
 
 .profilkepBG3 {
-    width: 175px;
-    height: 175px;
+    width: 120px;
+    height: 120px;
     background-color: white;
     border-radius: 25%;
+    margin: 20px;
 }
 
 .profilkep1 {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
-
-.profilkep2 {
-    width: 175px;
-    height: 175px;
-    border-radius: 50%;
-}
-
-.profilkep3 {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    margin: 20px;
+}
+
+.profilkep2 {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.profilkep3 {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 20px;
 }
 
 .restProfilkep {
@@ -310,24 +325,25 @@ form.reg {
 .top2 {
     background-color: #0D0221 !important;
     border-radius: 25px;
-    color: #B1B1B1 !important;
-    width: max-content;
+    height: 320px;
+    width: 240px;
+    margin-top: 30%;
 }
 
 .top1 {
     background-color: #0D0221 !important;
     border-radius: 25px;
-    height: 500px;
-    margin-left: 5%;
-    margin-right: 5%;
+    height: 400px;
     width: 300px;
+    margin-left: 11%;
 }
 
 .top3 {
     background-color: #0D0221 !important;
     border-radius: 25px;
-    height: 250px;
-    width: max-content;
+    height: 240px;
+    width: 180px;
+    margin-top: 63%;
 }
 
 .tg {
