@@ -21,22 +21,28 @@ app.controller("userCtrl", function ($scope, database, $rootScope, $location, $r
       alert("A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!");
       return;
     }
-  
-    let data = {
-      username: $scope.user.username,
-      email: $scope.user.email,
-      passwd: CryptoJS.SHA1($scope.user.pass1).toString(),
-    };
 
-    database.insert("users", data).then(function (res) {
-      if (res.data.affectedRows != 0) {
-        alert("A regisztráció sikeres! Beléphetsz az oldalra!");
-        $scope.user = {};
-        $location.path("/");
+    database.selectByValue('users', 'email', $scope.user.email).then(function(res) {
+      if (res.data.length == 0) {
+        let data = {
+          username: $scope.user.username,
+          email: $scope.user.email,
+          passwd: CryptoJS.SHA1($scope.user.pass1).toString()
+        }
+    
+        database.insert("users", data).then(function (res) {
+          if (res.data.affectedRows != 0) {
+            alert("A regisztráció sikeres! Beléphetsz az oldalra!")
+            $scope.user = {};
+            $location.path("/");
+          } else {
+            alert("Váratlan hiba történt az adatbázis művelet során!")
+          }
+        })
       } else {
-        alert("Váratlan hiba történt az adatbázis művelet során!");
+        alert('Ez az e-mail cím már foglalt!')
       }
-    });
+    })
   };
 
   $scope.login = function () {

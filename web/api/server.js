@@ -4,6 +4,8 @@ const express = require('express'),
     cors = require('cors'),
     multer = require('multer'),
     moment = require('moment'),
+    fs = require('fs'),
+    path = require('path'),
     port = process.env.PORT,
     debug = process.env.DEBUG_MODE
 
@@ -15,6 +17,16 @@ var mysql = require('mysql'),
         database: process.env.DBNAME
     })
 
+var storage = multer.diskStorage({
+    destination: '../public/uploads/',
+    filename: function(req, file, cb) {
+        let file_name = file.originalname.replace(path.extname(file.originalname), "") + '-' + Date.now() + path.extname(file.originalname);
+        cb(null, file_name);
+    }
+});
+
+var upload = multer({ storage: storage });
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,6 +35,34 @@ app.listen(port, () => {
     log('SERVER', `Listening started on port ${port}.`);
 })
 
+// file upload
+app.post('/fileupload', upload.single('file'), (req, res) => {
+    log('SERVER', `1 file uploaded (${req.file.filename})`);
+    res.status(200).json(req.file);
+});
+
+// file delete
+app.delete('/filedelete/:table/:id', (req, res) => {
+    let table = req.params.table;
+    let id = req.params.id;
+    pool.query(`SELECT * FROM ${table} WHERE id=${id}`, (err, results) => {
+        if (err) {
+            log("ERROR", err)
+            res.status(500).send(err)
+        } else {
+            if (results[0].filename != '') {
+                fs.rm('../public/uploads/' + results[0].filename, (err) => {
+                    if (err) {
+                        log(req.socket.remoteAddress, err);
+                        res.status(500).send(err);
+                    }
+                });
+            }
+            res.status(200).json(results[0].filename);
+        }
+    });
+});
+
 // LOGINCHECK
 app.post('/login', (req, res) => {
     var email = req.body.email;
@@ -30,8 +70,8 @@ app.post('/login', (req, res) => {
 
     pool.query(`SELECT * FROM users WHERE email=? AND passwd=?`, [email, password], (err, results) => {
         if (err) {
-            log(req.socket.remoteAddress, err);
-            res.status(500).send(err);
+            log("ERROR", err)
+            res.status(500).send(err)
         } else {
             log('SERVER', `User info sent from users table (logincheck).`);
             res.status(200).send(results);

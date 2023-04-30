@@ -1,9 +1,16 @@
 <div class="background-blur">
     <h1 class="text-center fw-bold small-caps">{{ recept.title }}</h1>
-    
+    <h3 class="text-center fw-bold small-caps"> 
+        Feltöltő: <a ng-click="showProfile(recept.user_id)">{{ feltolto.display_name != null ? feltolto.display_name : feltolto.username }}</a>
+    </h3>
     <p class="text-center fw-bold small-caps">Elkészítési idő: {{elkeszites()}}</p>
     <p class="text-center fw-bold small-caps">Pontok: {{recept.points}}</p>
     
+    <div class="text-center" ng-if="loggedUser.id == feltolto.id || loggedUser.jog == 0">
+        <a class="btn btn-warning" ng-click="editRecept()">Szerkesztés</a>
+        <a class="btn btn-danger" ng-click="deleteRecept()">Törlés</a>
+    </div>
+
     <h3 class="fw-bold small-caps">Hozzávalók:</h3>
     <table class="table table-borderless ingredientsTable">
         <thead>
@@ -19,9 +26,7 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr>
-                <td colspan="2">Összesen: {{hozzavalok.length}} hozzávaló</td>
-            </tr>
+            
         </tfoot>
     </table>
     
@@ -29,10 +34,37 @@
         <h3 class="fw-bold small-caps">Elkészítés</h3>
         <div>
             <ol>
-                <li ng-repeat="bekezdes in bekezdesek">
+                <li class="mb-3" ng-repeat="bekezdes in bekezdesek">
                     {{bekezdes.item}}
                 </li>
             </ol>
+        </div>
+    </div>
+
+    <hr>
+    <h2 class="small-caps fw-bold text-center">Kommentek</h2>
+
+    <div class="newComment" ng-if="loggedUser != null">
+        <div class="form-floating">
+            <textarea class="form-control mb-3" placeholder="Írj valamit..." style="height: 100px" ng-model="newComment.comment"></textarea>
+            <label for="floatingTextarea2">Írj valamit...</label>
+          </div>
+        <a class="btn btn-primary" ng-click="addComment()">Komment</a>
+        <hr>
+    </div>
+
+    <div class="comments">
+        <div ng-if="comments.length == 0">
+            <p class="small-caps fw-bold text-center">Még nem érkezett komment.</p>
+        </div>
+        <div class="comment" ng-repeat="comment in comments">
+            <div class="commentHeader">
+                <p><a ng-click="showProfile(comment.poster.id)">{{comment.poster.display_name != null ? comment.poster.display_name : comment.poster.username }}</a> - {{ido(comment.date)}} <i class="bi bi-trash-fill" ng-click="deleteComment(comment.id)" ng-if="comment.user_id == loggedUser.id"></i></p>
+            </div>
+            <div class="commentBody">
+                {{comment.comment}}
+            </div>
+            <hr>
         </div>
     </div>
 </div>

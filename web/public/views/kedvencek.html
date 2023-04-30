@@ -1,30 +1,41 @@
 <h2 class="text-center fw-bold small-caps">{{loggedUser.username}} kedvenc receptjei</h2>
-<a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByLatest()">Legfrissebbek</a>
-<a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByPoints()">Legjobbak</a>
 
-<ul class="cards" ng-if="receptek.length != 0">
-    <li ng-repeat="recept in receptek">
-    <div class="card">
-        <img src="./assets/img/nopic.png" class="card__image" alt="Kép a receptről"/>
-        <div class="card__overlay">
-        <div class="card__header parent" ng-click="showRecept(recept.id)">
-            <div class="div1_1">
-            <img class="card__thumb" src="./assets/img/nopic.png" alt="" />
+<div ng-if="receptek.length == 0">
+    <p class="small-caps fw-bold text-center">Még nem vettél fel recepteket a kedvenceid közé.</p>
+</div>
+
+<div ng-if="receptek.length != 0">
+    <div class="text-center">
+        <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByLatest()">Legfrissebbek</a>
+        <a class="btn btn-primary mt-3 me-1" role="button" ng-click="orderByPoints()">Legjobbak</a>
+    </div>
+
+    <ul class="cards">
+        <li ng-repeat="recept in receptek">
+        <div class="card">
+            <img ng-if="recept.img == null" class="card__image" src="/web/public/assets/img/nopic.png" alt="" />
+            <img ng-if="recept.img != null" class="card__image" src="/web/public/uploads/{{recept.img}}" alt="" />
+            <div class="card__overlay">
+                <div class="card__header parent" ng-click="showRecept(recept.id)">
+                    <div class="div1_1">
+                        <img ng-if="recept.profilePic == null" class="card__thumb" src="/web/public/assets/img/default.jpeg" alt="" />
+                        <img ng-if="recept.profilePic != null" class="card__thumb" src="/web/public/uploads/{{recept.profilePic}}" alt="" />
+                    </div>
+                    <div class="div2_1">
+                        <h3 class="card__title">{{ recept.title }}</h3>
+                        <span class="card__status text-muted">Elkészítés: {{ elkeszites(recept.id) }}</span>
+                    </div>
+                </div>
+                <div class="card__description">
+                    <div class="icons">
+                        <i class="bi bi-heart heart" title="Kedvelés" ng-mouseover="heartHover(recept.id)" ng-mouseleave="heartLeave(recept.id)" id="heart_{{recept.id}}" ng-click="like(recept.id)"> {{ recept.points }}</i>
+                        <i class="bi bi-star-fill star" title="Törlés a kedvencekből"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}" ng-click="removeFromFavorites(recept.id)" ></i>
+                    </div>
+                    <p class="text-muted">{{ ido(recept.id) }}</p>
+                    <p>{{ recept.short_desc }}</p>
+                </div>
             </div>
-            <div class="div2_1">
-            <h3 class="card__title">{{ recept.title }}</h3>
-            <span class="card__status text-muted">Elkészítés: {{ elkeszites(recept.id) }}</span>
-            </div>
-        </div>
-        <div class="card__description">
-            <div class="icons">
-                <i class="bi bi-heart heart" title="Kedvelés" ng-mouseover="heartHover(recept.id)" ng-mouseleave="heartLeave(recept.id)" id="heart_{{recept.id}}"> {{ recept.points }}</i>
-                <i class="bi bi-star-fill star" title="Törlés a kedvencekből"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}" ng-click="removeFromFavorites(recept.id)" ></i>
-            </div>
-            <p class="text-muted">{{ ido(recept.id) }}</p>
-            <p>{{ recept.short_desc }}</p>
-        </div>
-        </div>
-    </div>      
-    </li>
-</ul>
+        </div>      
+        </li>
+    </ul>
+</div>

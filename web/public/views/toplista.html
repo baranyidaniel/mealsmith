@@ -1,33 +1,76 @@
-<!--<div class="container" ng-controller="topLCtrl">
-  <table>
-    <thead>
-      <tr>
-        <th>/</th>
-        <th>Username</th>
-        <th>points</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="top in tops">
-
-        <td>{{ top.username}}</td>
-        <td>{{ top.points}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>-->
-<div class="Top3L row" ng-repeat="top in tops | orderBy:'-points'">
-  <div class="div1 col">
-    <p>
-      <div class="profilkepBG">
-      <img
-        src="/web/public/assets/img/blank_profil_pic.jpeg"
-        alt="profilkép"
-        title="profilkép"
-        class="profilkep"
-      />
+<h2>A legjobb séfek</h2>
+<div class="d-flex justify-content-center topContainer">
+  <!--Top 2-->
+  <div class="d-flex justify-content-center topThree">
+    <div class="top2 p-2 justify-content-center" ng-repeat="item in top2 | orderBy:'-points' | limitTo: 3 ">
+      <section class="profilkepBG2">
+        <img src="/web/public/assets/img/default.jpeg" alt="profilkép" title="profilkép" class="profilkep2" />
+      </section>
+      <section>
+        <div style="color: #B1B1B1 !important;">
+          <div>
+            #2 - {{item.username}}
+          </div>
+          <div>
+            {{item.points}} pont
+          </div>
+          <div>
+            {{item.posts}} poszt
+          </div>
+        </div>
+      </section>
     </div>
-      {{top.username}} {{top.points}} pont 123 poszt
-    </p>
+  </div>
+  <!--Top 1-->
+  <div class="d-flex justify-content-center topThree">
+    <div class="top1 p-2 justify-content-center" ng-repeat="item in top1 | orderBy:'-points' | limitTo: 3 ">
+      <section class="profilkepBG1">
+        <img src="/web/public/assets/img/default.jpeg" alt="profilkép" title="profilkép" class="profilkep1" />
+      </section>
+      <section>
+        <div style="color: #FFD700 !important;">
+          <div>
+            #1 - {{item.username}}
+          </div>
+          <div>
+            {{item.points}} pont
+          </div>
+          <div>
+            {{item.posts}} poszt
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!--Top 3-->
+  <div class="d-flex justify-content-center topThree">
+    <div class="top3 p-2 justify-content-center" ng-repeat="item in top3 | orderBy:'-points' | limitTo: 3 ">
+      <section class="profilkepBG3">
+        <img src="/web/public/assets/img/default.jpeg" alt="profilkép" title="profilkép" class="profilkep3" />
+      </section>
+      <section>
+        <div style="color: #FF9E68 !important;">
+          <div>
+            #3 - {{item.username}}
+          </div>
+          <div>
+            {{item.points}} pont
+          </div>
+          <div>
+            {{item.posts}} poszt
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!--Mindenki más-->
+<div class="topRestContainer d-flex flex-column align-items-sm-center">
+  <div class="topRest" ng-repeat="top in tops | orderBy:'-points' ">
+    <section class="topRestData">
+      #{{ ($index + 1) + 3}}
+      <img src="/web/public/assets/img/default.jpeg" alt="profilkép" title="profilkép" class="restProfilkep" />
+      {{top.username}} - {{top.points}} pont
+    </section>
   </div>
 </div>

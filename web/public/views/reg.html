@@ -1,6 +1,7 @@
 <div class="contents">
-    <div class="container-sm" ng-controller="userCtrl">
-        <div class="mb-3">                    
+    <div class="container-sm background-blur" ng-controller="userCtrl">
+      <div class="mb-3">                    
+          <h2 class="small-caps fw-bold text-center mb-3">Regisztráció</h2>
             <form class="reg">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput" placeholder="Felhasználónév" ng-model="user.username">
@@ -8,8 +9,10 @@
                   </div>
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingPassword" placeholder="Email cím" ng-model="user.email">
-                    <label for="floatingPassword">Email cím (nem IP cím)</label>
+                    <label for="floatingPassword">Email cím (pl.: gipsz.jakab@turr.hu)</label>
                   </div>
+
+                  <p>Jelszó biztonsági követelmények: 8-32 karakter, legalább egy kisbetű, nagybetű, szám</p>
                   <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
                     <label for="floatingPassword">Jelszó</label>

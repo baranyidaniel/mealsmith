@@ -3,11 +3,23 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     $scope.favorites = []
     $scope.likes = []
 
+    $scope.getProfilePictures = function() {
+        database.selectAll('users').then(function(res) {
+            $scope.receptek.forEach(item => {
+                item.profilePic = res.data.find(x => x.id == item.user_id).img
+            })
+        })
+    }
+
     $scope.getFavorites = function() {
         $scope.receptek = []
 
         database.selectAll('posts').then(function(res) {
             let posts = res.data
+            res.data.forEach(item => {
+                item.favorited = true
+            })
+            
             database.selectAll('favorites').then(function(res) {
                 res.data.forEach(item => {
                     if (item.user_id == $rootScope.loggedUser.id) {
@@ -31,7 +43,9 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
             recept.points--
             database.delete('likes', 'id', $scope.likes.find(x => x.post_id == id && x.user_id == $rootScope.loggedUser.id).id).then(function(res) {
                 database.update('posts', recept.id, {points: recept.points}).then(function(res) {
-                    $scope.determineLiked()
+                    database.update('users', recept.user_id, {points: recept.points}).then(function() {
+                        $scope.determineLiked()
+                    })
                 })
             })
         } else {
@@ -43,7 +57,9 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
 
             database.insert('likes', data).then(function() {
                 database.update('posts', id, {points: recept.points}).then(function(res) {
-                    $scope.determineLiked()
+                    database.update('users', recept.user_id, {points: recept.points}).then(function() {
+                        $scope.determineLiked()
+                    })
                 })
             })
         }
@@ -92,20 +108,37 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     }
 
     $scope.heartHover = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).liked) {
         document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
-    }
-    
-    $scope.heartLeave = function(id) {
+        } else {
         document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+        }
+    }
+
+    $scope.heartLeave = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).liked) {
+        document.getElementById('heart_' + id).classList.replace('bi-heart-fill', 'bi-heart')
+        } else {
+        document.getElementById('heart_' + id).classList.replace('bi-heart', 'bi-heart-fill')
+        }
     }
 
     $scope.starHover = function(id) {
-        document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
-    }
-    
-    $scope.starLeave = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).favorited) {
         document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+        } else {
+        document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+        }
+    }
+
+    $scope.starLeave = function(id) {
+        if (!$scope.receptek.find(x => x.id == id).favorited) {
+        document.getElementById('star_' + id).classList.replace('bi-star-fill', 'bi-star')
+        } else {
+        document.getElementById('star_' + id).classList.replace('bi-star', 'bi-star-fill')
+        }
     }
 
     $scope.getFavorites()
+    $scope.getProfilePictures()
 });

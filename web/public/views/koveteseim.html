@@ -1,5 +1,26 @@
 <div class="row">
-    <h3 class="text-center fw-bold small-caps">Követéseim</h3>
+  <h3 class="text-center fw-bold small-caps">Követéseim</h3>
 
-    <div class="kovetettek" ></div>
+  <p class="small-caps fw-bold text-center" ng-if="follows.length == 0">Még nem követsz más felhasználót.</p>
+
+  <ul class="cards" ng-if="follows.length != 0">
+    <li ng-repeat="follow in follows">
+      <div class="card">
+          <img ng-if="follow.img == null" class="card__image" src="/web/public/assets/img/default.jpeg" alt="" />
+          <img ng-if="follow.img != null" class="card__image" src="/web/public/uploads/{{follow.img}}" alt="" />
+        <div class="card__overlay">
+          <div class="card__header parent" ng-click="showProfile(follow.id)">
+            <div>
+              <h3 class="card__title">{{ follow.username }}</h3>
+            </div>
+          </div>
+          <div class="card__description">
+            <div class="icons">
+              <a class="btn btn-light ng-scope" ng-click="removeFromFollow(follow.id)" class="unfollowBtn">Követés leállítása</a>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </li>
+  </ul>
 </div>
