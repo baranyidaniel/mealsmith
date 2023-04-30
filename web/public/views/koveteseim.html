@@ -6,7 +6,8 @@
   <ul class="cards" ng-if="follows.length != 0">
     <li ng-repeat="follow in follows">
       <div class="card">
-        <img src="./assets/img/nopic.png" class="card__image" alt="Kép"/>
+          <img ng-if="follow.img == null" class="card__image" src="/web/public/assets/img/default.jpeg" alt="" />
+          <img ng-if="follow.img != null" class="card__image" src="/web/public/uploads/{{follow.img}}" alt="" />
         <div class="card__overlay">
           <div class="card__header parent" ng-click="showProfile(follow.id)">
             <div>

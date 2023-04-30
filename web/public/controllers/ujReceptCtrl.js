@@ -1,4 +1,4 @@
-app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
+app.controller('ujReceptCtrl', function($scope, fileUpload, database, $rootScope) {
     $scope.recept = {}
     $scope.recept.hozzavalok = []
 
@@ -20,14 +20,34 @@ app.controller('ujReceptCtrl', function($scope, database, $rootScope) {
             elkeszitesi_ido: $scope.recept.elkeszitesi_ido,
             adag: $scope.recept.adag
         }
+
+        if ($scope.recept.img != null) {
+            let uploadurl = 'http://localhost:5000/fileupload';
+
+            fileUpload.uploadFile($scope.recept.img, uploadurl).then(function(res) {
+
+                data.img = res.data.filename
+
+                database.insert('posts', data).then(function(res) {
+                    if (res.data.affectedRows != 0) {
+                        $scope.recept = {}
+                    } else {
+                        alert('Váratlan hiba történt az adatbázis művelet során!');
+                    }
+                });
+            });
+        } 
+        else 
+        {
+            database.insert('posts', data).then(function(res) {
+                if (res.data.affectedRows > 0) {
+                    alert('A recept sikeresen felvéve!')
+                    $scope.recept = {}
+                } 
+                else alert('Hiba történt az adatbázis művelet során.')
+            })
+        }
         
-        database.insert('posts', data).then(function(res) {
-            if (res.data.affectedRows > 0) {
-                alert('A recept sikeresen felvéve!')
-                $scope.recept = {}
-            } 
-            else alert('Hiba történt az adatbázis művelet során.')
-        })
     }
 
     

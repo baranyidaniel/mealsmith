@@ -17,6 +17,14 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
     })
   }
 
+  $scope.getProfilePictures = function() {
+    database.selectAll('users').then(function(res) {
+      $scope.userRecipes.forEach(item => {
+        item.profilePic = res.data.find(x => x.id == item.user_id).img
+      })
+    })
+  }
+
   $scope.determineFollowed = function() {
     if ($routeParams.id != $rootScope.loggedUser.id) {
       database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
@@ -221,5 +229,6 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
 
     $scope.determineFavorited()
     $scope.determineLiked()
+    $scope.getProfilePictures()
   }
 })

@@ -3,6 +3,14 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     $scope.favorites = []
     $scope.likes = []
 
+    $scope.getProfilePictures = function() {
+        database.selectAll('users').then(function(res) {
+            $scope.receptek.forEach(item => {
+                item.profilePic = res.data.find(x => x.id == item.user_id).img
+            })
+        })
+    }
+
     $scope.getFavorites = function() {
         $scope.receptek = []
 
@@ -132,4 +140,5 @@ app.controller('kedvencekCtrl', function($scope, $rootScope, database, $location
     }
 
     $scope.getFavorites()
+    $scope.getProfilePictures()
 });

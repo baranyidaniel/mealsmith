@@ -3,13 +3,12 @@ app.controller("kovetesCtrl", function ($scope, database, $rootScope, $location,
 
     $scope.getFollows = function() {
         $scope.follows = []
-        database.selectAll("follows").then(function(res) {
+        database.selectByValue("follows", "user_id", $rootScope.loggedUser.id).then(function(res) {
             let followed = res.data
             database.selectAll("users").then(function(res) {
+                let users = res.data
                 followed.forEach(item => {
-                    if (item.user_id == $rootScope.loggedUser.id) {
-                        $scope.follows.push(res.data.find(x => x.id == item.kovetett_user_id))
-                    }
+                    $scope.follows.push(users.find(x => x.id == item.kovetett_user_id))
                 })
             })
         })

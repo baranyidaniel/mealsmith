@@ -2,11 +2,12 @@ app.factory('database', function($http, $q) {
     const url = 'http://localhost:5000'
 
     return {
-        selectAll: function(table) {
+        logincheck: function(data) {
             var deferred = $q.defer()
             $http({
-                method: 'GET',
-                url: `${url}/${table}`
+                method: 'POST',
+                url: `${url}/login`,
+                data: data
             }).then(function(res) {
                 deferred.resolve(res)
             }, function(res) {
@@ -15,12 +16,11 @@ app.factory('database', function($http, $q) {
             return deferred.promise
         },
 
-        logincheck: function(data) {
+        selectAll: function(table) {
             var deferred = $q.defer()
             $http({
-                method: 'POST',
-                url: `${url}/login`,
-                data: data
+                method: 'GET',
+                url: `${url}/${table}`
             }).then(function(res) {
                 deferred.resolve(res)
             }, function(res) {
@@ -70,19 +70,6 @@ app.factory('database', function($http, $q) {
             return deferred.promise;
         },
 
-        selectOne: function(table, id) {
-            var deferred = $q.defer()
-            $http({
-                method: 'GET',
-                url: `${url}/${table}/${id}`
-            }).then(function(res) {
-                deferred.resolve(res)
-            }, function(res) {
-                deferred.reject(res)
-            })
-            return deferred.promise
-        },
-
         delete: function(tablename, field, value) {
             var deferred = $q.defer();
             $http({
@@ -94,19 +81,6 @@ app.factory('database', function($http, $q) {
                 deferred.reject(res);
             });
             return deferred.promise;
-        },
-
-        select: function(tablename, field, value) {
-            var deferred = $q.defer();
-            $http({
-                method: 'GET',
-                url: url + '/' + tablename + '/' + field + '/' + value,
-            }).then(function(res) {
-                deferred.resolve(res);
-            }, function(res) {
-                deferred.reject(res);
-            });
-            return deferred.promise;
-        },
+        }
     }
 })

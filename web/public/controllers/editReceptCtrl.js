@@ -1,4 +1,4 @@
-app.controller('editReceptCtrl', function($scope, database, $rootScope, $routeParams, $location) {
+app.controller('editReceptCtrl', function($scope, fileUpload, database, $rootScope, $routeParams, $location) {
     $scope.recept = {}
     $scope.recept.hozzavalok = []
 
@@ -37,18 +37,31 @@ app.controller('editReceptCtrl', function($scope, database, $rootScope, $routePa
 
         let data = {
             title: $scope.recept.title,
-            user_id: $rootScope.loggedUser.id,
             description: $scope.recept.description,
             short_desc: $scope.recept.short_desc,
             ingredients: $scope.getIngredients(),
             elkeszitesi_ido: $scope.recept.elkeszitesi_ido,
             adag: $scope.recept.adag
         }
-        
+
         database.update('posts', $routeParams.id, data).then(function(res) {
             if (res.data.affectedRows > 0) {
-                alert('A recept sikeresen módosítva!')
-                $location.path('/receptek/' + $routeParams.id)
+                if ($scope.recept.img != null) {
+                    let uploadurl = 'http://localhost:5000/fileupload';
+
+                    fileUpload.uploadFile($scope.recept.img, uploadurl).then(function(res) {
+
+                        let filename = res.data.filename;
+
+                        database.update('posts', $routeParams.id, { img: filename }).then(function(res) {
+                            if (res.data.affectedRows != 0) {
+                                $location.path('/receptek/' + $routeParams.id)
+                            } else {
+                                alert('Váratlan hiba történt az adatbázis művelet során!');
+                            }
+                        });
+                    });
+                }
             } 
             else alert('Hiba történt az adatbázis művelet során.')
         })

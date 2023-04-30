@@ -63,6 +63,7 @@ a:hover {
 img {
     padding: 15px;
     border-radius: 18px;
+    height: auto;
 }
 
 i {
@@ -97,7 +98,7 @@ i {
 
 .card__image {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: calc(var(--curve) * 1px);
 }
 
