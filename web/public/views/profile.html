@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-lg-3 profilStat">
       <div>
-          <img ng-if="user.img == null" src="/web/public/assets/img/default.jpeg" width="70%">
-          <img ng-if="user.img != null" src="/web/public/uploads/{{user.img}}" width="70%">
+          <img ng-if="user.img == null" src="/web/public/assets/img/default.jpeg" width="70%" class="profileKep">
+          <img ng-if="user.img != null" src="/web/public/uploads/{{user.img}}" width="70%" class="profileKep">
       </div>
       <h3 class="displayName">{{ user.display_name }}</h3>
       <p class="text-muted">{{ user.username }}</p>        

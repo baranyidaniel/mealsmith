@@ -75,6 +75,10 @@ i {
     border-radius: 462px;
 }
 
+.profileKep {
+    aspect-ratio: 1 / 1;
+}
+
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -93,7 +97,6 @@ i {
     text-decoration: none;
     background-color: var(--card-bg);
     color: white;
-    max-width: 300px;
 }
 
 .card__image {

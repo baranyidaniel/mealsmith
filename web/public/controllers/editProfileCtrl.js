@@ -85,7 +85,7 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
 
                 database.update('users', $rootScope.loggedUser.id, { img: filename }).then(function(res) {
                     if (res.data.affectedRows != 0) {
-                        alert('Kép feltöltve!');
+                        
                     } else {
                         alert('Váratlan hiba történt az adatbázis művelet során!');
                     }
