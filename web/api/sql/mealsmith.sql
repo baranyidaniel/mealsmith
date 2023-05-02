@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Ápr 30. 16:36
--- Kiszolgáló verziója: 10.4.11-MariaDB
--- PHP verzió: 7.2.29
+-- Létrehozás ideje: 2023. Máj 02. 12:49
+-- Kiszolgáló verziója: 10.4.6-MariaDB
+-- PHP verzió: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -90,7 +91,7 @@ CREATE TABLE `posts` (
   `ingredients` text COLLATE utf8_hungarian_ci NOT NULL,
   `datum` datetime NOT NULL DEFAULT current_timestamp(),
   `points` int(11) NOT NULL DEFAULT 0,
-  `img` int(11) DEFAULT NULL
+  `img` text COLLATE utf8_hungarian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
@@ -181,7 +182,7 @@ CREATE TABLE `users` (
   `reg` datetime NOT NULL DEFAULT current_timestamp(),
   `last` datetime DEFAULT NULL,
   `jog` int(11) NOT NULL DEFAULT 1,
-  `img` varchar(200) COLLATE utf8_hungarian_ci DEFAULT NULL
+  `img` text COLLATE utf8_hungarian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
