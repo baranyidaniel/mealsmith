@@ -12,7 +12,7 @@
                     <label for="floatingPassword">Email cím (pl.: gipsz.jakab@turr.hu)</label>
                   </div>
 
-                  <p>Jelszó biztonsági követelmények: 8-32 karakter, legalább egy kisbetű, nagybetű, szám</p>
+                  <p>Jelszó biztonsági követelmények: 8-32 karakter, legalább egy kisbetű, nagybetű, szám. Csak az angol ABC betűit fogadjuk el!</p>
                   <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó" ng-model="user.pass1">
                     <label for="floatingPassword">Jelszó</label>
@@ -22,10 +22,6 @@
                     <label for="floatingPassword">Jelszó újra</label>
                   </div>
                   <button type="button" class="btn btn-primary btn-lg" ng-click="registration()">Regisztráció</button>
-                
-                <div class="container signin">
-                    <p>Van már fiókod? <a href="#!/">Jelentkezz be</a>.</p>
-                </div>
                 </form> 
             </div>
         </div>
