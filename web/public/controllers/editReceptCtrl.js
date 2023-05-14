@@ -30,6 +30,16 @@ app.controller('editReceptCtrl', function($scope, fileUpload, database, $rootSco
             return
         }
 
+        if ($scope.recept.title == "" || $scope.recept.title.trim() == "") {
+            alert('Adj meg egy címet a receptnek')
+            return
+        }
+
+        if ($scope.recept.description == "" || $scope.recept.description.trim() == "") {
+            alert('Add meg a leírást!')
+            return
+        }
+        
         if ($scope.recept.hozzavalok.length == 0) {
             alert('Adj meg legalább egy hozzávalót!')
             return
