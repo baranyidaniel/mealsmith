@@ -91,7 +91,9 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
                     }
                 });
             });
-        } 
+        } else {
+            alert('Tölts fel egy fájlt!')
+        }
     }
 
     $scope.modPassword = function() {
@@ -103,7 +105,7 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
         }
 
         var pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/;
-        if (!$scope.user.newpw1.match(pwdRegex)) {
+        if (!$scope.userEdit.newpw1.match(pwdRegex)) {
             alert("A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!");
             return;
         }
