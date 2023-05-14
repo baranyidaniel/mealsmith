@@ -1,0 +1,139 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Mealsmith backend API",
+    "dateExported": "2023-05-12T14:31:27.117Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b05c165d-9dba-4e72-aee2-6f3a7cce95a5",
+            "colId": "a5e5dbf0-fa97-4e08-9bf4-57421114f7e3",
+            "containerId": "",
+            "name": "selectAll",
+            "url": "localhost:5000/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-12T14:16:28.686Z",
+            "modified": "2023-05-12T14:17:29.048Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "AJ4gtC2A"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0645d164-334c-4b00-b0ff-4005210bb939",
+            "colId": "a5e5dbf0-fa97-4e08-9bf4-57421114f7e3",
+            "containerId": "",
+            "name": "selectByValue",
+            "url": "localhost:5000/users/id/15",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-12T14:24:33.272Z",
+            "modified": "2023-05-12T14:25:23.860Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "AJ4gtC2A"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b903751e-3525-4125-8555-e3c3296b2c50",
+            "colId": "a5e5dbf0-fa97-4e08-9bf4-57421114f7e3",
+            "containerId": "",
+            "name": "insert",
+            "url": "localhost:5000/users",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-12T14:26:01.324Z",
+            "modified": "2023-05-12T14:27:09.922Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "AJ4gtC2A"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "tesztuser"
+                    },
+                    {
+                        "name": "email",
+                        "value": "teszt@user.hu"
+                    },
+                    {
+                        "name": "passwd",
+                        "value": "teszt"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "836f6cff-f133-483c-b874-4fa0a269e42e",
+            "colId": "a5e5dbf0-fa97-4e08-9bf4-57421114f7e3",
+            "containerId": "",
+            "name": "update",
+            "url": "localhost:5000/users/25",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-05-12T14:27:41.066Z",
+            "modified": "2023-05-12T14:28:27.917Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "AJ4gtC2A"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "tesztuser2"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f85e2bb5-2a2b-4fa3-aa79-7d080ca909f7",
+            "colId": "a5e5dbf0-fa97-4e08-9bf4-57421114f7e3",
+            "containerId": "",
+            "name": "delete",
+            "url": "localhost:5000/users/id/25",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-05-12T14:28:56.006Z",
+            "modified": "2023-05-12T14:29:56.371Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "AJ4gtC2A"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "runOptions": {
+            "delay": 0,
+            "iterations": 100,
+            "dataFilePath": ""
+        }
+    }
+}

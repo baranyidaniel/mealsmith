@@ -7,7 +7,8 @@ const express = require('express'),
     fs = require('fs'),
     path = require('path'),
     port = process.env.PORT,
-    debug = process.env.DEBUG_MODE
+    debug = process.env.DEBUG_MODE,
+    token = process.env.TOKEN
 
 var mysql = require('mysql'),
     pool = mysql.createPool({
@@ -42,7 +43,7 @@ app.post('/fileupload', upload.single('file'), (req, res) => {
 });
 
 // file delete
-app.delete('/filedelete/:table/:id', (req, res) => {
+app.delete('/filedelete/:table/:id', authorize(), (req, res) => {
     let table = req.params.table;
     let id = req.params.id;
     pool.query(`SELECT * FROM ${table} WHERE id=${id}`, (err, results) => {
@@ -64,7 +65,7 @@ app.delete('/filedelete/:table/:id', (req, res) => {
 });
 
 // LOGINCHECK
-app.post('/login', (req, res) => {
+app.post('/login', authorize(), (req, res) => {
     var email = req.body.email;
     var password = req.body.passwd;
 
@@ -79,8 +80,8 @@ app.post('/login', (req, res) => {
     });
 });
 
-// GET ALL RECORDS FROM [TABLE]
-app.get('/:table', (req, res) => {
+// selectAll
+app.get('/:table', authorize(), (req, res) => {
     var table = req.params.table
 
     pool.query(`SELECT * FROM ${table}`, (err, results) => {
@@ -94,24 +95,8 @@ app.get('/:table', (req, res) => {
     })
 })
 
-// GET RECORD BY ID
-app.get('/:table/:id', (req, res) => {
-    var table = req.params.table,
-        id = req.params.id
-    
-    pool.query(`SELECT * FROM ${table} WHERE id=?`, [id], (err, results) => {
-        if (err) {
-            log("ERROR", err)
-            res.status(500).send(err)
-        } else {
-            log("SERVER", `1 record sent from ${table} table.`)
-            res.status(200).send(results)
-        }
-    })
-})
-
-// GET RECORDS BY VALUE
-app.get('/:table/:field/:value', (req, res) => {
+// selectByValue
+app.get('/:table/:field/:value', authorize(), (req, res) => {
     var table = req.params.table,
         field = req.params.field,
         value = req.params.value
@@ -127,25 +112,8 @@ app.get('/:table/:field/:value', (req, res) => {
     })
 })
 
-// GET RECORDS BY VALUE WITH LIKE
-app.get('/like/:table/:field/:value', (req, res) => {
-    var table = req.params.table,
-        field = req.params.field,
-        value = req.params.value
-    
-    pool.query(`SELECT * FROM ${table} WHERE ${field} LIKE '%${value}%'`, (err, results) => {
-        if (err) {
-            log("ERROR", err)
-            res.status(500).send(err)
-        } else {
-            log("SERVER", `${results.affectedRows} records sent from ${table} table.`)
-            res.status(200).send(results)
-        }
-    })
-})
-
-// INSERT RECORD
-app.post('/:table', (req, res) => {
+// insert
+app.post('/:table', authorize(), (req, res) => {
     var table = req.params.table,
         records = req.body,
         str = 'null',
@@ -167,8 +135,8 @@ app.post('/:table', (req, res) => {
     })
 })
 
-// UPDATE RECORD
-app.patch('/:table/:id', (req, res) => {
+// update
+app.patch('/:table/:id', authorize(), (req, res) => {
     var table = req.params.table,
         id = req.params.id,
         records = req.body,
@@ -191,24 +159,8 @@ app.patch('/:table/:id', (req, res) => {
     })
 })
 
-// DELETE ONE RECORD
-app.delete('/:table/:id', (req, res) => {
-    var table = req.params.table,
-        id = req.params.id
-
-    pool.query(`DELETE FROM ${table} WHERE ID=${id}`, (err, results) => {
-        if (err) {
-            log("ERROR", err)
-            res.status(500).send(err)
-        } else {
-            log("SERVER", `${results.affectedRows} record deleted from ${table} table.`)
-            res.status(200).send(results)
-        }
-    });
-});
-
-// DELETE ALL RECORDS WITH VALUE
-app.delete('/:table/:field/:value', (req, res) => {
+// delete
+app.delete('/:table/:field/:value', authorize(), (req, res) => {
     var table = req.params.table,
         field = req.params.field,
         value = req.params.value
@@ -223,6 +175,16 @@ app.delete('/:table/:field/:value', (req, res) => {
         }
     })
 })
+
+function authorize() {
+    return (req, res, next) => {
+        if (req.headers.authorization == token) {
+            next();
+        } else {
+            res.status(500).json({ message: 'Illetéktelen hozzáférés!' });
+        }
+    };
+}
 
 function log(req, res) {
     if (debug == 1) {

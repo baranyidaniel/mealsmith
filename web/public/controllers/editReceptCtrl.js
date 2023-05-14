@@ -30,6 +30,16 @@ app.controller('editReceptCtrl', function($scope, fileUpload, database, $rootSco
             return
         }
 
+        if ($scope.recept.title == "" || $scope.recept.title.trim() == "") {
+            alert('Adj meg egy címet a receptnek')
+            return
+        }
+
+        if ($scope.recept.description == "" || $scope.recept.description.trim() == "") {
+            alert('Add meg a leírást!')
+            return
+        }
+        
         if ($scope.recept.hozzavalok.length == 0) {
             alert('Adj meg legalább egy hozzávalót!')
             return
@@ -50,10 +60,7 @@ app.controller('editReceptCtrl', function($scope, fileUpload, database, $rootSco
                     let uploadurl = 'http://localhost:5000/fileupload';
 
                     fileUpload.uploadFile($scope.recept.img, uploadurl).then(function(res) {
-
-                        let filename = res.data.filename;
-
-                        database.update('posts', $routeParams.id, { img: filename }).then(function(res) {
+                        database.update('posts', $routeParams.id, { img: res.data.filename }).then(function(res) {
                             if (res.data.affectedRows != 0) {
                                 $location.path('/receptek/' + $routeParams.id)
                             } else {
@@ -61,6 +68,8 @@ app.controller('editReceptCtrl', function($scope, fileUpload, database, $rootSco
                             }
                         });
                     });
+                } else {
+                    $location.path('/receptek/' + $routeParams.id)
                 }
             } 
             else alert('Hiba történt az adatbázis művelet során.')

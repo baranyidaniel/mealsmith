@@ -1,5 +1,6 @@
 app.factory('database', function($http, $q) {
     const url = 'http://localhost:5000'
+    const token = 'AJ4gtC2A'
 
     return {
         logincheck: function(data) {
@@ -7,7 +8,10 @@ app.factory('database', function($http, $q) {
             $http({
                 method: 'POST',
                 url: `${url}/login`,
-                data: data
+                data: data,
+                headers: {
+                    'Authorization': token
+                }
             }).then(function(res) {
                 deferred.resolve(res)
             }, function(res) {
@@ -20,7 +24,10 @@ app.factory('database', function($http, $q) {
             var deferred = $q.defer()
             $http({
                 method: 'GET',
-                url: `${url}/${table}`
+                url: `${url}/${table}`,
+                headers: {
+                    'Authorization': token
+                }
             }).then(function(res) {
                 deferred.resolve(res)
             }, function(res) {
@@ -33,7 +40,10 @@ app.factory('database', function($http, $q) {
             var deferred = $q.defer()
             $http({
                 method: 'GET',
-                url: `${url}/${table}/${field}/${value}`
+                url: `${url}/${table}/${field}/${value}`,
+                headers: {
+                    'Authorization': token
+                }
             }).then(function(res) {
                 deferred.resolve(res)
             }, function(res) {
@@ -47,7 +57,10 @@ app.factory('database', function($http, $q) {
             $http({
                 method: 'POST',
                 url: `${url}/${tablename}`,
-                data: values
+                data: values,
+                headers: {
+                    'Authorization': token
+                }
             }).then(function(res) {
                 deferred.resolve(res);
             }, function(res) {
@@ -61,7 +74,10 @@ app.factory('database', function($http, $q) {
             $http({
                 method: 'PATCH',
                 url: `${url}/${tablename}/${id}`,
-                data: values
+                data: values,
+                headers: {
+                    'Authorization': token
+                }
             }).then(function(res) {
                 deferred.resolve(res);
             }, function(res) {
@@ -74,7 +90,10 @@ app.factory('database', function($http, $q) {
             var deferred = $q.defer();
             $http({
                 method: 'DELETE',
-                url: `${url}/${tablename}/${field}/${value}`
+                url: `${url}/${tablename}/${field}/${value}`,
+                headers: {
+                    'Authorization': token
+                }
             }).then(function(res) {
                 deferred.resolve(res);
             }, function(res) {

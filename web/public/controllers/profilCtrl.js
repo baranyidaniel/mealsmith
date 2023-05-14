@@ -26,7 +26,7 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   }
 
   $scope.determineFollowed = function() {
-    if ($routeParams.id != $rootScope.loggedUser.id) {
+    if ($rootScope.loggedUser != null && $routeParams.id != $rootScope.loggedUser.id) {
       database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
         if (res.data.find(x => x.kovetett_user_id == $routeParams.id)) {
           document.getElementById('kovetBtn').innerText = 'Követés leállítása'
@@ -75,11 +75,11 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   }
 
   $scope.userRegTime = function(){
-    return moment($rootScope.loggedUser.reg).format('YYYY-MM-DD')
+    return moment($scope.user.reg).format('YYYY-MM-DD')
   }
 
   $scope.userLastLoginTime = function(){
-    return moment($rootScope.loggedUser.last).format('YYYY-MM-DD')
+    return moment($scope.user.last).format('YYYY-MM-DD')
   }
 
   $scope.showRecept = function(id) {
@@ -223,7 +223,7 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
       $scope.user = res.data[0]
     })
 
-    if ($routeParams.id != $rootScope.loggedUser.id) {
+    if ($rootScope.loggedUser != null && $routeParams.id != $rootScope.loggedUser.id) {
       $scope.userFollowed = $scope.determineFollowed()
     }
 
