@@ -91,21 +91,26 @@ app.controller("editProfileCtrl", function ($scope, $routeParams, database, $roo
                     }
                 });
             });
-        } 
+        } else {
+            alert('Tölts fel egy fájlt!')
+        }
     }
 
     $scope.modPassword = function() {
-        if ($scope.userEdit.oldpw == null || $scope.userEdit.oldpw.trim() == "" ||
-            $scope.userEdit.newpw1 == null || $scope.userEdit.newpw1.trim() == "" ||
+        if ($scope.userEdit.newpw1 == null || $scope.userEdit.newpw1.trim() == "" ||
             $scope.userEdit.newpw2 == null || $scope.userEdit.newpw2.trim() == "") {
             alert('Adj meg egy jelszót!')
             return
         }
 
         var pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/;
-        if (!$scope.user.newpw1.match(pwdRegex)) {
+        if (!$scope.userEdit.newpw1.match(pwdRegex)) {
             alert("A megadott jelszó nem felel meg a minimális biztonsági követelményeknek!");
             return;
+        }
+
+        if ($scope.userEdit.newpw1 != $scope.userEdit.newpw2) {
+            alert('A jelszavak nem egyeznek meg!')
         }
 
         let data = {
