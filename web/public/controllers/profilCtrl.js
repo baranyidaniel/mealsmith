@@ -26,7 +26,7 @@ app.controller('profilCtrl', function($scope, database, $rootScope, $location, $
   }
 
   $scope.determineFollowed = function() {
-    if ($routeParams.id != $rootScope.loggedUser.id) {
+    if ($rootScope.loggedUser != null && $routeParams.id != $rootScope.loggedUser.id) {
       database.selectByValue('follows', 'user_id', $rootScope.loggedUser.id).then(function(res) {
         if (res.data.find(x => x.kovetett_user_id == $routeParams.id)) {
           document.getElementById('kovetBtn').innerText = 'Követés leállítása'
