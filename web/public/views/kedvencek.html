@@ -32,7 +32,7 @@
                         <i class="bi bi-star-fill star" title="Törlés a kedvencekből"  ng-mouseover="starHover(recept.id)" ng-mouseleave="starLeave(recept.id)" id="star_{{recept.id}}" ng-click="removeFromFavorites(recept.id)" ></i>
                     </div>
                     <p class="text-muted">{{ ido(recept.id) }}</p>
-                    <p>{{ recept.short_desc }}</p>
+                    <p>{{ recept.short_desc == null ? "" : recept.short_desc }}</p>
                 </div>
             </div>
         </div>      
